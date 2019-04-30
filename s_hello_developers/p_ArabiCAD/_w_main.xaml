@@ -10,9 +10,8 @@
     <Grid Width="900" Height="700">
         <StackPanel Orientation="Horizontal">
             <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                          ScrollViewer.VerticalScrollBarVisibility="Visible"
-                          Width="600">
-                <Canvas></Canvas>
+                          ScrollViewer.VerticalScrollBarVisibility="Visible" Width="600">
+                <Canvas><TextBlock>abcd</TextBlock></Canvas>
             </ScrollViewer>
         </StackPanel>
     </Grid>
