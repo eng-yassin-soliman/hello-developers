@@ -10,7 +10,7 @@ public class _c_yassin
 {
     public _c_yassin() { }
 
-    public static int f_factorial_()
+    public static int f_factorial_(int p_num_)
     {
         // استبدل الكود دة بالكود اللي هاتكتبه
         return DateTime.Now.Second;

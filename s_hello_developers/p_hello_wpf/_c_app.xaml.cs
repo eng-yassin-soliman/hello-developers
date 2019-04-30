@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+// using p_hello_library;
 
 namespace p_hello_wpf
 {
@@ -22,7 +23,12 @@ namespace p_hello_wpf
 
         void v_start_()
         {
-            MessageBox.Show("ok");
+            // change _c_yassin to your class name, test your function with many values other than 7
+            MessageBox.Show(_c_yassin.f_factorial_(7).ToString()); // 7 is arbitary test value
+
+            // return;
+            // our project
+            _c_arabicad.v_start_();
         }
     }
 }
