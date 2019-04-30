@@ -11,7 +11,7 @@
         <StackPanel Orientation="Horizontal">
             <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible"
                           ScrollViewer.VerticalScrollBarVisibility="Visible" Width="600">
-                <Canvas><TextBlock>abcd</TextBlock></Canvas>
+                <Canvas><TextBlock>1234</TextBlock></Canvas>
             </ScrollViewer>
         </StackPanel>
     </Grid>
