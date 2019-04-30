@@ -22,7 +22,8 @@ namespace p_ArabiCAD
 
         void v_start_()
         {
-            MessageBox.Show("ok001");
+            _w_main l_man_ = new _w_main();
+            l_man_.ShowDialog();
         }
     }
 }
