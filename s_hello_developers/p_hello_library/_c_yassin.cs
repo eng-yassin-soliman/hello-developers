@@ -4,7 +4,7 @@
 // هاتعمل ملف جديد زي دة فيه كلاس باسمك، بالشكل دة
 // وتحط اللوجيك بتاع الفنكشن مكان اللوجيك اللي انا كاتبه
 // مطلوب فنكشن بتحسب الفاكتوريال بطريقة ريكروسيف
-// recursive factorial function
+// recursive factorial function.
 
 public class _c_yassin
 {
