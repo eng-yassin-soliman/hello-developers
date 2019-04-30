@@ -10,9 +10,35 @@
     <Grid Width="900" Height="700">
         <StackPanel Orientation="Horizontal">
             <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                          ScrollViewer.VerticalScrollBarVisibility="Visible" Width="600">
-                <Canvas><TextBlock>1234</TextBlock></Canvas>
+                          ScrollViewer.VerticalScrollBarVisibility="Visible" Width="700">
+                <Canvas>
+                    <Path Stroke="Black" StrokeThickness="1">
+                        <Path.Data>
+                            <PathGeometry>
+                                <PathGeometry.Figures>
+                                    <PathFigureCollection>
+                                        <PathFigure StartPoint="10,100">
+                                            <PathFigure.Segments>
+                                                <PathSegmentCollection>
+                                                    <!-- ArcSegment Point1="200,200" Point2="300,100" / -->
+                                                    <LineSegment></LineSegment>
+                                                </PathSegmentCollection>
+                                            </PathFigure.Segments>
+                                        </PathFigure>
+                                    </PathFigureCollection>
+                                </PathGeometry.Figures>
+                            </PathGeometry>
+                        </Path.Data>
+                    </Path>
+
+                </Canvas>
             </ScrollViewer>
+
+            <WrapPanel>
+                <Button>abc</Button>
+                <Button>def</Button>
+                <Button>ghi</Button>
+            </WrapPanel>
         </StackPanel>
     </Grid>
 </Window>
