@@ -6,6 +6,5 @@ namespace p_hello_library
 {
     class Class1
     {
-        aa
     }
 }
