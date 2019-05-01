@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:p_ArabiCAD"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="_w_main" SizeToContent="WidthAndHeight">
-
+ 
     <Grid Width="900" Height="700">
         <StackPanel Orientation="Horizontal">
             <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible"
