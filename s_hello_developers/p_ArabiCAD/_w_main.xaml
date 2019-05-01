@@ -12,16 +12,16 @@
             <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible"
                           ScrollViewer.VerticalScrollBarVisibility="Visible" Width="700">
                 <Canvas>
-                    <Path Stroke="Black" StrokeThickness="1">
+                    <Path Stroke="Red" StrokeThickness="5">
                         <Path.Data>
                             <PathGeometry>
                                 <PathGeometry.Figures>
                                     <PathFigureCollection>
-                                        <PathFigure StartPoint="10,100">
+                                        <PathFigure StartPoint="100,100">
                                             <PathFigure.Segments>
                                                 <PathSegmentCollection>
-                                                    <!-- ArcSegment Point1="200,200" Point2="300,100" / -->
-                                                    <LineSegment></LineSegment>
+                                                    <ArcSegment Size="700,700" IsLargeArc="False"
+                                                                SweepDirection="Counterclockwise" Point="600,600" />
                                                 </PathSegmentCollection>
                                             </PathFigure.Segments>
                                         </PathFigure>
@@ -31,6 +31,25 @@
                         </Path.Data>
                     </Path>
 
+                    <Path Stroke="Blue" StrokeThickness="5">
+                        <Path.Data>
+                            <PathGeometry>
+                                <PathGeometry.Figures>
+                                    <PathFigureCollection>
+                                        <PathFigure StartPoint="100,100" IsClosed="True">
+                                            <PathFigure.Segments>
+                                                <PathSegmentCollection>
+                                                    <LineSegment Point="600,100"/>
+                                                    <LineSegment Point="600,600"/>
+                                                    <LineSegment Point="100,600"/>
+                                                </PathSegmentCollection>
+                                            </PathFigure.Segments>
+                                        </PathFigure>
+                                    </PathFigureCollection>
+                                </PathGeometry.Figures>
+                            </PathGeometry>
+                        </Path.Data>
+                    </Path>                    
                 </Canvas>
             </ScrollViewer>
 
