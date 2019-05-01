@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C6B7EE1E-1FF8-42DE-8F11-FE4C7488B01B}</ProjectGuid>
+    <ProjectGuid>{31E9C99E-1151-45A4-89C6-49612FE7258C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>p_hello_wpf</RootNamespace>
-    <AssemblyName>p_hello_wpf</AssemblyName>
+    <RootNamespace>p_ArabiCAD</RootNamespace>
+    <AssemblyName>p_ArabiCAD</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -27,7 +27,6 @@
   <ItemGroup>
     <Reference Include="p_hello_library">
       <HintPath>..\p_hello_library\bin\Release\netstandard2.0\p_hello_library.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -52,6 +51,10 @@
     <Compile Include="_c_app.xaml.cs">
       <DependentUpon>_c_app.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_c_arabicad.cs" />
+    <Compile Include="_w_main.xaml.cs">
+      <DependentUpon>_w_main.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="_w_main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,2 +1,2 @@
 # hello-developers
-A Hello World Library for Software Developers
+A Hello World Library for Software Developers.
