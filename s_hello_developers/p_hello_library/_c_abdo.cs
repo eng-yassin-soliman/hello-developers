@@ -8,35 +8,16 @@ class _c_abdo
     {
 
             int number = 5;
-
-            long fact = GetFactorial(number);
+        long fact =1;
+        for (int i = 0; i < 5; i++)
+        {
+            fact *= number;
+            number--;
+        }
 
             Console.WriteLine(fact);
 
-            Console.ReadKey();
-
-            long GetFactorial(int numberr)
-
-            {
-
-                if (numberr == 0)
-
-                {
-
-                    return 1;
-
-                }
-
-                return numberr * GetFactorial(numberr - 1);
-
-            }
-
-
-
- 
             return DateTime.Now.Second;
-
-
 
     }
 }
