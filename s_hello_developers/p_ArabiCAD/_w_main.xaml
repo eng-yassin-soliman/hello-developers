@@ -5,59 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:p_ArabiCAD"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="_w_main" SizeToContent="WidthAndHeight">
- 
-    <Grid Width="900" Height="700">
-        <StackPanel Orientation="Horizontal">
-            <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                          ScrollViewer.VerticalScrollBarVisibility="Visible" Width="700">
-                <Canvas>
-                    <Path Stroke="Red" StrokeThickness="5">
-                        <Path.Data>
-                            <PathGeometry>
-                                <PathGeometry.Figures>
-                                    <PathFigureCollection>
-                                        <PathFigure StartPoint="100,100">
-                                            <PathFigure.Segments>
-                                                <PathSegmentCollection>
-                                                    <ArcSegment Size="700,700" IsLargeArc="False"
-                                                                SweepDirection="Counterclockwise" Point="600,600" />
-                                                </PathSegmentCollection>
-                                            </PathFigure.Segments>
-                                        </PathFigure>
-                                    </PathFigureCollection>
-                                </PathGeometry.Figures>
-                            </PathGeometry>
-                        </Path.Data>
-                    </Path>
+        Title="ArabiCAD" SizeToContent="WidthAndHeight">
 
-                    <Path Stroke="Blue" StrokeThickness="5">
-                        <Path.Data>
-                            <PathGeometry>
-                                <PathGeometry.Figures>
-                                    <PathFigureCollection>
-                                        <PathFigure StartPoint="100,100" IsClosed="True">
-                                            <PathFigure.Segments>
-                                                <PathSegmentCollection>
-                                                    <LineSegment Point="600,100"/>
-                                                    <LineSegment Point="600,600"/>
-                                                    <LineSegment Point="100,600"/>
-                                                </PathSegmentCollection>
-                                            </PathFigure.Segments>
-                                        </PathFigure>
-                                    </PathFigureCollection>
-                                </PathGeometry.Figures>
-                            </PathGeometry>
-                        </Path.Data>
-                    </Path>                    
+    <StackPanel Orientation="Horizontal" Margin="20" HorizontalAlignment="Stretch">
+        <Border BorderBrush="Black" BorderThickness="1" Margin="5">
+            <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible" 
+                          ScrollViewer.VerticalScrollBarVisibility="Visible" Width="800" Height="700">
+                <Canvas Name="c_cnv_">
                 </Canvas>
             </ScrollViewer>
+        </Border>
 
-            <WrapPanel>
-                <Button>abc</Button>
-                <Button>def</Button>
-                <Button>ghi</Button>
-            </WrapPanel>
-        </StackPanel>
-    </Grid>
+        <Border Margin="5" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Stretch">
+            <StackPanel>
+                <Button Name="b_lin_" Width="100" Margin="150,5,5,5" Padding="5" FontSize="16">خط</Button>
+                <Button Name="b_cir_" Width="100" Margin="150,5,5,5" Padding="5" FontSize="16">دائرة</Button>
+            </StackPanel>
+        </Border>
+    </StackPanel>
 </Window>
