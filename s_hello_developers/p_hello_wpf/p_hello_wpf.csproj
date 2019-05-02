@@ -27,7 +27,6 @@
   <ItemGroup>
     <Reference Include="p_hello_library">
       <HintPath>..\p_hello_library\bin\Release\netstandard2.0\p_hello_library.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
