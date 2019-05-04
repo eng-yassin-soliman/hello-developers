@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:p_ArabiCAD" FontSize="12"
+        xmlns:local="clr-namespace:p_ArabiCAD" FontSize="12"  FlowDirection="RightToLeft"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="ArabiCAD" SizeToContent="WidthAndHeight">
 
     <DockPanel Margin="20" HorizontalAlignment="Stretch">
-        <Border DockPanel.Dock="Right" Margin="5" BorderThickness="1" BorderBrush="Silver" FlowDirection="RightToLeft">
+        <Border DockPanel.Dock="Left" Margin="5" BorderThickness="1" BorderBrush="Silver">
             <StackPanel>
                 <WrapPanel Margin="5" Orientation="Horizontal" Width="180">
                     <WrapPanel.Resources>
@@ -30,20 +30,20 @@
                         </Style>
                     </WrapPanel.Resources>
 
-                    <Border>
+                    <Border Name="b_add_" MouseUp="v_add_">
                         <Canvas>
                             <Line Stroke="Silver" StrokeThickness="2" X1="6" Y1="14" X2="22" Y2="14"/>
                             <Line Stroke="Silver" StrokeThickness="2" X1="14" Y1="6" X2="14" Y2="22"/>
                         </Canvas>
                     </Border>
 
-                    <Border>
+                    <Border Name="b_lin_" MouseUp="v_lin_">
                         <Canvas>
                             <Line Stroke="Silver" StrokeThickness="2" X1="8" Y1="8" X2="20" Y2="20"/>
                         </Canvas>
                     </Border>
 
-                    <Border>
+                    <Border Name="b_arc_" MouseUp="v_arc_">
                         <Canvas>
                             <Path Stroke="Silver" StrokeThickness="2">
                                 <Path.Data>
@@ -58,9 +58,24 @@
                     </Border>
                 </WrapPanel>
 
-                <local:_b_point x:Name="b_pnt_"/>
+                <StackPanel Margin="0,10,0,0">
+                    <ListBox Name="b_lst_" Height="200" Margin="10"
+                             ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                             ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    </ListBox>
 
-                <Button HorizontalAlignment="Right"></Button>
+                    <Button Click="v_remove_" Margin="10" Padding="5" Width="50" HorizontalAlignment="Right" Visibility="Visible">حذف</Button>
+                </StackPanel>
+
+                <StackPanel Height="150">
+                    <local:_b_point x:Name="b_pnt_" Visibility="Collapsed"/>
+                    <local:_b_value x:Name="b_val_" Visibility="Collapsed"/>
+
+                    <Grid Name="b_pnl_" Visibility="Collapsed">
+                        <CheckBox IsChecked="False" Checked="v_close_" Unchecked="v_close_" Margin="10,15,0,0">شكل مغلق</CheckBox>
+                        <Button Click="v_point_" Margin="10" Padding="5" Width="50" HorizontalAlignment="Right">تم</Button>
+                    </Grid>
+                </StackPanel>
             </StackPanel>
         </Border>
 
@@ -68,7 +83,7 @@
             <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible"
                           ScrollViewer.VerticalScrollBarVisibility="Visible"
                           MinHeight="600" MinWidth="600">
-                <Canvas Name="b_cnv_" Background="MintCream"></Canvas>
+                <Canvas Name="b_cnv_" Background="MintCream" FlowDirection="LeftToRight"></Canvas>
             </ScrollViewer>
         </Border>
     </DockPanel>

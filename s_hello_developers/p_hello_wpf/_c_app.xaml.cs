@@ -24,7 +24,7 @@ namespace p_hello_wpf
         void v_start_()
         {
             // change _c_yassin to your class name, test your function with many values other than 7
-            MessageBox.Show(_c_yassin.f_factorial_(7).ToString()); // 7 is arbitary test value
+            // MessageBox.Show(_c_yassin.f_factorial_(7).ToString()); // 7 is arbitary test value
         }
     }
 }
