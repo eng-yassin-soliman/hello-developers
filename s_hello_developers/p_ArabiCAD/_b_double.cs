@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -11,7 +6,7 @@ namespace p_ArabiCAD
 {
     class _b_double : TextBox
     {
-        public bool p_vld_ = true;
+        public bool s_vld_ = true;
 
         public _b_double()
         {
@@ -26,15 +21,15 @@ namespace p_ArabiCAD
             try
             {
                 double.Parse(Text);
-                p_vld_ = true; Background = new SolidColorBrush(Colors.White);
+                s_vld_ = true; Background = Brushes.White;
             }
             catch
             {
-                p_vld_ = false; Background = new SolidColorBrush(Colors.LightPink);
+                s_vld_ = false; Background = Brushes.LightPink;
             }
         }
 
-        public double s_value_
+        public double s_val_
         {
             get
             {

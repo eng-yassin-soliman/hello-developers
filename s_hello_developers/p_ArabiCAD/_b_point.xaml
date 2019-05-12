@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:p_ArabiCAD" FontSize="12"
              mc:Ignorable="d">
     <StackPanel Margin="5">
-        <TextBlock Name="b_ttl_" Margin="5,0,0,0"></TextBlock>
+        <TextBlock Name="b_ttl_" Margin="5,0,0,0"/>
         <StackPanel Orientation="Horizontal">
             <local:_b_double x:Name="b_ycr_" />
             <local:_b_double x:Name="b_xcr_" />

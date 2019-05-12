@@ -5,19 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:p_ArabiCAD" FontSize="12"  FlowDirection="RightToLeft"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="ArabiCAD" SizeToContent="WidthAndHeight">
+        Title="ArabiCAD - New Drawing" SizeToContent="WidthAndHeight">
 
     <DockPanel Margin="20" HorizontalAlignment="Stretch">
-        <Border DockPanel.Dock="Left" Margin="5" BorderThickness="1" BorderBrush="Silver">
-            <StackPanel>
-                <WrapPanel Margin="5" Orientation="Horizontal" Width="180">
+        <DockPanel.Resources>
+            <Style TargetType="ListBox">
+                <Style.Setters>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="Height" Value="130"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style.Setters>
+            </Style>
+        </DockPanel.Resources>
+
+        <StackPanel DockPanel.Dock="Left" Width="205">
+            <Menu Margin="5,0,5,5" Background="White">
+                <Menu.Resources>
+                    <Style TargetType="MenuItem">
+                        <Setter Property="Background" Value="White"/>
+                    </Style>
+                </Menu.Resources>
+
+                <MenuItem Header="_ملف">
+                    <MenuItem Name="b_new_" Click="v_new_" Header="_جديد"/>
+                    <MenuItem Name="b_opn_" Click="v_open_" Header="_فتح"/>
+                    <MenuItem Name="b_sav_" Click="v_save_" Header="_حفظ"/>
+                    <MenuItem Header="_حفظ بإسم"/>
+                </MenuItem>
+
+                <MenuItem Header="_تحرير">
+                    <MenuItem Header="_قص"></MenuItem>
+                    <MenuItem Header="_نسح"></MenuItem>
+                    <MenuItem Header="_لصق"></MenuItem>
+                    <MenuItem Header="_تحديد الكل"></MenuItem>
+                </MenuItem>
+
+                <MenuItem Header="_مساعدة">
+                    <MenuItem Header="_حول"></MenuItem>
+                </MenuItem>
+            </Menu>
+
+            <Border Margin="5" BorderThickness="1" BorderBrush="Silver">
+                <WrapPanel Name="b_tol_">
                     <WrapPanel.Resources>
                         <Style TargetType="Border">
                             <Style.Setters>
                                 <Setter Property="Background" Value="White" />
-                                <Setter Property="CornerRadius" Value="7" />
-                                <Setter Property="Width" Value="30" />
-                                <Setter Property="Height" Value="30" />
+                                <Setter Property="CornerRadius" Value="3" />
+                                <Setter Property="Width" Value="20" />
+                                <Setter Property="Height" Value="20" />
                                 <Setter Property="Margin" Value="5" />
                                 <Setter Property="BorderThickness" Value="1.5" />
                             </Style.Setters>
@@ -28,62 +64,47 @@
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
+
+                        <Style TargetType="Path">
+                            <Style.Setters>
+                                <Setter Property="Stroke" Value="Silver" />
+                                <Setter Property="StrokeThickness" Value="2" />
+                            </Style.Setters>
+                        </Style>
                     </WrapPanel.Resources>
 
-                    <Border Name="b_add_" MouseUp="v_add_">
-                        <Canvas>
-                            <Line Stroke="Silver" StrokeThickness="2" X1="6" Y1="14" X2="22" Y2="14"/>
-                            <Line Stroke="Silver" StrokeThickness="2" X1="14" Y1="6" X2="14" Y2="22"/>
-                        </Canvas>
-                    </Border>
-
-                    <Border Name="b_lin_" MouseUp="v_lin_">
-                        <Canvas>
-                            <Line Stroke="Silver" StrokeThickness="2" X1="8" Y1="8" X2="20" Y2="20"/>
-                        </Canvas>
-                    </Border>
-
-                    <Border Name="b_arc_" MouseUp="v_arc_">
-                        <Canvas>
-                            <Path Stroke="Silver" StrokeThickness="2">
-                                <Path.Data>
-                                    <PathGeometry>
-                                        <PathFigure StartPoint="7,7">
-                                            <ArcSegment Size="14,14" Point="20,20" SweepDirection="Clockwise"></ArcSegment>
-                                        </PathFigure>
-                                    </PathGeometry>
-                                </Path.Data>
-                            </Path>
-                        </Canvas>
+                    <Border Name="b_add_" MouseUp="v_addpath_">
+                        <Path>
+                            <Path.Data>
+                                <GeometryGroup>
+                                    <LineGeometry StartPoint="1 9" EndPoint="17 9"/>
+                                    <LineGeometry StartPoint="9 1" EndPoint="9 17"/>
+                                </GeometryGroup>
+                            </Path.Data>
+                        </Path>
                     </Border>
                 </WrapPanel>
+            </Border>
 
-                <StackPanel Margin="0,10,0,0">
-                    <ListBox Name="b_lst_" Height="200" Margin="10"
-                             ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                             ScrollViewer.VerticalScrollBarVisibility="Visible">
-                    </ListBox>
+            <TextBlock Padding="5" Margin="5,10,0,0">خصائص الشكل:</TextBlock>
+            <local:_b_properties x:Name="b_pro_"/>
 
-                    <Button Click="v_remove_" Margin="10" Padding="5" Width="50" HorizontalAlignment="Right" Visibility="Visible">حذف</Button>
-                </StackPanel>
+            <local:_b_constraints x:Name="b_cst_" DockPanel.Dock="Top" Margin="5" Visibility="Collapsed"/>
 
-                <StackPanel Height="150">
-                    <local:_b_point x:Name="b_pnt_" Visibility="Collapsed"/>
-                    <local:_b_value x:Name="b_val_" Visibility="Collapsed"/>
+            <TextBlock Padding="5" Margin="5,10,0,0" DockPanel.Dock="Top">المسارات:</TextBlock>
+            <ListBox Name="b_lst_" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            <TextBlock MouseUp="v_delpath_" Margin="0,0,5,0" TextAlignment="Right" TextDecorations="Underline" Foreground="Blue">حذف</TextBlock>
 
-                    <Grid Name="b_pnl_" Visibility="Collapsed">
-                        <CheckBox IsChecked="False" Checked="v_close_" Unchecked="v_close_" Margin="10,15,0,0">شكل مغلق</CheckBox>
-                        <Button Click="v_point_" Margin="10" Padding="5" Width="50" HorizontalAlignment="Right">تم</Button>
-                    </Grid>
-                </StackPanel>
-            </StackPanel>
-        </Border>
+            <TextBlock Padding="5" Margin="5,10,0,0">العناصر:</TextBlock>
+            <ListBox Name="b_itm_" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            <TextBlock MouseUp="v_delelmn_" Margin="0,0,5,0" TextAlignment="Right" TextDecorations="Underline" Foreground="Blue">حذف</TextBlock>
+        </StackPanel>
 
-        <Border DockPanel.Dock="Right" BorderBrush="Silver" BorderThickness="1" Margin="5">
+        <Border MouseMove="v_move_" BorderBrush="Silver" BorderThickness="1" Margin="5">
             <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible"
                           ScrollViewer.VerticalScrollBarVisibility="Visible"
-                          MinHeight="600" MinWidth="600">
-                <Canvas Name="b_cnv_" Background="MintCream" FlowDirection="LeftToRight"></Canvas>
+                          MinWidth="800" MinHeight="700">
+                <Canvas MouseUp="v_addsegment_" Name="b_cnv_" Background="MintCream" FlowDirection="LeftToRight"></Canvas>
             </ScrollViewer>
         </Border>
     </DockPanel>

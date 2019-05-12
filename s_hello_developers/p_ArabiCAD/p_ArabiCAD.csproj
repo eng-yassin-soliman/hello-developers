@@ -25,12 +25,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="p_hello_library">
-      <HintPath>..\p_hello_library\bin\Release\netstandard2.0\p_hello_library.dll</HintPath>
+    <Reference Include="Dsafa.WpfColorPicker, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dsafa.WpfColorPicker.1.2.0\lib\net462\Dsafa.WpfColorPicker.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,9 +52,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="segments\_c_segments.cs" />
+    <Compile Include="segments\_c_seg_arc_.cs" />
+    <Compile Include="segments\_c_seg_lin_.cs" />
+    <Compile Include="_b_constraints.xaml.cs">
+      <DependentUpon>_b_constraints.xaml</DependentUpon>
+    </Compile>
     <Compile Include="_b_double.cs" />
     <Compile Include="_b_point.xaml.cs">
       <DependentUpon>_b_point.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_b_properties.xaml.cs">
+      <DependentUpon>_b_properties.xaml</DependentUpon>
     </Compile>
     <Compile Include="_b_value.xaml.cs">
       <DependentUpon>_b_value.xaml</DependentUpon>
@@ -61,11 +72,12 @@
       <DependentUpon>_c_app.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="_w_figure.xaml.cs">
-      <DependentUpon>_w_figure.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="_w_main.cs" />
     <Compile Include="_w_main.xaml.cs">
       <DependentUpon>_w_main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="_w_stroke.xaml.cs">
+      <DependentUpon>_w_stroke.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +98,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -95,7 +108,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="_b_constraints.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="_b_point.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_b_properties.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -103,11 +124,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="_w_figure.xaml">
+    <Page Include="_w_main.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="_w_main.xaml">
+    <Page Include="_w_stroke.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

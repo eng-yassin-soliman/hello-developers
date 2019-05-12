@@ -1,29 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 
 namespace p_ArabiCAD
 {
-    /// <summary>
-    /// Interaction logic for _c_app.xaml
-    /// </summary>
     public partial class _c_app : Application
     {
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            v_start_();
-            Shutdown(0);
+            _c_app.v_new_("");
         }
 
-        void v_start_()
+        public static void v_new_(string p_loc_)
         {
-            _w_main l_man_ = new _w_main();
-            l_man_.ShowDialog();
+            _w_main l_man_ = new _w_main(p_loc_);
+            l_man_.Show();
         }
     }
 }

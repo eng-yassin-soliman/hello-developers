@@ -1,26 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace p_ArabiCAD
 {
-    /// <summary>
-    /// Interaction logic for _b_point.xaml
-    /// </summary>
     public partial class _b_point : UserControl
     {
-        public bool p_vld_ = true; 
+        public bool p_vld_ = true;
 
         public _b_point()
         {
@@ -28,18 +13,10 @@ namespace p_ArabiCAD
             b_xcr_.TextChanged += new TextChangedEventHandler(v_update_);
         }
 
-        public void v_show_()
-        {
+        // fire update event
+        void v_update_(object p_snd_, TextChangedEventArgs p_arg_) { string l_str_ = ((TextBox)p_snd_).Text; }
 
-        }
-
-        void v_update_(object p_snd_, TextChangedEventArgs p_arg_)
-        {
-            string l_str_ = ((TextBox)p_snd_).Text;
-
-        }
-
-        public Point s_point_
+        public Point s_val_
         {
             get
             {
