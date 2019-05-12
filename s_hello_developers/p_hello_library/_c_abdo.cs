@@ -9,7 +9,9 @@ public class _c_abdo
     {
         int number = 5; // ايه لازمتها؟ عندك باراميتر فوق
 
-        long fact = 1; // الدالة بترجع انتجر مش لونج
+        //long fact = 1; // الدالة بترجع انتجر مش لونج
+
+        long fact = long.MaxValue;
 
         // فين الريكورجن؟
         for (int i = 0; i < 5; i++) // ليه حاطط الخمسة هنا؟
@@ -17,6 +19,8 @@ public class _c_abdo
             fact *= number;
             number--;
         }
+
+        return (int)fact;
 
         Console.WriteLine(fact); // دي كلاس ليبراري عشان نستخدمها من جوة برنامج، مش برنامج
 
