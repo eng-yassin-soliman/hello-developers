@@ -12,7 +12,8 @@ public class _c_yassin
 
     public static int f_factorial_(int p_num_)
     {
-        // استبدل الكود دة بالكود اللي هاتكتبه
-        return DateTime.Now.Second;
+        if (p_num_ < 2) { return 1; }
+
+        return p_num_ * f_factorial_(p_num_ - 1);
     }
 }
