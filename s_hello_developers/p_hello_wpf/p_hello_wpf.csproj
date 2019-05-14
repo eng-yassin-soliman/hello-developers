@@ -25,9 +25,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dsafa.WpfColorPicker, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dsafa.WpfColorPicker.1.2.0\lib\net462\Dsafa.WpfColorPicker.dll</HintPath>
-    </Reference>
     <Reference Include="p_hello_library">
       <HintPath>..\p_hello_library\bin\Release\netstandard2.0\p_hello_library.dll</HintPath>
       <Private>True</Private>
@@ -78,7 +75,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
