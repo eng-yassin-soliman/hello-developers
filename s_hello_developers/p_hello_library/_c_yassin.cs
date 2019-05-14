@@ -6,7 +6,7 @@
 // مطلوب فنكشن بتحسب الفاكتوريال بطريقة ريكروسيف
 // recursive factorial function.
 
-public class _c_yassin
+public class _c_yassin 
 {
     public _c_yassin() { }
 
