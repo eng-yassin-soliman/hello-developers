@@ -16,7 +16,6 @@ namespace p_ArabiCAD
 
             if (p_loc_ == "") { return; }
 
-            // ناقص هنا ازبط الاعدادات لو الملف فيه مسارات يكون الحالة بتاعته ايه
             s_loc_ = p_loc_;
             List<Path> l_lst_ = new List<Path>();
             try
