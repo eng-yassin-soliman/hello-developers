@@ -131,7 +131,7 @@ namespace p_ArabiCAD
         /// <summary>عند تحديد مسار في قائمة المسارات</summary>
         void v_selpath_(object p_obj_, SelectionChangedEventArgs p_arg_)
         {
-            b_itm_.Items.Clear();
+            b_itm_.Items.Clear(); 
 
             if (b_lst_.SelectedIndex == -1) { return; }
             foreach (PathSegment i_seg_ in s_fig_.Segments)
