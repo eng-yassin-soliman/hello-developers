@@ -8,7 +8,7 @@ using System.Windows.Shapes;
 
 namespace p_ArabiCAD
 {
-    public partial class _w_main : Window
+    public partial class _w_main : Window 
     {
         /// <summary>مصفوفة بالأدوات المتاحة، مثلا: خط مستقيم أو قوس</summary>
         public List<_c_segment> s_seg_ = new List<_c_segment>();
