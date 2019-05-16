@@ -90,6 +90,7 @@ namespace p_ArabiCAD
             b_lst_.Items.Add(l_ttl_);
             b_lst_.SelectedItem = l_ttl_;
             l_ttl_.Text = "مسار" + s_num_.ToString();
+            l_ttl_.IsReadOnly = true;
             s_num_ += 1;
             l_ttl_.Padding = new Thickness(5);
         }

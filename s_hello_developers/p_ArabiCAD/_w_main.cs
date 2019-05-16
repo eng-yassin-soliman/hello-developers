@@ -14,7 +14,7 @@ namespace p_ArabiCAD
         {
             InitializeComponent();
 
-            if (p_loc_ == "") { return; }
+            if (p_loc_ == string.Empty) { return; }
 
             s_loc_ = p_loc_;
             List<Path> l_lst_ = new List<Path>();

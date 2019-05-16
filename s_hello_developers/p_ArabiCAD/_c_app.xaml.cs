@@ -7,7 +7,7 @@ namespace p_ArabiCAD
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            _c_app.v_new_("");
+            _c_app.v_new_(string.Empty);
         }
 
         public static void v_new_(string p_loc_)

@@ -52,6 +52,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="constraints\_c_constraint.cs" />
     <Compile Include="segments\_c_segments.cs" />
     <Compile Include="segments\_c_seg_arc_.cs" />
     <Compile Include="segments\_c_seg_lin_.cs" />
