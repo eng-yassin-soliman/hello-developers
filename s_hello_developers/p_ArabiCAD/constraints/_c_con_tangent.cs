@@ -1,6 +1,6 @@
 ﻿namespace p_ArabiCAD.constraints
 {
-    class _c_con_tangent
+    public class _c_con_tangent
     {
 
     }

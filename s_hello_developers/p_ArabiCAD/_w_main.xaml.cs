@@ -11,7 +11,7 @@ namespace p_ArabiCAD
     public partial class _w_main : Window 
     {
         /// <summary>مصفوفة بالأدوات المتاحة، مثلا: خط مستقيم أو قوس</summary>
-        public List<_c_segment> s_seg_ = new List<_c_segment>();
+        public List<_c_tool> s_seg_ = new List<_c_tool>();
 
         /// <summary>المسار الحالي الجاري رسمه</summary>
         public Path s_pth_
@@ -42,7 +42,7 @@ namespace p_ArabiCAD
         {
             get
             {
-                foreach (_c_segment i_seg_ in s_seg_)
+                foreach (_c_tool i_seg_ in s_seg_)
                 { if (i_seg_.s_chk_) { return false; } }
                 return true;
             }
@@ -52,10 +52,10 @@ namespace p_ArabiCAD
         protected override void OnContentRendered(EventArgs e)
         {
             base.OnContentRendered(e);
-            s_seg_.Add(new _c_seg_lin_(this));
-            s_seg_.Add(new _c_seg_arc_(this));
+            s_seg_.Add(new _c_tol_lin(this));
+            s_seg_.Add(new _c_tol_arc(this));
 
-            foreach (_c_segment i_seg_ in s_seg_) { b_tol_.Children.Add(i_seg_.b_btn_); }
+            foreach (_c_tool i_seg_ in s_seg_) { b_tol_.Children.Add(i_seg_.b_btn_); }
 
             b_pro_.s_man_ = this;
             b_lst_.SelectionChanged += new SelectionChangedEventHandler(v_selpath_);
@@ -147,7 +147,7 @@ namespace p_ArabiCAD
             if (s_ena_) { return; }
 
             b_cst_.v_update_(p_arg_.GetPosition(b_cnv_));
-            foreach (_c_segment i_seg_ in s_seg_)
+            foreach (_c_tool i_seg_ in s_seg_)
             {
                 if (i_seg_.s_chk_)
                 {
@@ -163,8 +163,8 @@ namespace p_ArabiCAD
             // يجب اختيار أداة لتفعيل إضافة خط
             if (s_ena_) { return; }
 
-            _c_segment l_seg_ = new _c_segment();
-            foreach (_c_segment i_seg_ in s_seg_)
+            _c_tool l_seg_ = new _c_tool();
+            foreach (_c_tool i_seg_ in s_seg_)
             { if (i_seg_.s_chk_) { l_seg_ = i_seg_; break; } }
             l_seg_.v_add_();
         }
@@ -181,7 +181,7 @@ namespace p_ArabiCAD
             base.OnKeyUp(e);
             if (e.Key == Key.Escape)
             {
-                foreach (_c_segment i_seg_ in s_seg_)
+                foreach (_c_tool i_seg_ in s_seg_)
                 {
                     if (i_seg_.s_chk_)
                     { i_seg_.v_uncheck_(); return; }
