@@ -20,7 +20,7 @@ public class _c_abdo
             number--;
         }
 
-        return (int)fact;
+        return (int) fact;
 
         Console.WriteLine(fact); // دي كلاس ليبراري عشان نستخدمها من جوة برنامج، مش برنامج
 
