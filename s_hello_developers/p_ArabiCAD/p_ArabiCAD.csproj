@@ -83,12 +83,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="constraints\_c_constraint.cs" />
-    <Compile Include="constraints\_c_con_point.cs" />
-    <Compile Include="constraints\_c_con_tangent.cs" />
-    <Compile Include="segments\_c_segment.cs" />
-    <Compile Include="segments\_c_seg_arc.cs" />
-    <Compile Include="segments\_c_seg_lin.cs" />
     <Compile Include="tools\_c_tool.cs" />
     <Compile Include="tools\_c_tol_arc.cs" />
     <Compile Include="tools\_c_tol_lin_.cs" />
@@ -169,6 +163,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\p_hello_library\p_hello_library.csproj">
+      <Project>{affb0796-9284-4af1-9d94-1257242a3fcf}</Project>
+      <Name>p_hello_library</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
