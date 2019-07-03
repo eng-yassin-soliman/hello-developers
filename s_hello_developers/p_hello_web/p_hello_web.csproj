@@ -64,6 +64,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Static\CSS\_c_master.css" />
+    <Content Include="Static\CSS\_c_reset.css" />
+    <Content Include="Static\JS\_j_if.js" />
+    <Content Include="Static\JS\_j_loop.js" />
+    <Content Include="Static\JS\_j_switch.js" />
+    <Content Include="Static\_p_index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
