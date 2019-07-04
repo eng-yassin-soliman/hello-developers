@@ -4,7 +4,6 @@ using System.Windows;
 
 namespace p_ArabiCAD.constraints
 {
-
     /// <summary>Helper calss for some calculations</summary>
     public static class _c_math
     {

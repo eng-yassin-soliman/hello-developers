@@ -28,9 +28,14 @@ namespace p_ArabiCAD
         {
             get
             {
-                if (b_lst_.SelectedIndex == -1) { return null; }
-                PathGeometry l_geo_ = (PathGeometry)s_pth_.Data;
+                Path l_pth_ = s_pth_;
+                if (l_pth_ == null) { return null; }
+                PathGeometry l_geo_ = (PathGeometry)l_pth_.Data;
                 return l_geo_.Figures[0];
+
+                //if (b_lst_.SelectedIndex == -1) { return null; }
+                //PathGeometry l_geo_ = (PathGeometry)s_pth_.Data;
+                //return l_geo_.Figures[0];
             }
         }
 
