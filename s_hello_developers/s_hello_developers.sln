@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p_hello_web", "p_hello_web\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p_ArabiCAD", "p_ArabiCAD\p_ArabiCAD.csproj", "{31E9C99E-1151-45A4-89C6-49612FE7258C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{DAB5AA44-99B6-4FB1-9ACF-FB4C00360F03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{31E9C99E-1151-45A4-89C6-49612FE7258C}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{31E9C99E-1151-45A4-89C6-49612FE7258C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31E9C99E-1151-45A4-89C6-49612FE7258C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAB5AA44-99B6-4FB1-9ACF-FB4C00360F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAB5AA44-99B6-4FB1-9ACF-FB4C00360F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAB5AA44-99B6-4FB1-9ACF-FB4C00360F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAB5AA44-99B6-4FB1-9ACF-FB4C00360F03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

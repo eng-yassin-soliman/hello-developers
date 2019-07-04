@@ -6,12 +6,16 @@
 // مطلوب فنكشن بتحسب الفاكتوريال بطريقة ريكروسيف
 // recursive factorial function.
 
-public class _c_yassin
+public class _c_esmail
 {
-    public _c_yassin() { }
+    public _c_esmail() { }
 
     public static int f_factorial_(int p_num_)
     {
-        return 0;
+        if (p_num_ == 0)
+            return 1;
+        else
+            return p_num_*f_factorial_(p_num_-1);
+            
     }
 }
