@@ -10,7 +10,7 @@ public class _c_shorouk1
     {
         if (n <= 1)
         {
-            return 1;
+            return  1;
         }
         else
         {
