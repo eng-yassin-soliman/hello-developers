@@ -13,14 +13,14 @@ namespace p_ArabiCAD.constraints
         { return Math.PI * (p_dgr_ / (double)180); }
     }
 
-    public struct _c_point
+    public struct _c_coords
     {
         /// <summary>X Coordinate</summary>
         double s_xcr_;
         /// <summary>Y Coordinate</summary>
         double s_yxr_;
 
-        public _c_point(double p_xcr_, double p_ycr_)
+        public _c_coords(double p_xcr_, double p_ycr_)
         {
             s_xcr_ = 0;
             s_yxr_ = 0;
@@ -30,12 +30,12 @@ namespace p_ArabiCAD.constraints
         /// <param name="p_org_">Original point</param>
         /// <param name="p_dst_">Distance from original</param>
         /// <param name="p_ang_">Direction</param>
-        public _c_point f_dist_angl_(double p_dst_, double p_ang_)
+        public _c_coords f_dist_angl_(double p_dst_, double p_ang_)
         {
             double l_xcr_ = s_xcr_ + (p_dst_ * Math.Cos(_c_math.f_radian_(p_ang_)));
             double l_ycr_ = s_yxr_ + (p_dst_ * Math.Sign(_c_math.f_radian_(p_ang_)));
 
-            return new _c_point(l_xcr_, l_ycr_);
+            return new _c_coords(l_xcr_, l_ycr_);
         }
     }
 
@@ -58,15 +58,15 @@ namespace p_ArabiCAD.constraints
 
         public _c_con_point() { }
 
-        public abstract _c_point f_value_();
+        public abstract _c_coords f_value_();
     }
 
     public class _c_con_fixed : _c_con_point
     {
         /// <summary>ترجع الإحداثيات الثابتة للنقطة</summary>
-        public override _c_point f_value_()
+        public override _c_coords f_value_()
         {
-            return new _c_point(s_val_[0], s_val_[1]);
+            return new _c_coords(s_val_[0], s_val_[1]);
         }
     }
 }
