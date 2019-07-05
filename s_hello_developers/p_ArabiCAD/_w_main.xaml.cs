@@ -32,10 +32,6 @@ namespace p_ArabiCAD
                 if (l_pth_ == null) { return null; }
                 PathGeometry l_geo_ = (PathGeometry)l_pth_.Data;
                 return l_geo_.Figures[0];
-
-                //if (b_lst_.SelectedIndex == -1) { return null; }
-                //PathGeometry l_geo_ = (PathGeometry)s_pth_.Data;
-                //return l_geo_.Figures[0];
             }
         }
 
@@ -57,6 +53,7 @@ namespace p_ArabiCAD
         protected override void OnContentRendered(EventArgs e)
         {
             base.OnContentRendered(e);
+
             s_seg_.Add(new _c_tol_lin(this));
             s_seg_.Add(new _c_tol_arc(this));
 
