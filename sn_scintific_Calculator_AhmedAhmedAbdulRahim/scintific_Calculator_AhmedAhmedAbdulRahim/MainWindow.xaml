@@ -1,0 +1,81 @@
+﻿<Window x:Class="HelloWorld_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HelloWorld_2"
+        mc:Ignorable="d"
+        Title="calculator" Height="800" Width="800">
+    <Grid PreviewTextInput="Grid_PreviewTextInput" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="pls" Grid.Column="0" Grid.Row="2" FontSize="25" Click="Pls_Click" >+</Button>
+        <Button x:Name="min" Grid.Column="1"  Grid.Row="2" FontSize="25" Click="Min_Click" >-</Button>
+        <Button x:Name="prod" Grid.Column="2" Grid.Row="2" FontSize="25" Click="Prod_Click" >*</Button>
+        <Button x:Name="over" Grid.Column="3" Grid.Row="2" FontSize="25" Click="Over_Click">/</Button>
+        <Button x:Name="b1" Grid.Row="3" Grid.Column="0" FontSize="25" Click="B1_Click" >1</Button>
+        <Button  x:Name="b2" Grid.Row="3" Grid.Column="1" FontSize="25" Click="B2_Click" >2</Button>
+        <Button  x:Name="b3" Grid.Column="2" Grid.Row="3" FontSize="25" Click="B3_Click"  >3</Button>
+        <Button  x:Name="b4" Grid.Row="4" Grid.Column="0" FontSize="25" Click="B4_Click" >4</Button>
+        <Button x:Name="b5" Grid.Row="4" Grid.Column="1" FontSize="25" Click="B5_Click" >5</Button>
+        <Button x:Name="b6" Grid.Column="2" Grid.Row="4"  FontSize="25" Click="B6_Click" >6</Button>
+        <Button x:Name="b7" Grid.Row="5" Grid.Column="0" FontSize="25" Click="B7_Click" >7</Button>
+        <Button x:Name="b8" Grid.Row="5" Grid.Column="1" FontSize="25" Click="B8_Click" >8</Button>
+        <Button x:Name="b9" Grid.Column="2" Grid.Row="5"  FontSize="25" Click="B9_Click" >9</Button>
+        <Button x:Name="b0" Grid.Row="6" Grid.Column="1" FontSize="25" Click="B0_Click" >0</Button>
+        <Button x:Name="eq" Grid.Column="3" Grid.Row="6" FontSize="25" Click="Eq_Click" >=</Button>
+        <Button x:Name="clr" Grid.Column="3" Grid.Row="3" FontSize="25" Click="Clr_Click" >c</Button>
+        <Button x:Name="clrent" Grid.Column="3" Grid.Row="4" FontSize="25" Click="Clrent_Click" >CE</Button>
+        <Button x:Name="chn" Grid.Column="0" Grid.Row="6" FontSize="25" Click="Chn_Click" >+/-</Button>
+        <Button x:Name="back" Grid.Column="3" Grid.Row="5" FontSize="25" Click="Back_Click"  >.</Button>
+        <Button x:Name="over2" Grid.Column="2" Grid.Row="6" FontSize="25" Click="Over2_Click"  >1/x</Button>
+        <Button x:Name="sin1" Grid.Column="4" Grid.Row="2" FontSize="25" Click="Sin1_Click"  >sin()</Button>
+        <Button x:Name="cos1" Grid.Column="5" Grid.Row="2" FontSize="25" Click="Cos1_Click" >cos()</Button>
+        <Button x:Name="tan1" Grid.Column="6" Grid.Row="2" FontSize="25" Click="Tan1_Click" >tan()</Button>
+        <Button x:Name="log1" Grid.Column="4" Grid.Row="3" FontSize="25" Click="Log1_Click" >log()</Button>
+        <Button x:Name="ln1" Grid.Column="5" Grid.Row="3" FontSize="25" Click="Ln1_Click" >ln()</Button>
+        <Button x:Name="power" Grid.Column="4" Grid.Row="4" FontSize="25" Click="Power_Click" >x^y</Button>
+        <Button x:Name="power2" Grid.Column="5" Grid.Row="4" FontSize="25" Click="Power2_Click" >x^2</Button>
+        <Button x:Name="power3" Grid.Column="6" Grid.Row="4" FontSize="25" Click="Power3_Click" >x^3</Button>
+        <Button x:Name="precent" Grid.Column="6" Grid.Row="3" FontSize="25" Click="Present_Click" >%</Button>
+        <Button x:Name="root_sq" Grid.Column="5" Grid.Row="5" FontSize="25" Click="Root2_Click" >2(root)x</Button>
+        <Button x:Name="pi1" Grid.Column="4" Grid.Row="6" FontSize="25" Click="Pi1_Click" >pi</Button>
+        <Button x:Name="Fatorial" Grid.Column="5" Grid.Row="6" FontSize="25" Click="Fatorial_Click"  >x!</Button>
+        <Button x:Name="expon" Grid.Column="6" Grid.Row="6" FontSize="25" Click="Expon_Click" >e^x</Button>
+        <Button x:Name="ex1" Grid.Column="6" Grid.Row="5" FontSize="25" Click="Ex1_Click" >e</Button>
+        <Button x:Name="Rem" Grid.Column="4" Grid.Row="5" FontSize="25" Click="Rem_Click" >reminder</Button>
+
+        <TextBox x:Name="txt" Text="0"  VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="40" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="7" />
+
+    </Grid>
+
+
+</Window>
+
+
+
+
+
+
+
+
+
+
+
