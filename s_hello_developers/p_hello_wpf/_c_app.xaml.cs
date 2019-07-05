@@ -8,19 +8,21 @@ namespace p_hello_wpf
     /// </summary>
     public partial class _c_app : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs p_stp_)
         {
-            base.OnStartup(e);
+            base.OnStartup(p_stp_);
 
-            v_start_();
+            MessageBox.Show("i started");
 
             Shutdown(0);
+
+            return;
         }
 
-        void v_start_()
-        {
-            // change _c_yassin to your class name, test your function with many values other than 7
-            MessageBox.Show(_c_yassin.f_factorial_(7).ToString()); // 7 is arbitary test value
-        }
+        //void v_start_()
+        //{
+        //    // change _c_yassin to your class name, test your function with many values other than 7
+        //    MessageBox.Show(_c_yassin.f_factorial_(7).ToString()); // 7 is arbitary test value
+        //}
     }
 }
