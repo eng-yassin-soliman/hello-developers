@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows;
 
-namespace p_ArabiCAD.constraints
+namespace p_hello_library.cad.constraints
 {
     /// <summary>Helper calss for some calculations</summary>
     public static class _c_math

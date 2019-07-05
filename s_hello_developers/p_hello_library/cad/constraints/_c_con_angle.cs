@@ -4,7 +4,7 @@ using System.Text;
 
 namespace p_hello_library.cad.constraints
 {
-    class _c_con_angle : _c_constraint
+    public class _c_con_angle : _c_constraint
     {
     }
 

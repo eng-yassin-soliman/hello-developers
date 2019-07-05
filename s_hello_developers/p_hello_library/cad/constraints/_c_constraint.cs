@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace p_ArabiCAD.constraints
+namespace p_hello_library.cad.constraints
 {
     /// <summary>
     /// Base class for constraints

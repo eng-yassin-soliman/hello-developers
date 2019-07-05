@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace p_ArabiCAD.segments
+namespace p_hello_library.cad.segments
 {
-    class _c_seg_arc
+    class _c_seg_arc : _c_segment
     {
     }
 }
