@@ -32,7 +32,7 @@ namespace WpfApp1
                     p_num_2 = 1 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
                 }
-                if (opp == "Ln(")
+                else if (opp == "Ln(")
                 {
                     p_num_2 = 1 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
@@ -58,7 +58,7 @@ namespace WpfApp1
                     p_num_2 = 2 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
                 }
-                if (opp == "Ln(")
+                else if (opp == "Ln(")
                 {
                     p_num_2 = 2 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
@@ -85,7 +85,7 @@ namespace WpfApp1
                     p_num_2 = 3 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
                 }
-                if (opp == "Ln(")
+                else if (opp == "Ln(")
                 {
                     p_num_2 = 3 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
@@ -112,7 +112,7 @@ namespace WpfApp1
                     p_num_2 = 4 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
                 }
-                if (opp == "Ln(")
+                else if (opp == "Ln(")
                 {
                     p_num_2 = 4 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
@@ -139,7 +139,7 @@ namespace WpfApp1
                     p_num_2 = 5 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
                 }
-                if (opp == "Ln(")
+                else if (opp == "Ln(")
                 {
                     p_num_2 = 5 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
@@ -166,7 +166,7 @@ namespace WpfApp1
                     p_num_2 = 6 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
                 }
-                if (opp == "Ln(")
+                else if (opp == "Ln(")
                 {
                     p_num_2 = 6 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
@@ -193,7 +193,7 @@ namespace WpfApp1
                     p_num_2 = 7 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
                 }
-                if (opp == "Ln(")
+                else if (opp == "Ln(")
                 {
                     p_num_2 = 7 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
@@ -219,7 +219,7 @@ namespace WpfApp1
                     p_num_2 = 8 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
                 }
-                if (opp == "Ln(")
+                else if (opp == "Ln(")
                 {
                     p_num_2 = 8 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
@@ -246,7 +246,7 @@ namespace WpfApp1
                     p_num_2 = 9 + (p_num_2 * 10);
                     t_1.Text =  opp + p_num_2;
                 }
-                if (opp == "Ln(")
+                else if (opp == "Ln(")
                 {
                     p_num_2 = 9 + (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
@@ -273,7 +273,7 @@ namespace WpfApp1
                     p_num_2 = (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
                 }
-                if (opp == "Ln(")
+                else if (opp == "Ln(")
                 {
                     p_num_2 = (p_num_2 * 10);
                     t_1.Text = opp + p_num_2;
