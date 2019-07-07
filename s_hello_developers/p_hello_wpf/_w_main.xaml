@@ -1,0 +1,33 @@
+﻿<Window x:Class="p_hello_wpf._w_main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:p_hello_wpf" FontFamily="Consolas"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" FontSize="14"
+        Title="Casio pi19" SizeToContent="WidthAndHeight">
+
+    <StackPanel Margin="20">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <ComboBox Name="b_siz_" Width="150" Margin="5, 0, 5, 5" SelectedIndex="0"/>
+            <RadioButton Margin="5">متجه</RadioButton>
+            <RadioButton Margin="5" Name="b_num_">عدد</RadioButton>
+        </StackPanel>
+        
+        <!-- العناصر اللي جواها هاتبقى مرصوصة أفقيا -->
+        <StackPanel Orientation="Horizontal">
+            <!-- الرقم أو المتجه الأول-->
+            <StackPanel Name="b_nm1_" Margin="5" Width="110" MinHeight="10" Background="AliceBlue"/>
+            <!-- الرقم أو المتجه الثاني-->
+            <StackPanel Name="b_nm2_" Margin="5" Width="110" MinHeight="10" Background="AliceBlue"/>
+            <!-- النتيجة-->
+            <StackPanel Name="b_ans_" Margin="5" Width="110" MinHeight="10" Background="MintCream"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <WrapPanel Name="b_pnl_" Width="180" Height="240"/>
+            <WrapPanel Name="b_opr_" Width="180" />
+        </StackPanel>
+
+    </StackPanel>
+</Window>
