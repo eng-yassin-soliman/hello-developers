@@ -1,0 +1,25 @@
+﻿<Window x:Class="Wpfcalc.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpfcalc"
+        mc:Ignorable="d" FontSize="60"
+        Title="casio fx 991ES PLUS" SizeToContent="WidthAndHeight" 
+        Background="BlueViolet">
+    <WrapPanel Margin="20" Height="650" Width="500">
+        <TextBox Name="box1" Width="210" Margin="5,0,5,0"
+                 Background="Wheat"></TextBox>
+        <TextBox Name="box2" Width="210" Margin="65,0,5,0"
+                 Background="Wheat"></TextBox>
+
+        <Button Click="v_sum" Name="b_sum" Width="100" Background="Silver" Height="100" Margin="10" Foreground="White" >+</Button>
+        <Button Click="v_subtract" Name="b_sub" Width="100" Background="Silver" Height="100" Margin="15" Foreground="White">-</Button>
+        <Button Click="v_multiply" Name="b_mul" Width="100" Background="Silver" Height="100" Margin="10" Foreground="White">*</Button>
+        <Button Click="v_divide" Name="b_div" Width="100" Background="Silver" Height="100" Margin="15" Foreground="White">/</Button>
+        <Button Click="v_sine" Name="b_sin" Width="200" Background="Silver" Height="100" Margin="20" Foreground="White">sin</Button>
+        <Button Click="v_ln" Name="b_lne" Width="200" Background="Silver" Height="100" Margin="20" Foreground="White">ln</Button>
+
+    </WrapPanel>
+
+</Window>
