@@ -86,7 +86,7 @@ namespace p_hello_cad
                 f_pnt_(5), true));
 
             b_fig_.Segments.Add(new LineSegment(
-                f_pnt_(7), true));
+                f_pnt_(7), true)); 
         }
     }
 }
