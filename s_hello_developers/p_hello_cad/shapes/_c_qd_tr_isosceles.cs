@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace p_hello_cad
 {
-    class _c_quadrilateral
+    /// <summary>
+    /// شبه منحرف متواز الساقين
+    /// </summary>
+    class _c_qd_tr_isosceles
     {
     }
 }

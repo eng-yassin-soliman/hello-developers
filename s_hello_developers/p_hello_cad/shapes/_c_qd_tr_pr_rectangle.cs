@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace p_hello_cad
 {
-    class _qd_tr_parallelogram
+    class _c_qd_tr_pr_rectangle
     {
     }
 }

@@ -12,7 +12,18 @@ namespace p_hello_wpf.values
     /// </summary>
     class _c_vector : _c_value
     {
-        public _c_vector(int p_siz_, Boolean p_rdo_, Panel p_pnl_) : base(p_siz_, p_rdo_, p_pnl_) { }
+        public _c_vector(int p_siz_, Boolean p_rdo_, Panel p_pnl_) : base
+            (p_siz_, p_rdo_, p_pnl_) { }
+
+        int f_age_()
+        {
+            return 34;
+        }
+
+        DateTime f_now_()
+        {
+            return DateTime.Now;
+        }
 
         public override void v_product_(_c_value p_nm1_, _c_value p_nm2_)
         {

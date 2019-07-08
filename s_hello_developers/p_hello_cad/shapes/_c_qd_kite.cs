@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace p_hello_cad
 {
-    class _c_qd_tr_isosceles
+    /// <summary>
+    /// كايت
+    /// وارثة من الرباعي العام
+    /// </summary>
+    class _c_qd_kite
     {
     }
 }

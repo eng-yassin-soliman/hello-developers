@@ -20,7 +20,8 @@
             <Path Stroke="Black" StrokeThickness="1">
                 <Path.Data>
                     <PathGeometry>
-                        <PathFigure x:Name="b_fig_" IsClosed="True"/>
+                        <PathFigure x:Name="b_fig_" IsClosed="True">
+                        </PathFigure>
                     </PathGeometry>
                 </Path.Data>
             </Path>
@@ -29,19 +30,23 @@
         <StackPanel Grid.Column="1" Width="200" Margin="5" Background="AliceBlue">
             <ComboBox Margin="10" FlowDirection="RightToLeft">
                 <ComboBoxItem FontWeight="Bold">شكل رباعي عام</ComboBoxItem>
-                
+
                 <ComboBoxItem FontWeight="Bold" Margin="10,0,0,0">شبه منحرف</ComboBoxItem>
                 <ComboBoxItem Margin="20,0,0,0">شبه منحرف مستاوي الساقين</ComboBoxItem>
                 <ComboBoxItem Margin="20,0,0,0">متوازي الأضلاع</ComboBoxItem>
 
                 <ComboBoxItem FontWeight="Bold" Margin="10,0,0,0">كايت</ComboBoxItem>
                 <ComboBoxItem Margin="20,0,0,0">معين</ComboBoxItem>
-
-
             </ComboBox>
 
-            <TextBlock Margin="10,5,10,5" TextAlignment="Right">aaaa</TextBlock>
-            <TextBox Padding="5" Margin="10,5,10,5"/>
+            <StackPanel x:Name="b_pnl_">
+                
+            </StackPanel>
+
+            <!--<TextBlock Margin="10,5,10,5" TextAlignment="Right">ادخل النقاط</TextBlock>
+            <TextBox Padding="5" Margin="10,5,10,5"/>-->
+
+            <Button Margin="10" HorizontalAlignment="Right" Padding="5" Click="v_draw_">رسم</Button>
         </StackPanel>
     </Grid>
 </Window>

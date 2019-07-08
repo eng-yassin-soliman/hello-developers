@@ -55,12 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="_c_qd_kite.cs" />
-    <Compile Include="_c_qd_kt_rhombus.cs" />
-    <Compile Include="_c_qd_trapezoid.cs" />
-    <Compile Include="_c_quadrilateral.cs" />
-    <Compile Include="_c_qd_tr_isosceles.cs" />
-    <Compile Include="_qd_tr_parallelogram.cs" />
+    <Compile Include="shapes\_c_qd_kite.cs" />
+    <Compile Include="shapes\_c_qd_kt_rhombus.cs" />
+    <Compile Include="shapes\_c_qd_trapezoid.cs" />
+    <Compile Include="shapes\_c_qd_tr_pr_rc_square.cs" />
+    <Compile Include="shapes\_c_qd_tr_pr_rectangle.cs" />
+    <Compile Include="shapes\_c_quadrilateral.cs" />
+    <Compile Include="shapes\_c_qd_tr_isosceles.cs" />
+    <Compile Include="shapes\_c_qd_tr_parallelogram.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,6 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hierarchy.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

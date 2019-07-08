@@ -23,7 +23,6 @@ namespace p_hello_wpf.values
         public Boolean s_rdo_ = false; // هل يمكن التعديل على الرقم؟
 
         public static TextBox s_foc_; // مربع النص الذي يتم الكتابة فيه
-
         /// <summary>
         /// الكود اللي بيشتغل عند انشاء نسخة جديدة من الكلاس
         /// </summary>
