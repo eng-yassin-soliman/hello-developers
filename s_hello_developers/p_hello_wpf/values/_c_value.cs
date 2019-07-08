@@ -15,7 +15,7 @@ namespace p_hello_wpf.values
 {
     /// <summary>
     /// الكلاس الأساسية اللي بيتفرع منها العدد والمتجه
-    /// </summary>
+    /// </summary> 
     public class _c_value
     {
         public List<double> s_num_ = new List<double>();
