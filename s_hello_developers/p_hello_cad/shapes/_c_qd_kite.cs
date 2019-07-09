@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 
 namespace p_hello_cad
 {
@@ -10,7 +7,7 @@ namespace p_hello_cad
     /// كايت
     /// وارثة من الرباعي العام
     /// </summary>
-    class _c_qd_kite
+    class _c_qd_kite : _c_quadrilateral
     {
     }
 }

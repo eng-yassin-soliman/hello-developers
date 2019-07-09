@@ -4,14 +4,15 @@ using System.Windows;
 namespace p_hello_cad
 {
     /// <summary>
-    /// شبه منحرف
-    /// وارث من الشكل الرباعي العام
+    /// متواز أضلاع
+    /// مشتق من شبه المنحرف
+    /// مشتق من الشكل ارباعي العام
     /// </summary>
-    class _c_qd_trapezoid : _c_quadrilateral
+    class _c_tr_parallelogram : _c_qd_trapezoid
     {
         public override string[] f_lables_()
         {
-            return new string[] { "نقطة 1 (القاعدة)", "نقطة 2 (القاعدة)", "نقطة 3", "طول الضلع الموازي " };
+            return new string[] { "نقطة 1", "نقطة 2", "نقطة 3" };
         }
 
         public override void v_caluclate_(Point[] p_pts_, double[] p_val_)
@@ -23,12 +24,7 @@ namespace p_hello_cad
             double l_cos_ = l_adj_ / l_hyp_;
             double l_sin_ = l_ops_ / l_hyp_;
 
-            // رابع نقطة
-            Point l_4th_ = new Point();
-            l_4th_.X = p_pts_[2].X - (p_val_[0] * l_cos_);
-            l_4th_.Y = p_pts_[2].Y - (p_val_[0] * l_sin_);
-
-            base.v_caluclate_(new Point[] { p_pts_[0], p_pts_[1], p_pts_[2], l_4th_ }, null);
+            base.v_caluclate_(new Point[] { p_pts_[0], p_pts_[1], p_pts_[2] }, new double[] { l_hyp_ });
         }
 
         public override void v_load_text_(string[] p_pts_)
@@ -41,10 +37,7 @@ namespace p_hello_cad
                 l_pts_[i_ndx_] = f_parse_point_(p_pts_[i_ndx_]);
             }
 
-            // طول الضلع الموازي
-            double l_lng_ = f_parse_number_(p_pts_[3]);
-
-            v_caluclate_(l_pts_, new double[] { l_lng_ });
+            v_caluclate_(l_pts_, null);
         }
     }
 }

@@ -56,13 +56,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="shapes\_c_qd_kite.cs" />
-    <Compile Include="shapes\_c_qd_kt_rhombus.cs" />
+    <Compile Include="shapes\_c_kt_rhombus.cs" />
     <Compile Include="shapes\_c_qd_trapezoid.cs" />
-    <Compile Include="shapes\_c_qd_tr_pr_rc_square.cs" />
-    <Compile Include="shapes\_c_qd_tr_pr_rectangle.cs" />
+    <Compile Include="shapes\_c_rc_square.cs" />
+    <Compile Include="shapes\_c_pr_rectangle.cs" />
     <Compile Include="shapes\_c_quadrilateral.cs" />
-    <Compile Include="shapes\_c_qd_tr_isosceles.cs" />
-    <Compile Include="shapes\_c_qd_tr_parallelogram.cs" />
+    <Compile Include="shapes\_c_tr_isosceles.cs" />
+    <Compile Include="shapes\_c_tr_parallelogram.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -16,7 +16,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Canvas Name="b_cnv_" Width="600" Height="600" Margin="5" Background="Azure">
+        <Canvas Name="b_cnv_" MouseUp="v_pick_point_"  Width="600" Height="600" Margin="5" Background="Azure">
             <Path Stroke="Black" StrokeThickness="1">
                 <Path.Data>
                     <PathGeometry>
@@ -27,26 +27,23 @@
             </Path>
         </Canvas>
 
-        <StackPanel Grid.Column="1" Width="200" Margin="5" Background="AliceBlue">
-            <ComboBox Margin="10" FlowDirection="RightToLeft">
+        <StackPanel Grid.Column="1" Width="200" Margin="5" Background="AliceBlue" FlowDirection="RightToLeft">
+            <ComboBox Name="b_lst_" Margin="10" SelectionChanged="v_selection_">
                 <ComboBoxItem FontWeight="Bold">شكل رباعي عام</ComboBoxItem>
 
                 <ComboBoxItem FontWeight="Bold" Margin="10,0,0,0">شبه منحرف</ComboBoxItem>
-                <ComboBoxItem Margin="20,0,0,0">شبه منحرف مستاوي الساقين</ComboBoxItem>
-                <ComboBoxItem Margin="20,0,0,0">متوازي الأضلاع</ComboBoxItem>
+                <ComboBoxItem Margin="20,0,0,0">شبه منحرف مستاو الساقين</ComboBoxItem>
+                <ComboBoxItem Margin="20,0,0,0">متواز الأضلاع</ComboBoxItem>
+                <ComboBoxItem Margin="30,0,0,0">مستطيل</ComboBoxItem>
+                <ComboBoxItem Margin="40,0,0,0">مربع</ComboBoxItem>
 
                 <ComboBoxItem FontWeight="Bold" Margin="10,0,0,0">كايت</ComboBoxItem>
                 <ComboBoxItem Margin="20,0,0,0">معين</ComboBoxItem>
             </ComboBox>
 
-            <StackPanel x:Name="b_pnl_">
-                
-            </StackPanel>
+            <StackPanel Name="b_pnl_"/>
 
-            <!--<TextBlock Margin="10,5,10,5" TextAlignment="Right">ادخل النقاط</TextBlock>
-            <TextBox Padding="5" Margin="10,5,10,5"/>-->
-
-            <Button Margin="10" HorizontalAlignment="Right" Padding="5" Click="v_draw_">رسم</Button>
+            <Button Margin="10" HorizontalAlignment="Left" Padding="5" Click="v_draw_">رسم</Button>
         </StackPanel>
     </Grid>
 </Window>
