@@ -20,7 +20,7 @@ namespace p_hello_cad
         public override void v_caluclate_(Point[] p_pts_, double[] p_val_)
         {
             // ايجاد زاوية ميل القاعدة
-            double l_adj_ = (p_pts_[1].X - p_pts_[0].X);                            // المقابل
+            double l_adj_ = (p_pts_[1].X - p_pts_[0].X);                            // المقابل 
             double l_ops_ = (p_pts_[1].Y - p_pts_[0].Y);                            // المجاور
             double l_hyp_ = Math.Sqrt(Math.Pow(l_adj_, 2) + Math.Pow(l_ops_, 2));   // الوتر
 
