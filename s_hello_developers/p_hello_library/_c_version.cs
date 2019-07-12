@@ -6,7 +6,7 @@ namespace p_hello_library
 {
     class _c_version
     {
-        // YYYY-MM-dd
+        // YYYY-MM-dd HH:mm
         // 2019-07-12 06:00
     }
 }
