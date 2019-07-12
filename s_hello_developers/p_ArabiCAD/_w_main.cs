@@ -33,7 +33,7 @@ namespace p_ArabiCAD
             l_lst_ = (List<Path>)System.Xaml.XamlServices.Load(s_loc_);
             Title = "ArabiCAD - " + s_loc_;
             foreach (Path i_pth_ in l_lst_) { b_cnv_.Children.Add(i_pth_); }
-        }
+        } 
 
         /// <summary>Menu</summary>
         public void v_new_(object p_snd_, RoutedEventArgs p_arg_)
