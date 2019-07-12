@@ -176,16 +176,20 @@ namespace p_hello_wpf
                     return;
 
                 case "sin":
+                    
                     break;
 
                 case "cos":
                     break;
 
                 case "x^2":
+                    s_ans_.v_sq_pr_(s_nm1_);
                     break;
 
                 case "sqrt":
+                 
                     break;
+
 
                 case "ln":
                     break;
@@ -212,6 +216,7 @@ namespace p_hello_wpf
                     break;
 
                 case "-":
+                    s_ans_.v_sub_(s_nm1_, s_nm2_);
                     break;
 
                 case "*":
@@ -219,6 +224,7 @@ namespace p_hello_wpf
                     break;
 
                 case "/":
+                  
                     break;
             }
 

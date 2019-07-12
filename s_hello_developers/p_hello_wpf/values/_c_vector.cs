@@ -39,5 +39,17 @@ namespace p_hello_wpf.values
 
             v_set_val_(0, l_ans_);
         }
+        public override void v_sq_pr_(_c_value p_nm1_)
+        {
+            base.v_product_(p_nm1_, p_nm1_);
+
+            double l_ans_ = 0;
+            for (int i_ndx_ = 0; i_ndx_ < s_num_.Count; i_ndx_++)
+            {
+                l_ans_ += p_nm1_.s_num_[i_ndx_] * p_nm1_.s_num_[i_ndx_];
+            }
+
+            v_set_val_(0, l_ans_);
+        }
     }
 }
