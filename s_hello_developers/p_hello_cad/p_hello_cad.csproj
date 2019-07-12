@@ -4,16 +4,26 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C6B7EE1E-1FF8-42DE-8F11-FE4C7488B01B}</ProjectGuid>
+    <ProjectGuid>{C15B1F87-5768-4ABA-AA7E-6EAB709A24A1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>p_hello_wpf</RootNamespace>
-    <AssemblyName>p_hello_wpf</AssemblyName>
+    <RootNamespace>p_hello_cad</RootNamespace>
+    <AssemblyName>p_hello_cad</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -25,15 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="p_hello_library">
-      <HintPath>..\p_hello_library\bin\Release\netstandard2.0\p_hello_library.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Design" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -48,19 +51,29 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="_c_app.xaml">
+    <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="values\_c_number.cs" />
-    <Compile Include="values\_c_value.cs" />
-    <Compile Include="values\_c_vector.cs" />
-    <Compile Include="_c_app.xaml.cs">
-      <DependentUpon>_c_app.xaml</DependentUpon>
+    <Compile Include="shapes\_c_qd_kite.cs" />
+    <Compile Include="shapes\_c_kt_rhombus.cs" />
+    <Compile Include="shapes\_c_qd_trapezoid.cs" />
+    <Compile Include="shapes\_c_rc_square.cs" />
+    <Compile Include="shapes\_c_pr_rectangle.cs" />
+    <Compile Include="shapes\_c_quadrilateral.cs" />
+    <Compile Include="shapes\_c_tr_isosceles.cs" />
+    <Compile Include="shapes\_c_tr_parallelogram.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="_w_main.xaml.cs">
-      <DependentUpon>_w_main.xaml</DependentUpon>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -90,10 +103,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="_w_main.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Resource Include="hierarchy.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
