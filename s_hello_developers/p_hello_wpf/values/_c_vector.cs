@@ -12,6 +12,8 @@ namespace p_hello_wpf.values
     /// </summary>
     class _c_vector : _c_value
     {
+
+
         public _c_vector(int p_siz_, Boolean p_rdo_, Panel p_pnl_) : base
             (p_siz_, p_rdo_, p_pnl_) { }
 
