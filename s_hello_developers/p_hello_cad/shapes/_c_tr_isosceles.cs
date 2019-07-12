@@ -31,7 +31,7 @@ namespace p_hello_cad
             double l_abl_ = Math.Sqrt(Math.Pow(l_bvr_.X, 2) + Math.Pow(l_bvr_.Y, 2));   // AB length
 
             double l_prj_ = ((l_bvr_.X * l_cvr_.X) + (l_bvr_.Y * l_cvr_.Y)) / l_abl_;   // projection of AC on AB
-            double l_cdl_ = l_abl_ - (2 * l_prj_);
+            double l_cdl_ = l_abl_ - (2 * l_prj_);  // CD length
 
             base.v_caluclate_(new Point[] { p_pts_[0], p_pts_[1], p_pts_[2] }, new double[] { l_cdl_ });
         }
