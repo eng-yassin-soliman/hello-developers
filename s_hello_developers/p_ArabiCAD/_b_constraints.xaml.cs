@@ -7,8 +7,6 @@ namespace p_ArabiCAD
     {
         public _b_constraints() { InitializeComponent(); }
 
-        /// <summary>تحديث القيم في مربع النص تبعا لحدث خارجي</summary>
-        /// <param name="p_pnt_">النقطة الجديدة</param>
         public void v_update_(Point p_pnt_)
         {
             b_pnt_.b_xcr_.s_val_ = p_pnt_.X;

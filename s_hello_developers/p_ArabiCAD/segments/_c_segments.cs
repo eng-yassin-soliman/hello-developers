@@ -6,8 +6,8 @@ using System.Windows.Shapes;
 
 namespace p_ArabiCAD
 {
-    /// <summary>Base class for _c_tools</summary>
-    public class _c_tool
+    /// <summary>Base class for _c_segments</summary>
+    public class _c_segment
     {
         public _w_main s_man_;
 
@@ -24,9 +24,9 @@ namespace p_ArabiCAD
         /// <summary>Maded changes?</summary>
         public bool s_chg_ = false;
 
-        public _c_tool() { }
+        public _c_segment() { }
 
-        public _c_tool(_w_main p_man_)
+        public _c_segment(_w_main p_man_)
         {
             s_man_ = p_man_;
             b_btn_.Child = s_pth_;

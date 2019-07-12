@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{31E9C99E-1151-45A4-89C6-49612FE7258C}</ProjectGuid>
+    <ProjectGuid>{C6B7EE1E-1FF8-42DE-8F11-FE4C7488B01B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>p_ArabiCAD</RootNamespace>
-    <AssemblyName>p_ArabiCAD</AssemblyName>
+    <RootNamespace>p_hello_wpf</RootNamespace>
+    <AssemblyName>p_hello_wpf</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -25,15 +25,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dsafa.WpfColorPicker, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dsafa.WpfColorPicker.1.2.0\lib\net462\Dsafa.WpfColorPicker.dll</HintPath>
+    <Reference Include="p_hello_library">
+      <HintPath>..\p_hello_library\bin\Release\netstandard2.0\p_hello_library.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -52,32 +52,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="segments\_c_segments.cs" />
-    <Compile Include="segments\_c_seg_arc_.cs" />
-    <Compile Include="segments\_c_seg_lin_.cs" />
-    <Compile Include="_b_constraints.xaml.cs">
-      <DependentUpon>_b_constraints.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="_b_double.cs" />
-    <Compile Include="_b_point.xaml.cs">
-      <DependentUpon>_b_point.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="_b_properties.xaml.cs">
-      <DependentUpon>_b_properties.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="_b_value.xaml.cs">
-      <DependentUpon>_b_value.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="values\_c_number.cs" />
+    <Compile Include="values\_c_value.cs" />
+    <Compile Include="values\_c_vector.cs" />
     <Compile Include="_c_app.xaml.cs">
       <DependentUpon>_c_app.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="_w_main.cs" />
     <Compile Include="_w_main.xaml.cs">
       <DependentUpon>_w_main.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="_w_stroke.xaml.cs">
-      <DependentUpon>_w_stroke.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -98,7 +81,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -108,27 +90,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="_b_constraints.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="_b_point.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="_b_properties.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="_b_value.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="_w_main.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="_w_stroke.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -8,15 +8,15 @@ namespace p_ArabiCAD
     /// <summary>New document, open and save...</summary>
     public partial class _w_main
     {
-        public string s_loc_ = string.Empty;
+        public string s_loc_ = "";
 
         public _w_main(string p_loc_)
         {
             InitializeComponent();
 
-            s_loc_ = p_loc_;
-            if (s_loc_ == string.Empty) { return; }
+            if (p_loc_ == "") { return; }
 
+            s_loc_ = p_loc_;
             List<Path> l_lst_ = new List<Path>();
             try
             {
@@ -38,7 +38,7 @@ namespace p_ArabiCAD
         /// <summary>Menu</summary>
         public void v_new_(object p_snd_, RoutedEventArgs p_arg_)
         {
-            _c_app.v_new_(string.Empty);
+            _c_app.v_new_("");
         }
 
         public void v_open_(object p_snd_, RoutedEventArgs p_arg_)
