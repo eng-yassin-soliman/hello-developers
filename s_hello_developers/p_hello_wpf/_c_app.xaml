@@ -1,0 +1,8 @@
+﻿<Application x:Class="p_hello_wpf._c_app"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:p_hello_wpf"
+             ShutdownMode="OnExplicitShutdown">
+    
+    <Application.Resources></Application.Resources>
+</Application>

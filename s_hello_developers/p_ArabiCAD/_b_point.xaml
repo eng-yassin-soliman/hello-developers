@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="p_ArabiCAD._b_point"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:p_ArabiCAD" FontSize="12"
+             mc:Ignorable="d">
+    <StackPanel Margin="5">
+        <TextBlock Name="b_ttl_" Margin="5,0,0,0"/>
+        <StackPanel Orientation="Horizontal">
+            <local:_b_double x:Name="b_ycr_" />
+            <local:_b_double x:Name="b_xcr_" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>
