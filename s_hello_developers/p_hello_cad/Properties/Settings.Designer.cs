@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace calculator.Properties
+namespace p_hello_cad.Properties
 {
 
 
