@@ -37,5 +37,14 @@ namespace p_hello_wpf.values
 
             v_set_val_(0, l_ans_);
         }
+
+        public override void v_factorial_(_c_value p_nm1_)
+        {
+            // ماينفعش اخذ مضروب لمتجه
+            for (int i_ndx_ = 0; i_ndx_ < s_num_.Count; i_ndx_++)
+            {
+                v_set_val_(i_ndx_, double.NaN);
+            }
+        }
     }
 }
