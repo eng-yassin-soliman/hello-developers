@@ -14,7 +14,7 @@ namespace p_hello_api.Controllers
         [HttpGet]
         public string f_get_()
         {
-            return "new";
+            return "hello";
         }
 
         // POST api/values
@@ -32,7 +32,7 @@ namespace p_hello_api.Controllers
             foreach (byte i_byt_ in l_byt_)
             {
                 l_str_.Append(i_byt_.ToString());
-                l_str_.Append(" - ");
+                l_str_.Append("--");
             }
 
             return l_str_.ToString();

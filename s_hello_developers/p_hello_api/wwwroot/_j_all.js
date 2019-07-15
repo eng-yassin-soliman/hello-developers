@@ -22,6 +22,7 @@ function f_response_(p_rsp_)
     p_rsp_.text().then(
         function (p_txt_)
         {
-            alert(p_txt_);
+            b_out_.value = p_txt_;
+            //alert(p_txt_);
         });
 }
