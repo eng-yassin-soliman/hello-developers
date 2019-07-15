@@ -6,13 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace p_hello_api.Controllers
 {
-    public class _c_person
-    {
-        public string s_nam_ { get; set; }
-        public int s_age_ { get; set; }
-    }
-
-    [Route("api/[controller]")]
+    [Route("hello/api")]
     [ApiController]
     public class ValuesController : ControllerBase
     {

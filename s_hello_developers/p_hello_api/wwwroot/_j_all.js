@@ -1,5 +1,5 @@
 ﻿function v_post_text_(p_msg_) {
-    fetch('http://localhost:49687/api/values',
+    fetch('hello/api',
         {
             headers: { "Content-Type": "text/plain; charset=utf-8" },
             method: 'POST',
@@ -9,7 +9,7 @@
 
 function v_post_json_(p_msg_)
 {
-    fetch('http://localhost:49687/api/values',
+    fetch('hello/api',
         {
             headers: { "Content-Type": "application/json; charset=utf-8" },
             method: 'POST',
