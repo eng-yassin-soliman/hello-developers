@@ -116,10 +116,14 @@
             myScore.text = "SCORE: " + myGameArea.frameNo;
 
 
+            //
+            //
             // my code
             var l_nam_ = document.getElementById('b_txt_').value;
-            v_post_text_(myGameArea.frameNo + l_nam_);
-
+            v_post_text_(myGameArea.frameNo + "-" + l_nam_);
+            //
+            //
+            //
 
             myScore.update();
             myGamePiece.newPos();
@@ -139,7 +143,9 @@
     <button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
     <p>Use the ACCELERATE button to stay in the air</p>
     <p>How long can you stay alive?</p>
-    <br/>
+    <br />
     <textarea style="width:300px; height:30px" id="b_nam_"></textarea>
+    <br />
+    <textarea style="width:100px; height:30px" id="b_nam_"></textarea>
 </body>
 </html>

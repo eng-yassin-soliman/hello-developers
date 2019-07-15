@@ -23,6 +23,5 @@ function f_response_(p_rsp_)
         function (p_txt_)
         {
             b_out_.value = p_txt_;
-            //alert(p_txt_);
         });
 }
