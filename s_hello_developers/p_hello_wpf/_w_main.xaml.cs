@@ -195,6 +195,7 @@ namespace p_hello_wpf
                     break;
 
                 case "!":
+                    s_ans_.v_factorial_(s_nm1_);
                     break;
             }
 
