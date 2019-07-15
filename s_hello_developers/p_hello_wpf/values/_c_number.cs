@@ -35,5 +35,32 @@ namespace p_hello_wpf.values
                 v_set_val_(1, l_ans_[1]);
             }
         }
+
+        public override void v_factorial_(_c_value p_nm1_)
+        {
+            double l_num_ = p_nm1_.s_num_[0];
+
+            if (p_nm1_.s_num_.Count != 1 ||     // لو عدد مركب مينفعش
+                l_num_ < 0 ||                   // لو عدد سالب ماينفعش
+                Math.Floor(l_num_) != l_num_)   // لو عدد غير صحيح مينفعش
+            {
+                for (int i_ndx_ = 0; i_ndx_ < s_num_.Count; i_ndx_++)
+                {
+                    v_set_val_(i_ndx_, double.NaN);
+                }
+                return;
+            }
+
+            double l_res_ = 1;
+            while (true)
+            {
+                if (l_num_ == 0) { break; }
+
+                l_res_ *= l_num_;
+                l_num_ -= 1;
+            }
+
+            v_set_val_(0, l_res_);
+        }
     }
 }

@@ -170,5 +170,23 @@ namespace p_hello_wpf.values
                 }
             }
         }
+
+        public void v_difference_(_c_value p_nm1_, _c_value p_nm2_)
+        {
+            for (int i_ndx_ = 0; i_ndx_ < s_num_.Count; i_ndx_++)
+            {
+                try
+                {
+                    double l_num_ = p_nm1_.s_num_[i_ndx_] - p_nm2_.s_num_[i_ndx_];
+                    v_set_val_(i_ndx_, l_num_);
+                }
+                catch (Exception p_exp_)
+                {
+                    v_set_val_(i_ndx_, double.NaN);
+                }
+            }
+        }
+
+        public virtual void v_factorial_(_c_value p_nm1_) { }
     }
 }
