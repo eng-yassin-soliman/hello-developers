@@ -10,22 +10,22 @@ namespace p_hello_api.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
-        [HttpGet]
-        public string f_get_()
-        {
-            return "hello";
-        }
+        //// GET api/values
+        //[HttpGet]
+        //public string f_get_()
+        //{
+        //    return "hello";
+        //}
 
         // POST api/values
         [HttpPost]
-        public string v_post_()
+        public string f_post_()
         {
             System.IO.StreamReader l_srd_ = new System.IO.StreamReader(HttpContext.Request.Body, Encoding.UTF8);
 
-            int l_lng_ = int.Parse(HttpContext.Request.Headers["content-length"].ToString());
+            string l_txt_ = l_srd_.ReadToEnd();
 
-            byte[] l_byt_ = Encoding.UTF8.GetBytes(l_srd_.ReadToEnd());
+            byte[] l_byt_ = Encoding.UTF8.GetBytes(l_txt_);
 
             StringBuilder l_str_ = new StringBuilder("");
 
