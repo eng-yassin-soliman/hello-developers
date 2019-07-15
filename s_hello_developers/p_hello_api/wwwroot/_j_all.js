@@ -22,6 +22,6 @@ function f_response_(p_rsp_)
     p_rsp_.text().then(
         function (p_txt_)
         {
-            b_out_.value = p_txt_;
+            document.getElementById('b_rsp_').value = p_txt_;
         });
 }

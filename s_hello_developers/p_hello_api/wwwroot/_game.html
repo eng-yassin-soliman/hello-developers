@@ -8,6 +8,8 @@
             background-color: #f1f1f1;
         }
     </style>
+
+    <script type="text/javascript" src="_j_all.js"></script>
 </head>
 <body onload="startGame()">
     <script>
@@ -115,12 +117,12 @@
             }
             myScore.text = "SCORE: " + myGameArea.frameNo;
 
-
             //
             //
             // my code
-            var l_nam_ = document.getElementById('b_txt_').value;
-            v_post_text_(myGameArea.frameNo + "-" + l_nam_);
+            var l_nam_ = document.getElementById('b_nam_').value;
+            var l_scr_ = myScore.text;
+            v_post_text_(l_nam_ + "-" + l_scr_);
             //
             //
             //
@@ -135,9 +137,10 @@
             return false;
         }
 
-        function accelerate(n) {
-            myGamePiece.gravity = n;
-        }
+    function accelerate(n)
+    {
+        myGamePiece.gravity = n;
+    }
     </script>
     <br>
     <button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
@@ -146,6 +149,6 @@
     <br />
     <textarea style="width:300px; height:30px" id="b_nam_"></textarea>
     <br />
-    <textarea style="width:100px; height:30px" id="b_nam_"></textarea>
+    <textarea style="width:300px; height:500px" id="b_rsp_"></textarea>
 </body>
 </html>
