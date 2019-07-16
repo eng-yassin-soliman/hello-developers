@@ -10,16 +10,14 @@ namespace p_hello_wpf
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
             v_start_();
-
             Shutdown(0);
         }
 
         void v_start_()
         {
-            // change _c_yassin to your class name, test your function with many values other than 7
-            MessageBox.Show(_c_yassin.f_factorial_(7).ToString()); // 7 is arbitary test value
+            _w_main l_man_ = new _w_main();
+            l_man_.ShowDialog();
         }
     }
 }
