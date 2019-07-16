@@ -17,7 +17,14 @@
         var myObstacles = [];
         var myScore;
 
+        function v_accelerate_() { accelerate(-0.2); }
+        function v_decelerate_() { accelerate(-0.2); }
+
         function startGame() {
+            var l_btn_ = document.getElementById("b_btn_");
+            l_btn_.addEventListener("touchstart", v_accelerate_, false);
+            l_btn_.addEventListener("touchend", v_decelerate_, false);
+
             myGamePiece = new component(30, 30, "red", 10, 120);
             myGamePiece.gravity = 0.05;
             myScore = new component("30px", "Consolas", "black", 280, 40, "text");
@@ -143,7 +150,7 @@
     }
     </script>
     <br>
-    <button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
+    <button id="b_btn_" onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
     <p>Use the ACCELERATE button to stay in the air</p>
     <p>How long can you stay alive?</p>
     <br />
