@@ -17,7 +17,7 @@ namespace p_hello_api.Controllers
         [HttpGet]
         public string f_date_()
         {
-            return DateTime.Now.ToString();
+            return "";
         }
     }
 }
