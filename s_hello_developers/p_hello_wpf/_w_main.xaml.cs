@@ -224,7 +224,7 @@ namespace p_hello_wpf
                     break;
 
                 case "/":
-                  
+                    s_ans_.v_div_(s_nm1_, s_nm2_);
                     break;
             }
 
