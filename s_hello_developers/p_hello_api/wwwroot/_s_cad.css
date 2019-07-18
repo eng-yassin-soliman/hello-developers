@@ -1,0 +1,15 @@
+﻿._button {
+    width: 100px;
+    background-color: wheat;
+    margin: 20px;
+    padding: 10px;
+    text-align: center
+}
+
+._text {
+    width: 500px;
+    height: 400px;
+    margin: 20px;
+    padding: 10px;
+    border: solid 1px silver
+}
