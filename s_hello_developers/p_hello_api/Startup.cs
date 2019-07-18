@@ -35,7 +35,11 @@ namespace p_hello_api
                 app.UseDeveloperExceptionPage();
             }
 
+
+            app.UseFileServer();
             app.UseMvc();
+            
+            
         }
     }
 }
