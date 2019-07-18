@@ -1,4 +1,5 @@
-﻿._button {
+﻿._button
+{
     width: 100px;
     background-color: wheat;
     margin: 20px;
@@ -6,7 +7,8 @@
     text-align: center
 }
 
-._text {
+._text
+{
     width: 400px;
     height: 300px;
     margin: 20px;
