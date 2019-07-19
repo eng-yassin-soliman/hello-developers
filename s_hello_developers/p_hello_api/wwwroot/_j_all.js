@@ -1,4 +1,5 @@
-﻿function v_post_text_(p_msg_) {
+﻿function v_post_text_(p_msg_)
+{
     fetch('hello/api',
         {
             headers: { "Content-Type": "text/plain; charset=utf-8" },
