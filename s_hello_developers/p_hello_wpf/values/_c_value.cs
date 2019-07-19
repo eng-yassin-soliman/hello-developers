@@ -197,7 +197,7 @@ namespace p_hello_wpf.values
         {
             // x!
         }
-        public virtual void v_div_(_c_value p_nm1, _c_value p_nm2)
+        public void v_div_(_c_value p_nm1,_c_value p_nm2)
         {
             // القسمة
         }

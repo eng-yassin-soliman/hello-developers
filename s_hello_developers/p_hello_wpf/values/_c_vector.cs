@@ -51,6 +51,5 @@ namespace p_hello_wpf.values
 
             v_set_val_(0, l_ans_);
         }
-
     }
 }
