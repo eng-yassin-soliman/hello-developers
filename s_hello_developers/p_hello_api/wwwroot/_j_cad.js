@@ -7,10 +7,18 @@ function v_post_(p_msg_, p_scc_, p_err_)
         'hello/api',        // URL to post to
         {   // Array of HTTP request headers
             headers: { "Content-Type": "text/plain; charset=utf-8" },
-            method: 'POST', // HTTP verp: POST, GET, etc..
+            method: 'POST', // HTTP verb: POST, GET, etc..
             body: p_msg_,   // HTTP request body
         })
         .then(function (p_rsp_) { return p_rsp_.text(); })
         .then(function (p_txt_) { p_scc_(p_txt_); })
         .catch(function (p_rsp_) { p_err_(p_rsp_); });
+}
+
+// Convert objects (instances of classes) to string (encoded by JSON format)
+// Then post them as text
+function v_post_obj_(p_msg_, p_scc_, p_err_)
+{
+    var l_msg_ = JSON.stringify(p_msg_);
+    v_post_(l_msg_, p_scc_, p_err_)
 }

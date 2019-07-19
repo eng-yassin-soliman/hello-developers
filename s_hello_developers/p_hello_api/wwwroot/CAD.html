@@ -16,10 +16,9 @@
     <!--Internal Script-->
     <script type="text/javascript">
         // Post the message to server
-        function v_send_()
+        function v_send_(p_msg_)
         {
-            var l_req_ = document.getElementById('b_req_').value;
-            v_post_(l_req_, v_success_, v_error_);
+            v_post_(p_msg_, v_success_, v_error_);
         }
 
         // Handle the response is succeeded
