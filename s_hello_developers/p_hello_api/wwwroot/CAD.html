@@ -32,10 +32,35 @@
         {
             alert('Error');
         }
+
+        function v_draw_()
+        {
+            //             document.getElementById('b_rsp_').value = p_rsp_;
+            var l_txt_ = document.getElementById('b_nam_').vlaue;
+            alert(l_txt_);
+        }
     </script>
 </head>
 
 <body>
+    <table>
+        <tr>
+            <td>
+                <div id="b_cnv_"style="width:400px;height:400px;margin:20px;
+                                background-color:antiquewhite;display:inline-block"></div>
+                <br />
 
+                <button class="_button" onclick="v_draw_()">Draw</button>
+            </td>
+            
+            <td>
+                <input id="b_nam_" type="text"
+                       style="width:400px; padding:10px; margin:20px; border:solid 1px silver"/>
+                <br/>
+
+                <textarea id="b_txt_" class="_text"></textarea>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
