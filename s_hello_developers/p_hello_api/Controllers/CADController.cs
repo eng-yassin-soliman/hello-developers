@@ -20,7 +20,7 @@ namespace p_hello_api.Controllers
     [ApiController]
     public class CADController : Controller
     {
-        List<_c_drawing> s_lst_ = new List<_c_drawing>;
+        List<_c_drawing> s_lst_ = new List<_c_drawing>();
 
         /// <summary>A method that returns the drawing data for all of the team</summary>
         /// <param name="p_drw_">The drawing data of the client</param>
