@@ -24,7 +24,7 @@
         // Handle the response is succeeded
         function v_success_(p_rsp_)
         {
-
+            alert(p_rsp_);
         }
 
         // Handle the response on error
@@ -35,30 +35,60 @@
 
         function v_draw_()
         {
-            //             document.getElementById('b_rsp_').value = p_rsp_;
-            var l_txt_ = document.getElementById('b_nam_').vlaue;
-            alert(l_txt_);
+            // Retrieve local storage ID
+            var l_uid_ = localStorage.getItem("r_uid_");
+
+            // Check if exists
+            if (l_uid_ === null)
+            {
+                l_uid_ = Math.floor(Math.random() * 100000000); // Random integer ID between 0 - 99999999
+                // Store local storage ID
+                localStorage.setItem("r_uid_", l_uid_);
+            }
+
+            var l_nam_ = document.getElementById('b_nam_').value;
+
+            // Data describes the drawing, ex.: "M 0 0 L 10 10"
+            var l_dat_ = document.getElementById('b_dat_').value;
+
+            var l_svg_ = document.getElementById('b_svg_');
+            var l_pth_ = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+            l_pth_.setAttribute("d", l_dat_); 
+            l_pth_.style.stroke = "#000";
+            l_pth_.style.strokeWidth = "5px";
+            l_svg_.appendChild(l_pth_);
+
+            // JSON formatted instant of drawing class
+            var l_msg_ =
+            {
+                s_uid_: l_uid_,
+                s_nam_: l_nam_,
+                s_dat_: l_dat_
+            }
+
+            v_post_obj_(l_msg_, v_success_, v_error_);
         }
     </script>
-</head> 
+</head>
 
 <body>
     <table>
         <tr>
             <td>
-                <div id="b_cnv_"style="width:400px;height:400px;margin:20px;
-                                background-color:antiquewhite;display:inline-block"></div>
+                <svg id="b_svg_" style="width:400px;height:400px;margin:20px;
+                                background-color:antiquewhite;display:inline-block">
+                </svg>
                 <br />
 
                 <button class="_button" onclick="v_draw_()">Draw</button>
             </td>
-            
+
             <td>
                 <input id="b_nam_" type="text"
-                       style="width:400px; padding:10px; margin:20px; border:solid 1px silver"/>
-                <br/>
+                       style="width:400px; padding:10px; margin:20px; border:solid 1px silver" />
+                <br />
 
-                <textarea id="b_txt_" class="_text"></textarea>
+                <textarea id="b_dat_" class="_text"></textarea>
             </td>
         </tr>
     </table>

@@ -4,9 +4,9 @@
 function v_post_(p_msg_, p_scc_, p_err_)
 {
     fetch(
-        'hello/api',        // URL to post to
+        'CAD/api',        // URL to post to
         {   // Array of HTTP request headers
-            headers: { "Content-Type": "text/plain; charset=utf-8" },
+            headers: { "Content-Type": "text/plain; charset=utf-8"},
             method: 'POST', // HTTP verb: POST, GET, etc..
             body: p_msg_,   // HTTP request body
         })
