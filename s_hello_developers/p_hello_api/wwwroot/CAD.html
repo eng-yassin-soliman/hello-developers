@@ -5,13 +5,26 @@
     <title>ArabiCAD</title>
 
     <!--External Style Sheet Files-->
-    <!--<link rel="stylesheet" type="text/css" href="_s_reset.css" />-->
+    <link rel="stylesheet" type="text/css" href="_s_reset.css" />
     <link rel="stylesheet" type="text/css" href="_s_cad.css" />
     <!--Internal Style Sheet-->
     <style>
-        ._whitespace
+        ._item
         {
-            white-space:normal;
+            display:inline-block;
+            margin:20px 20px 0px 0px;
+            padding:10px;
+            border:solid 1px silver
+        }
+
+        ._name
+        {
+            width:300px;
+        }
+
+        ._color
+        {
+            width:40px;
         }
     </style>
 
@@ -79,7 +92,17 @@
             var l_drw_ = JSON.parse(p_rsp_);
             l_drw_.forEach(function (p_itm_, p_ndx_)
             {
+                // Draw a single drawing for a single user
                 v_drawitem_(p_itm_);
+
+                // Add user name and colors to the list
+                var l_htm_ =
+                    "<div class='_item _name'>" + p_itm_.s_nam_ + "</div>" +
+                    "<div class='_item _color' style='background-color:" + p_itm_.s_lin_ + "'>&nbsp;</div>" +
+                    "<div class='_item _color' style='background-color:" + p_itm_.s_fil_ + "'>&nbsp;</div>" +
+                    "<br />";
+
+                document.getElementById("b_lst_").insertAdjacentHTML("beforeend", l_htm_);
             });
         }
 
@@ -149,14 +172,10 @@
                        style="width:190px; padding:10px; margin:20px 20px 0px 0px; border:solid 1px silver" />
                 <br />
 
-                <canvas style="width:100px;height:10px;background-color:green"></canvas>
-
-                <br />
                 <textarea id="b_dat_" class="_text" style="height:275px; margin:20px 20px 0px 0px"></textarea>
             </td>
 
-            <td style="padding:20px">
-            </td>
+            <td id="b_lst_"></td>
         </tr>
     </table>
 </body>
