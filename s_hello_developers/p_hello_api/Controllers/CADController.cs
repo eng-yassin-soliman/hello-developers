@@ -42,8 +42,9 @@ namespace p_hello_api.Controllers
             }
             else
             {
-                l_qur_.FirstOrDefault().s_nam_ = p_drw_.s_nam_;
-                l_qur_.FirstOrDefault().s_dat_ = p_drw_.s_dat_;
+                int l_ndx_;
+                l_ndx_ = s_lst_.IndexOf(l_qur_.FirstOrDefault());
+                s_lst_[l_ndx_] = p_drw_;
             }
 
             return s_lst_.ToArray();
