@@ -38,20 +38,19 @@
         {
             // Generate random rectangle
             // Parameters of rectangle: x, y, width, height
-            var l_par_ = [0, 0, 0, 0];
-            for (var i_nd_ = 0; i_nd_ < 4; i_nd_++)
-            {
-                l_par_[i_nd_] = Math.floor(Math.random() * 250);
-            }
+            var l_xcr_ = 50  + Math.floor(Math.random() * 100);
+            var l_ycr_ = 100 + Math.floor(Math.random() * 100);
+            var l_wdt_ = 10 + Math.floor(Math.random() * 140);
+            var l_hgt_ = 10 + Math.floor(Math.random() * 140);
            
             var l_seg_ = [
-                "M " + l_par_[0] + " " + l_par_[1].toString(),
+                "M " + l_xcr_ + " " + l_ycr_,
                 "a 50 50 0 0 1 50 -50",
-                "l " + l_par_[2] + " 0",
+                "l " + l_wdt_ + " 0",
                 "a 50 50 0 0 1 50 50",
-                "l 0 " + l_par_[3],
+                "l 0 " + l_hgt_,
                 "a 50 50 0 0 1 -50 50",
-                "l " + (-1 * l_par_[2]) + " 0",
+                "l " + (-1 * l_wdt_) + " 0",
                 "a 50 50 0 0 1 -50 -50",
                 "Z"];
 
@@ -72,6 +71,7 @@
                 "0.3)";
         }
 
+        // A class describes single drawing
         class _c_drawing
         {
             constructor()
