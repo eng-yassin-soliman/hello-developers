@@ -19,7 +19,7 @@
         function v_send_()
         {
             var l_req_ = document.getElementById('b_req_').value;
-            v_post_(l_req_, v_success_, v_error_);
+            v_post_txt_('hello/api/echo', l_req_, v_success_, v_error_);
         }
 
         // Handle the response is succeeded

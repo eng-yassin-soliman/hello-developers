@@ -25,6 +25,23 @@ namespace p_hello_api.Controllers
             return DateTime.Now;
         }
 
+        // Previous method
+        /// <summary>
+        /// HTTP POST method runs on:
+        /// http://localhost/hello/api/iot
+        /// Returns the same request body!!
+        /// </summary>
+        /// <returns>String with the contents of request body</returns>
+        [HttpPost]
+        [Route("echo")]
+        public string f_post_()
+        {
+            StreamReader l_red_ = new StreamReader(HttpContext.Request.Body, Encoding.UTF8);
+
+            string l_txt_ = l_red_.ReadToEnd();
+            return l_txt_;
+        }
+
         /// <summary>
         /// HTTP GET method runs on:
         /// http://localhost/hello/api/iot
@@ -40,22 +57,6 @@ namespace p_hello_api.Controllers
             else if (l_byt_[0] < 128) { return 1; }
             else if (l_byt_[0] < 192) { return 10; }
             else { return 11; }
-        }
-
-        // Previous method
-        /// <summary>
-        /// HTTP POST method runs on:
-        /// http://localhost/hello/api/iot
-        /// Returns the same request body!!
-        /// </summary>
-        /// <returns>String with the contents of request body</returns>
-        [HttpPost]
-        public string f_post_()
-        {
-            StreamReader l_red_ = new StreamReader(HttpContext.Request.Body, Encoding.UTF8);
-
-            string l_txt_ = l_red_.ReadToEnd();
-            return l_txt_;
         }
     }
 }
