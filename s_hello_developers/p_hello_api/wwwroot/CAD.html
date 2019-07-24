@@ -5,8 +5,8 @@
     <title>ArabiCAD</title>
 
     <!--External Style Sheet Files-->
-    <link rel="stylesheet" type="text/css" href="_s_reset.css" />
-    <link rel="stylesheet" type="text/css" href="_s_cad.css" />
+    <link rel="stylesheet" type="text/css" href="css/_s_reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/_s_cad.css" />
     <!--Internal Style Sheet-->
     <style>
         ._item
@@ -29,7 +29,7 @@
     </style>
 
     <!--External Script File-->
-    <script src="_j_cad.js"></script>
+    <script src="js/_j_post.js"></script>
 
     <!--Internal Script-->
     <script>
@@ -145,7 +145,7 @@
                 localStorage.setItem("r_uid_", l_msg_.s_uid_);         // Store local storage ID
             }
 
-            v_post_obj_("CAD/api", l_msg_, v_success_, v_error_);
+            v_post_obj_("cad/api", l_msg_, v_success_, v_error_);
         }
     </script>
 </head>

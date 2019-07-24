@@ -4,43 +4,36 @@
     <meta charset="utf-8" />
     <title>ArabiCAD</title>
 
-    <!--External Style Sheet Files-->
-    <link rel="stylesheet" type="text/css" href="_s_reset.css">
-    <link rel="stylesheet" type="text/css" href="_s_cad.css">
-    <!--Internal Style Sheet-->
-    <style type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/_s_reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/_s_cad.css" />
+    <style>
     </style>
 
-    <!--External Script File-->
-    <script type="text/javascript" src="_j_cad.js"></script>
-    <!--Internal Script-->
-    <script type="text/javascript">
-        // Post the message to server
-        function v_send_()
+    <script src="js/_j_post.js"></script>
+    <script>
+        function v_loaded_()
         {
-            var l_req_ = document.getElementById('b_req_').value;
-            v_post_(l_req_, v_success_, v_error_);
+
         }
 
-        // Handle the response is succeeded
+        function v_send_(p_msg_)
+        {
+            v_post_obj_('', p_msg_, v_success_, v_error_);
+        }
+
         function v_success_(p_rsp_)
         {
-            document.getElementById('b_rsp_').value = p_rsp_;
+
         }
 
-        // Handle the response on error
         function v_error_(p_rsp_)
         {
-            alert('Error');
+
         }
     </script>
 </head>
 
-<body>
-    <textarea id="b_req_" class="_text">Write Request Here!</textarea>
-    <textarea id="b_rsp_" class="_text">Response Will Show Here!</textarea>
-    <br />
-
-    <div class="_button" onclick="v_send_()">Send!</div>
+<body onload="v_loaded_()">
+    <img style="margin-left:auto; margin-right:auto; margin-top:200px" src="img/home/page-under-construction.jpg"/>
 </body>
 </html>
