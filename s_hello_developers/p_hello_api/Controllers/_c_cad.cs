@@ -19,9 +19,9 @@ namespace p_hello_api.Controllers
         public string s_fil_ = string.Empty;    // Filling color of the shape
     }
 
-    [Route("CAD/api")]
+    [Route("cad/api")]
     [ApiController]
-    public class CADController : Controller
+    public class _c_cad : Controller
     {
         static List<_c_drawing> s_lst_ = new List<_c_drawing>();
 
