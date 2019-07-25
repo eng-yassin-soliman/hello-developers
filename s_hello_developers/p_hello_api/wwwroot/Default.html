@@ -2,10 +2,24 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Hello API</title>
+
+    <!--External Style Sheet Files-->
+    <link rel="stylesheet" type="text/css" href="_s_reset.css">
+    <!--Internal Style Sheet-->
+    <style type="text/css"></style>
+
+    <!--External Script File-->
+    <script type="text/javascript" src="_j_cad.js"></script>
+    <!--Internal Script-->
+    <script type="text/javascript"></script>
 </head>
 <body>
+    <textarea id="b_req_" class="_text">Write Request Here!</textarea>
+    <textarea id="b_rsp_" class="_text">Response Will Show Here!</textarea>
+    <br />
 
+    <div class="_button" onclick="v_send_('hello/api/text')">Send!</div>
+    <div class="_button" onclick="v_send_('hello/api/byte')">Send!</div>
 </body>
-    Hello Distributed App!
 </html>
