@@ -126,15 +126,16 @@ namespace p_hello_api.Controllers
     public class _c_tictac : Controller
     {
         public static _c_player[] s_ply_ = {
-            new _c_player("Y", "Y", "21837a6f191538b6"),     // Yassin
-            new _c_player("H", "H", "88ee1becbe986b54"),     // Ahmed Hammam
-            new _c_player("R", "R", "d7587a1820c44ca4"),     // Ahmed Rahim
-            new _c_player("M", "M", "467ee5c36e34bbea"),     // Ahmed Magdi
-            new _c_player("K", "K", "4b572e4865116c34"),     // Ahmed Khaled
-            new _c_player("D", "D", "87114d4f0965fc5c"),     // Dina
-            new _c_player("B", "B", "4bdb22e16a664bd2")};    // Heba
+            new _c_player("Y", "Y", "21837a6f191538b6"),    // Yassin
+            new _c_player("H", "H", "88ee1becbe986b54"),    // Ahmed Hammam
+            new _c_player("R", "R", "d7587a1820c44ca4"),    // Ahmed Rahim
+            new _c_player("M", "M", "467ee5c36e34bbea"),    // Ahmed Magdi
+            new _c_player("K", "K", "4b572e4865116c34"),    // Ahmed Khaled
+            new _c_player("D", "D", "87114d4f0965fc5c"),    // Dina
+            new _c_player("B", "B", "4bdb22e16a664bd2"),    // Heba
+            new _c_player("T", "T", "64e7a549afc602d8")};   // Test
 
-        [HttpPost]
+    [HttpPost]
         [Route("play")]
         public _c_player[] f_play_(_c_player p_ply_)
         {
