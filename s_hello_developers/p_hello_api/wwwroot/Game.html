@@ -11,8 +11,7 @@
     <link rel="stylesheet" type="text/css" href="css/_s_reset.css" />
     <!--Internal Style Sheet-->
     <style type="text/css">
-        ._text
-        {
+        ._text {
             height: 30px;
             margin: 10px;
             padding: 10px;
@@ -25,9 +24,8 @@
             background-color: lavender
         }
 
-        ._square 
-        {
-            width:500px;
+        ._square {
+            width: 500px;
             height: 500px;
             margin: 10px
         }
@@ -44,129 +42,45 @@
 
     <!--External Script File-->
     <script type="text/javascript" src="js/_j_post.js"></script>
+    <script type="text/javascript" src="js/_j_tic.js"></script>
+
     <!--Internal Script-->
     <script type="text/javascript">
+        var s_gam_;
+
+        function v_loaded_()
+        {
+
+        }
+
         function v_setgame_()
         {
-            var l_pnl_ = document.getElementById("b_pnl_");
-
-            var l_pts_ = [
-                [[170.75, 37.5], [170.75, 462.5]],
-                [[328.25, 37.5], [328.25, 462.5]],
-                [[37.5, 170.75], [462.5, 170.75]],
-                [[37.5, 328.25], [462.5, 328.25]]];
-
-            l_pts_.forEach(function (p_itm_, p_ndx_) {
-                var l_lin_ = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                l_pnl_.appendChild(l_lin_);
-
-                var l_pt1_ = p_itm_[0];
-                var l_pt2_ = p_itm_[1];
-
-                l_lin_.setAttribute('x1', l_pt1_[0]);
-                l_lin_.setAttribute('y1', l_pt1_[1]);
-                l_lin_.setAttribute('x2', l_pt2_[0]);
-                l_lin_.setAttribute('y2', l_pt2_[1]);
-                l_lin_.setAttribute('stroke', 'black');
-                l_lin_.setAttribute('stroke-width', '6');
-                l_lin_.setAttribute('stroke-linecap', 'round');
-            });
-
-            for (var i_ndx_ = 0; i_ndx_ < 3; i_ndx_++) {
-                for (var i_ndy_ = 0; i_ndy_ < 3; i_ndy_++) {
-                    var l_cel_ = new _c_cell(l_pnl_, i_ndx_, i_ndy_);
-                }
-            }
+            s_gam_ = new _c_tic_();
+            s_gam_.v_intit_();      // Prepare the game for the first time
         }
 
         // Post the message to server
-        function v_send_(p_snd_)
-        {
-            if (p_snd_.s_set_) { return; }
-
-            var l_nam_ = document.getElementById("b_nam_").value;
-            var l_pas_ = document.getElementById("b_pas_").value;
-
-            var l_req_ =
-            {
-                s_nam_: l_nam_,
-                s_pas_: l_pas_,
-                s_ssn_: s_ssn_,
-                s_sgn_: '',
-                s_clr_: '',
-                s_clk_: (p_snd_.s_ycr_ * 3) + p_snd_.s_xcr_,
-                s_win_: 0,
-                s_los_: 0,
-                s_usr_: null,
-                s_srv_: null
-            }
-
-            v_post_obj_('tictac/play', l_req_, v_success_, v_error_);
+        function v_send_(p_req_) {
+            v_post_obj_('tictac/play', p_req_, v_success_, v_error_);
         }
 
         // Handle the response is succeeded
         function v_success_(p_rsp_)
         {
-            document.getElementById('b_lst_').innerHTML = '';
-
-            var l_drw_ = JSON.parse(p_rsp_);
-            var l_usr_; // Current user
-
-            l_drw_.forEach(function (p_itm_, p_ndx_)
-            {
-                if (p_itm_.s_ssn_ == s_ssn_) { l_usr_ = p_itm_ }
-
-                var l_itm_ = document.createElement('div');
-                document.getElementById('b_lst_').appendChild(l_itm_);
-
-                l_itm_.setAttribute('class', '_item');
-
-                var l_dv1_ = document.createElement('div');
-                l_dv1_.setAttribute('style', 'display:inline-block; width:310px');
-                l_dv1_.innerText = p_itm_.s_nam_;
-                l_itm_.appendChild(l_dv1_);
-
-                var l_dv2_ = document.createElement('div');
-                l_dv2_.setAttribute('style', 'display:inline-block; width:70px');
-                l_dv2_.innerText = p_itm_.s_win_;
-                l_itm_.appendChild(l_dv2_);
-
-                var l_dv3_ = document.createElement('div');
-                l_dv3_.setAttribute('style', 'display:inline-block; width:70px');
-                l_dv3_.innerText = p_itm_.s_los_;
-                l_itm_.appendChild(l_dv3_);
-            });
-
-            if (l_drw_.length == 1) { return; }
-
-            for (var i_ndx_ = 0; i_ndx_ < 9; i_ndx_++)
-            {
-                document.getElementsByTagName('text')[i_ndx_].textContent = "";
-            }
-
-            l_usr_.s_usr_.forEach(function (p_itm_, p_ndx_)
-            {
-                document.getElementsByTagName('text')[p_itm_].textContent = l_usr_.s_sgn_;
-            });
-
-            l_usr_.s_srv_.forEach(function (p_itm_, p_ndx_)
-            {
-                document.getElementsByTagName('text')[p_itm_].textContent = "#";
-            });
+            s_gam_.v_response_(p_rsp_);
         }
 
         // Handle the response on error
-        function v_error_(p_rsp_)
-        {
+        function v_error_(p_rsp_) {
             alert('Error: ' + p_rsp_);
         }
 /**/</script>
 </head>
-<body style="text-align:center">
+<body onload="v_loaded_()" style="text-align:center">
     <div style="direction:rtl; text-align:right; display:inline-block; width:auto">
         <br /><br />
         <div class="_button" onclick="v_setgame_()">Tic Tac Toe</div>
-        <div class="_button" onclick="v_setgame_()">Connecting Dots</div>
+        <div class="_button">Connecting Dots</div>
 
         <br /><br />
         <input id="b_nam_" type="text" class="_text" style="display:inline; width:200px" value="الاسم" />

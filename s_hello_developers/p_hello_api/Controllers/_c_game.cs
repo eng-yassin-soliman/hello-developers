@@ -14,7 +14,7 @@ namespace p_hello_api.Controllers
     {
         public string s_nam_ = "";  // Name
         public string s_pas_ = "";  // Password
-        public string s_ssn_ = "";      // Session id
+        public string s_ssn_ = "";  // Session id
 
         public string s_sgn_ = "";  // Symbol
         public string s_clr_ = "";  // Color
@@ -33,6 +33,91 @@ namespace p_hello_api.Controllers
             s_nam_ = p_nam_;
             s_pas_ = p_pas_;
             s_sgn_ = p_sgn_;
+        }
+
+        // يحسب ترتيب الخلية من إحداثياتها
+        public static byte f_tondx_(byte[] p_crd_)
+        {
+            return (byte)((p_crd_[0] * 3) + p_crd_[1]);
+        }
+
+        // يحسب احداثيات الخلية من ترتيبها
+        public static byte[] f_tocrd_(byte p_ndx_)
+        {
+            byte l_row_ = (byte)Math.Floor((double)(p_ndx_ / 3));
+            byte l_col_ = (byte)(p_ndx_ - (3 * l_row_));
+            return new byte[] { l_col_, l_row_ };
+        }
+
+        /// <summary>
+        /// هل الخلية ليها 2 جيران من نوع محدد
+        /// </summary>
+        public static Boolean f_neighbour_(byte p_ndx_, List<byte> p_lst_)
+        {
+            byte[] l_crd_ = _c_player.f_tocrd_(p_ndx_);
+
+            // كام خلية في نفس الصف
+            int q_col_ = (from i_byt_ in p_lst_
+                          where
+                          i_byt_ != p_ndx_ &
+                          _c_player.f_tocrd_(i_byt_)[0] == l_crd_[0]
+                          select i_byt_).Count();
+
+            if (q_col_ == 2) { return true; }
+
+            // كام خلية في نفس العمود
+            int q_row_ = (from i_byt_ in p_lst_
+                          where
+                          i_byt_ != p_ndx_ &
+                          _c_player.f_tocrd_(i_byt_)[1] == l_crd_[1]
+                          select i_byt_).Count();
+
+            if (q_row_ == 2) { return true; }
+
+            // لو الخلية الفاضية في أحد الأركان
+            byte[] l_crn_ = { 0, 2, 6, 8 }; // الأركان
+            byte[] l_inv_ = { 8, 6, 2, 0 }; // الركن المقابل
+            if (l_crn_.Contains(p_ndx_))
+            {
+                byte l_ops_ = l_inv_[Array.IndexOf(l_crn_ , p_ndx_)];
+
+                if (p_lst_.Contains(4) && p_lst_.Contains(l_ops_))
+                { return true; } // لو في خلية في الركن المقابل وخلية في الوسط
+            }
+
+            // الاحتمال الاخير انها تبقى الخلية اللي في الوسط
+            if (p_ndx_ != 4)
+            { return false; }
+
+            return (
+                (p_lst_.Contains(0) && p_lst_.Contains(8)) ||
+                (p_lst_.Contains(2) && p_lst_.Contains(6)));
+        }
+
+        /// <summary>
+        /// تجرب الدالة اللي فاتت على كل الخلايا من نوع معين
+        /// </summary>
+        /// <param name="p_1st_">
+        /// القائمة اللي عايز تجرب عليها
+        /// </param>
+        /// <param name="p_2nd_">
+        /// القائمة اللي عايز تشوف في منها جيران لكل خلية من الخلايا اللي فاتت
+        /// </param>
+        /// <returns>
+        /// بيرجع أول خليه ليها 2 جيران من النوع المحدد
+        /// لو ملقاش بيجع 9
+        /// </returns>
+        public static byte f_status_(List<byte> p_1st_, List<byte> p_2nd_)
+        {
+            foreach (byte i_byt_ in p_1st_)
+            {
+                if (_c_player.f_neighbour_(i_byt_, p_2nd_))
+                {
+                    return i_byt_;
+                }
+            }
+
+            return 9;
         }
     }
 
@@ -68,16 +153,22 @@ namespace p_hello_api.Controllers
                                 where i_ply_.s_pas_ == l_pas_
                                 select i_ply_).FirstOrDefault(); // Returns new _c_player() if no match
 
-            if (string.IsNullOrEmpty(q_ply_.s_pas_))
-            { return new _c_player[] { new _c_player("كلمة المرور غير صحيحة", "", "") }; }
-
-            if (q_ply_.s_los_ == 10)
-            { return new _c_player[] { new _c_player("حظ سعيد المرة القادمة!", "", "") }; }
-
             // Set session
             q_ply_.s_nam_ = p_ply_.s_nam_;
             q_ply_.s_ssn_ = p_ply_.s_ssn_;
             q_ply_.s_clr_ = p_ply_.s_clr_;
+
+            if (string.IsNullOrEmpty(q_ply_.s_pas_))
+            {
+                q_ply_.s_nam_ = "كلمة المرور غير صحيحة";
+                return new _c_player[] { q_ply_ };
+            }
+
+            if (p_ply_.s_clk_ == 9)
+            { return s_ply_; }
+
+            if (q_ply_.s_los_ > 9)
+            { return s_ply_; }
 
             // Empty cells
             List<byte> l_emp_ = new List<byte>();
@@ -100,28 +191,40 @@ namespace p_hello_api.Controllers
             if (!l_emp_.Any())
             { goto n_final_; }
 
+            byte l_sts_ = 0;
+
+            // Calculate best move
+            // لو السيرفر فاضله واحدة ويقفل: قفل
+            l_sts_ = _c_player.f_status_(l_emp_, q_ply_.s_srv_);
+            if (l_sts_ != 9)
+            {
+                q_ply_.s_srv_.Add(l_sts_);
+                l_emp_.Remove(l_sts_);
+                goto n_final_;
+            }
+
+            // لو المستخدم فاضله واحدة ويقفل: امنعه
+            l_sts_ = _c_player.f_status_(l_emp_, q_ply_.s_usr_);
+            if (l_sts_ != 9)
+            {
+                q_ply_.s_srv_.Add(l_sts_);
+                l_emp_.Remove(l_sts_);
+                goto n_final_;
+            }
+
+            // Randomize server move
             int l_nxt_ = (new Random()).Next(0, l_emp_.Count);
             q_ply_.s_srv_.Add(l_emp_[l_nxt_]);
 
         n_final_:
-            StringBuilder l_str_ = new StringBuilder("");
-            for (byte i_byt_ = 0; i_byt_ < 9; i_byt_++)
-            {
-                if (q_ply_.s_usr_.Contains(i_byt_)) { l_str_.Append("1"); }
-                else if (q_ply_.s_srv_.Contains(i_byt_)) { l_str_.Append("2"); }
-                else { l_str_.Append("0"); }
-            }
+            if (_c_player.f_status_(q_ply_.s_usr_, q_ply_.s_usr_) != 9)
+            { q_ply_.s_win_ += 1; } // User wins
 
-            Regex l_rg1_ = new Regex("111|1...1...1|1....1....1|1..1..1");
-            Regex l_rg2_ = new Regex("222|2...2...2|2....2....2|2..2..2");
-            if (l_rg1_.Match(l_str_.ToString()).Success)        // Check user wins
-            { q_ply_.s_win_ += 1; }
+            else if (_c_player.f_status_(q_ply_.s_srv_, q_ply_.s_srv_) != 9)
+            { q_ply_.s_los_ += 1; } // Server wins
 
-            else if (l_rg2_.Match(l_str_.ToString()).Success)   // Check server wins
-            { q_ply_.s_los_ += 1; }
-
-            else if (!l_emp_.Any())                             // Check boxes are full
-            { }
+            else if (!l_emp_.Any())
+            { }                     // Boxes are full
 
             else
             { return s_ply_; }
