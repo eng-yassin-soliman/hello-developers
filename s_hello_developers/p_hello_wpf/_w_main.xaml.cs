@@ -224,7 +224,11 @@ namespace p_hello_wpf
                     break;
 
                 case "/":
+<<<<<<< HEAD
+                    s_ans_.v_div_(s_nm1_, s_nm2_);
+=======
                   
+>>>>>>> 8c12d60de6851aceae8fb3b0150001696698e1ba
                     break;
             }
 
