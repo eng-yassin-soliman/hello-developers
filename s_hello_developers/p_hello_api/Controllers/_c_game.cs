@@ -8,6 +8,10 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 
+using MySql.Data;
+using MySql.Data.Entity;
+
+
 namespace p_hello_api.Controllers
 {
     public class _c_player
