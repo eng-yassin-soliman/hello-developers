@@ -10,8 +10,7 @@
             s_clk_: 0,                                                          // Clicked box
             s_win_: 0,                                                          // Won gams
             s_los_: 0,                                                          // Lost games
-            s_usr_: null,                                                       // Own boxes
-            s_srv_: null                                                        // Server boxes
+            s_brd_: null,                                                       // Game board cells
         };
 
         // Initialized?
@@ -120,16 +119,21 @@
 
         for (var i_ndx_ = 0; i_ndx_ < 9; i_ndx_++)
         {
-            document.getElementsByTagName('text')[i_ndx_].textContent = "";
+            switch (l_usr_.s_brd_[i_ndx_])
+            {
+                case 0:
+                    document.getElementsByTagName('text')[i_ndx_].textContent = "";
+                    break;
+
+                case 1:
+                    document.getElementsByTagName('text')[i_ndx_].textContent = l_usr_.s_sgn_;
+                    break;
+
+                case 2:
+                    document.getElementsByTagName('text')[i_ndx_].textContent = "#";
+            }
+
         }
-
-        l_usr_.s_usr_.forEach(function (p_itm_, p_ndx_) {
-            document.getElementsByTagName('text')[p_itm_].textContent = l_usr_.s_sgn_;
-        });
-
-        l_usr_.s_srv_.forEach(function (p_itm_, p_ndx_) {
-            document.getElementsByTagName('text')[p_itm_].textContent = "#";
-        });
 
         if (l_usr_.s_los_ == 10) { alert('حظ سعيد في المرة القادمة'); }
     }

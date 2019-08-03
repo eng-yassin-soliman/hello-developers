@@ -1,42 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text.RegularExpressions;
-
-using MySql.Data;
-using MySql.Data.Entity;
-
+using Newtonsoft.Json;
 
 namespace p_hello_api.Controllers
 {
     public class _c_player
     {
-        public string s_nam_ = "";  // Name
-        public string s_pas_ = "";  // Password
-        public string s_ssn_ = "";  // Session id
+        public string s_nam_ { get; set; }  // Name
+        public string s_pas_ { get; set; }  // Password
+        public string s_ssn_ { get; set; }  // Session id
 
-        public string s_sgn_ = "";  // Symbol
-        public string s_clr_ = "";  // Color
+        public string s_sgn_ { get; set; }  // Symbol
+        public string s_clr_ { get; set; }  // Color
 
-        public int s_win_ = 0;      // Score
-        public int s_los_ = 0;      // How many loses
+        public int s_win_ { get; set; }     // Score
+        public int s_los_ { get; set; }     // How many loses
 
-        public byte s_clk_ = 0;      // Cell clicked
-        // Occupied cells by user
-        public List<byte> s_usr_ = new List<byte>();
-        // Occupied cells by server
-        public List<byte> s_srv_ = new List<byte>();
+        public byte s_clk_ { get; set; }    // Cell clicked
+        public int[] s_brd_ { get; set; }  // Board configuration e.x: { 0, x, o, 0, x, o, 0, x, x }
 
         public _c_player(string p_nam_, string p_sgn_, string p_pas_)
         {
             s_nam_ = p_nam_;
             s_pas_ = p_pas_;
             s_sgn_ = p_sgn_;
+            s_brd_ = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         }
 
         // يحسب ترتيب الخلية من إحداثياتها
@@ -56,14 +48,14 @@ namespace p_hello_api.Controllers
         /// <summary>
         /// هل الخلية ليها 2 جيران من نوع محدد
         /// </summary>
-        public static Boolean f_neighbour_(byte p_ndx_, List<byte> p_lst_)
+        public static Boolean f_neighbour_(byte p_cel_, byte[] p_lst_)
         {
-            byte[] l_crd_ = _c_player.f_tocrd_(p_ndx_);
+            byte[] l_crd_ = _c_player.f_tocrd_(p_cel_);
 
             // كام خلية في نفس الصف
             int q_col_ = (from i_byt_ in p_lst_
                           where
-                          i_byt_ != p_ndx_ &
+                          i_byt_ != p_cel_ &&
                           _c_player.f_tocrd_(i_byt_)[0] == l_crd_[0]
                           select i_byt_).Count();
 
@@ -72,7 +64,7 @@ namespace p_hello_api.Controllers
             // كام خلية في نفس العمود
             int q_row_ = (from i_byt_ in p_lst_
                           where
-                          i_byt_ != p_ndx_ &
+                          i_byt_ != p_cel_ &&
                           _c_player.f_tocrd_(i_byt_)[1] == l_crd_[1]
                           select i_byt_).Count();
 
@@ -81,44 +73,61 @@ namespace p_hello_api.Controllers
             // لو الخلية الفاضية في أحد الأركان
             byte[] l_crn_ = { 0, 2, 6, 8 }; // الأركان
             byte[] l_inv_ = { 8, 6, 2, 0 }; // الركن المقابل
-            if (l_crn_.Contains(p_ndx_))
+            if (l_crn_.Contains(p_cel_))
             {
-                byte l_ops_ = l_inv_[Array.IndexOf(l_crn_ , p_ndx_)];
+                byte l_ops_ = l_inv_[Array.IndexOf(l_crn_ , p_cel_)];
 
-                if (p_lst_.Contains(4) && p_lst_.Contains(l_ops_))
+                if (p_lst_.Contains((byte)4) &&
+                    p_lst_.Contains(l_ops_))
                 { return true; } // لو في خلية في الركن المقابل وخلية في الوسط
             }
 
             // الاحتمال الاخير انها تبقى الخلية اللي في الوسط
-            if (p_ndx_ != 4)
+            if (p_cel_ != 4)
             { return false; }
 
             return (
-                (p_lst_.Contains(0) && p_lst_.Contains(8)) ||
-                (p_lst_.Contains(2) && p_lst_.Contains(6)));
+                (p_lst_.Contains((byte)0) && p_lst_.Contains((byte)8)) ||
+                (p_lst_.Contains((byte)2) && p_lst_.Contains((byte)6)));
         }
 
         /// <summary>
         /// تجرب الدالة اللي فاتت على كل الخلايا من نوع معين
         /// </summary>
-        /// <param name="p_1st_">
-        /// القائمة اللي عايز تجرب عليها
+        /// <param name="p_tp1_">
+        /// نوع الخلايا اللي بابحث عن جيران لها
         /// </param>
-        /// <param name="p_2nd_">
-        /// القائمة اللي عايز تشوف في منها جيران لكل خلية من الخلايا اللي فاتت
+        /// <param name="p_tp2_">
+        /// نوع الخلايا الجارة اللي بابحث عنها
+        /// </param>
+        /// <param name="p_brd_">
+        /// المصفوفة اللي فيها كل الخلايا
         /// </param>
         /// <returns>
         /// بيرجع أول خليه ليها 2 جيران من النوع المحدد
-        /// لو ملقاش بيجع 9
+        /// لو ملقاش بيرجع 9
         /// </returns>
-        public static byte f_status_(List<byte> p_1st_, List<byte> p_2nd_)
+        public static byte f_status_(byte p_tp1_, byte p_tp2_, int[] p_brd_)
         {
-            foreach (byte i_byt_ in p_1st_)
+            List<byte> l_tp1_ = new List<byte>();
+            List<byte> l_tp2_ = new List<byte>();
+
+            for (byte i_ndx_ = 0; i_ndx_ < 9; i_ndx_ ++)
             {
-                if (_c_player.f_neighbour_(i_byt_, p_2nd_))
+                if (p_brd_[i_ndx_] == p_tp1_)
                 {
-                    return i_byt_;
+                    l_tp1_.Add(i_ndx_);
                 }
+
+                if (p_brd_[i_ndx_] == p_tp2_)
+                {
+                    l_tp2_.Add(i_ndx_);
+                }
+            }
+
+            foreach (byte i_ndx_ in l_tp1_)
+            {
+                if (f_neighbour_(i_ndx_, l_tp2_.ToArray())) { return i_ndx_; }
             }
 
             return 9;
@@ -139,7 +148,7 @@ namespace p_hello_api.Controllers
             new _c_player("B", "B", "4bdb22e16a664bd2"),    // Heba
             new _c_player("T", "T", "64e7a549afc602d8")};   // Test
 
-    [HttpPost]
+        [HttpPost]
         [Route("play")]
         public _c_player[] f_play_(_c_player p_ply_)
         {
@@ -169,74 +178,80 @@ namespace p_hello_api.Controllers
                 return new _c_player[] { q_ply_ };
             }
 
+            // If user just wants to load data
             if (p_ply_.s_clk_ == 9)
             { return s_ply_; }
 
+            // If game over
             if (q_ply_.s_los_ > 9)
             { return s_ply_; }
 
-            // Empty cells
-            List<byte> l_emp_ = new List<byte>();
-            l_emp_.AddRange(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 });
-
             // Check the clicked cell is not occupied
-            if (q_ply_.s_usr_.Contains(p_ply_.s_clk_) ||
-                q_ply_.s_srv_.Contains(p_ply_.s_clk_))
-            { goto n_final_; }
+            if (q_ply_.s_brd_[p_ply_.s_clk_] != 0)
+            { return s_ply_; }
 
             // Add the clicked cell to user's cell
-            q_ply_.s_usr_.Add(p_ply_.s_clk_);
+            q_ply_.s_brd_[p_ply_.s_clk_] = 1;
 
-            // Remove occupied
-            l_emp_.RemoveAll(
-                p_itm_ => 
-                q_ply_.s_usr_.Contains(p_itm_) ||
-                q_ply_.s_srv_.Contains(p_itm_));
-
-            if (!l_emp_.Any())
-            { goto n_final_; }
-
-            byte l_sts_ = 0;
+            // Empty cells
+            byte[] l_emp_ = q_ply_.s_brd_
+                .Select((p_itm_, p_ndx_) => p_itm_ == 0 ? (byte)p_ndx_ : (byte)9)
+                .Where(p_itm_ => p_itm_ != 9).ToArray();
 
             // Calculate best move
             // لو السيرفر فاضله واحدة ويقفل: قفل
-            l_sts_ = _c_player.f_status_(l_emp_, q_ply_.s_srv_);
-            if (l_sts_ != 9)
-            {
-                q_ply_.s_srv_.Add(l_sts_);
-                l_emp_.Remove(l_sts_);
-                goto n_final_;
-            }
+            //byte l_sts_ = 0;
+            //l_sts_ = _c_player.f_status_(0, 2, q_ply_.s_brd_);
+            //if (l_sts_ != 9)
+            //{
+            //    q_ply_.s_brd_[l_sts_] = 2;
+            //    goto n_final_;
+            //}
 
-            // لو المستخدم فاضله واحدة ويقفل: امنعه
-            l_sts_ = _c_player.f_status_(l_emp_, q_ply_.s_usr_);
-            if (l_sts_ != 9)
-            {
-                q_ply_.s_srv_.Add(l_sts_);
-                l_emp_.Remove(l_sts_);
-                goto n_final_;
-            }
+            //// لو المستخدم فاضله واحدة ويقفل: امنعه
+            //l_sts_ = _c_player.f_status_(0, 1, q_ply_.s_brd_);
+            //if (l_sts_ != 9)
+            //{
+            //    q_ply_.s_brd_[l_sts_] = 2;
+            //    goto n_final_;
+            //}
 
             // Randomize server move
-            int l_nxt_ = (new Random()).Next(0, l_emp_.Count);
-            q_ply_.s_srv_.Add(l_emp_[l_nxt_]);
+            //int l_nxt_ = (new Random()).Next(0, l_emp_.Length - 1);
+            //q_ply_.s_brd_[l_emp_[l_nxt_]] = 2;
+
+            q_ply_.s_brd_[l_emp_[0]] = 2;
 
         n_final_:
-            if (_c_player.f_status_(q_ply_.s_usr_, q_ply_.s_usr_) != 9)
-            { q_ply_.s_win_ += 1; } // User wins
+            if (!l_emp_.Any())
+            {
+                q_ply_.s_brd_ = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+                return s_ply_;
+            }
 
-            else if (_c_player.f_status_(q_ply_.s_srv_, q_ply_.s_srv_) != 9)
-            { q_ply_.s_los_ += 1; } // Server wins
-
-            else if (!l_emp_.Any())
-            { }                     // Boxes are full
-
-            else
-            { return s_ply_; }
-
-            q_ply_.s_usr_.Clear();
-            q_ply_.s_srv_.Clear();
             return s_ply_;
+
+            try
+            {
+                if (_c_player.f_status_(1, 1, q_ply_.s_brd_) != 9)
+                { q_ply_.s_win_ += 1; } // User wins
+
+                else if (_c_player.f_status_(2, 2, q_ply_.s_brd_) != 9)
+                { q_ply_.s_los_ += 1; } // Server wins
+
+                else if (!l_emp_.Any())
+                { }                     // All cells are full
+
+                else
+                { return s_ply_; }
+
+                q_ply_.s_brd_ = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+                return s_ply_;
+            }
+            catch (Exception p_exp_)
+            {
+                return s_ply_;
+            }
         }
     }
 }

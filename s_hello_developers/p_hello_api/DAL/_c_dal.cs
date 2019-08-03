@@ -1,40 +1,41 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using System.Data;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace p_hello_api.DAL
 {
     public class _c_dal
     {
-        public MySqlConnection s_con_;
-        public MySqlTransaction s_tra_;
-        public _c_ctx s_ctx_;
+        _c_ctx s_ctx_;
+        IDbContextTransaction s_tra_;
 
-        Boolean f_connect_()
+        public Boolean f_connect_()
         {
-            s_con_ = new MySqlConnection(
-            using (MySqlConnection l_con_ = new MySqlConnection(""))
-            {
-                l_con_.Open();
-
-                using (MySqlTransaction l_tra_ = l_con_.BeginTransaction(System.Data.IsolationLevel.Serializable))
-                {
-                    _c_ctx l_ctx_ = new _c_ctx();
-                }
-            }
-
-
+            s_ctx_ = new _c_ctx();
+            s_tra_ = s_ctx_.Database.BeginTransaction(IsolationLevel.Serializable);
             return true;
         }
 
-        Boolean f_close(Boolean p_cmt_) { }
+        public Boolean f_close(Boolean p_cmt_)
+        {
+            if (p_cmt_)
+            {
+                s_tra_.Commit();
+            }
+            else
+            {
+                s_tra_.Rollback();
+            }
+
+            s_ctx_.Database.CloseConnection();
+            return true;
+        }
     }
 
+    // Class represents a single member
     public class _t_member
     {
         [Key, Column(Order = 0)]
@@ -46,6 +47,12 @@ namespace p_hello_api.DAL
 
     public class _c_ctx : DbContext
     {
-        public virtual DbSet<_t_member> Enrollments { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseMySQL("server=localhost;user=root;password=123456aA&");
+        }
+
+        // A table of members
+        public virtual DbSet<_t_member> _t_members { get; set; }
     }
 }
