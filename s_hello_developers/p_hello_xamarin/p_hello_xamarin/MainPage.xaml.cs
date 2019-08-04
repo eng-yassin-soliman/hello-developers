@@ -17,5 +17,11 @@ namespace p_hello_xamarin
         {
             InitializeComponent();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            
+        }
     }
 }
