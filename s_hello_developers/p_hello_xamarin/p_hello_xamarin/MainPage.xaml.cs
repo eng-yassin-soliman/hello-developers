@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using System.Net.Http;
+using ModernHttpClient;
+using System.Net.Sockets;
 
 namespace p_hello_xamarin
 {
@@ -19,23 +22,28 @@ namespace p_hello_xamarin
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+        HttpClient s_cln_ = new HttpClient(new NativeMessageHandler());
+        [STAThread]
+        void v_click_(object p_snd_, EventArgs p_arg_)
         {
-            base.OnAppearing();
+            TcpClient l_tcp_ = new TcpClient();
+            l_tcp_.Connect("192.168.4.1", 80);
+            var l_stm_ = l_tcp_.GetStream();
 
-            OrientationSensor.ReadingChanged += v_orientation_;
-            OrientationSensor.Start(SensorSpeed.UI);
-        }
+            string[] l_sym_ = { "👆", "👈", "👉", "👇" };
+            string[] l_cmd_ = { "up", "lt", "rt", "dn" };
 
-        void v_orientation_(object p_snd_, OrientationSensorChangedEventArgs p_arg_)
-        {
-            var l_dta_ = p_arg_.Reading;
-             
-            b_txt_.Text =
-                l_dta_.Orientation.X.ToString("0.00") + " & " +
-                l_dta_.Orientation.Y.ToString("0.00") + " & " +
-                l_dta_.Orientation.Z.ToString("0.00") + " & " +
-                l_dta_.Orientation.W.ToString("0.00");
+            string l_txt_ = ((Button)p_snd_).Text;
+            string l_req_ =
+                "GET /" + l_cmd_[Array.IndexOf(l_sym_, l_txt_)] + " HTTP/1.1\r\n" +
+                "Host: 192.168.4.1:80\r\n" +
+                "\r\n";
+            byte[] l_byt_ = Encoding.ASCII.GetBytes(l_req_);
+            l_stm_.Write(l_byt_, 0, l_byt_.Length);
+
+            l_tcp_.Close();
+
+            //s_cln_.GetAsync("http://192.168.4.1/" + l_cmd_[Array.IndexOf(l_sym_, l_txt_)]).Wait();
         }
     }
 }
