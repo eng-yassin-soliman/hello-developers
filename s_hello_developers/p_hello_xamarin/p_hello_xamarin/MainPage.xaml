@@ -6,11 +6,28 @@
              mc:Ignorable="d"
              x:Class="p_hello_xamarin.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="1" BackgroundColor="Wheat" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="20" Text="👆" />
+        
+        <Label Grid.Row="1" Grid.Column="0" BackgroundColor="Wheat" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="20" Text="👈" />
+        
+        <Label Grid.Row="1" Grid.Column="2" BackgroundColor="Wheat" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="20" Text="👉" />
+        
+        <Label Grid.Row="2" Grid.Column="1" BackgroundColor="Wheat" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="20" Text="👇" />
+
+        <Label x:Name="b_txt_" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+    </Grid>
 
 </ContentPage>

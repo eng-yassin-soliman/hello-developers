@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace p_hello_xamarin
 {
@@ -21,7 +22,20 @@ namespace p_hello_xamarin
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            
+
+            OrientationSensor.ReadingChanged += v_orientation_;
+            OrientationSensor.Start(SensorSpeed.UI);
+        }
+
+        void v_orientation_(object p_snd_, OrientationSensorChangedEventArgs p_arg_)
+        {
+            var l_dta_ = p_arg_.Reading;
+
+            b_txt_.Text =
+                l_dta_.Orientation.X.ToString("0.00") + " & " +
+                l_dta_.Orientation.Y.ToString("0.00") + " & " +
+                l_dta_.Orientation.Z.ToString("0.00") + " & " +
+                l_dta_.Orientation.W.ToString("0.00");
         }
     }
 }
