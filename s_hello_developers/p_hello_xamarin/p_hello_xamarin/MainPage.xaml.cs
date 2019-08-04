@@ -30,7 +30,7 @@ namespace p_hello_xamarin
         void v_orientation_(object p_snd_, OrientationSensorChangedEventArgs p_arg_)
         {
             var l_dta_ = p_arg_.Reading;
-
+             
             b_txt_.Text =
                 l_dta_.Orientation.X.ToString("0.00") + " & " +
                 l_dta_.Orientation.Y.ToString("0.00") + " & " +
