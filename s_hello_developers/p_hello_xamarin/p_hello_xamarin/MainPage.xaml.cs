@@ -34,14 +34,16 @@ namespace p_hello_xamarin
             string[] l_cmd_ = { "up", "lt", "rt", "dn" };
 
             string l_txt_ = ((Button)p_snd_).Text;
-            string l_req_ =
-                "GET /" + l_cmd_[Array.IndexOf(l_sym_, l_txt_)] + " HTTP/1.1\r\n" +
-                "Host: 192.168.4.1:80\r\n" +
-                "\r\n";
-            byte[] l_byt_ = Encoding.ASCII.GetBytes(l_req_);
-            l_stm_.Write(l_byt_, 0, l_byt_.Length);
+            //string l_req_ =
+            //    "GET /" + l_cmd_[Array.IndexOf(l_sym_, l_txt_)] + " HTTP/1.1\r\n" +
+            //    "Host: 192.168.4.1\r\n" +
+            //    "Connection: close\r\n\r\n";
 
-            l_tcp_.Close();
+            byte l_dta_ = l_txt_ == "up" ? 0 : 1;
+
+            byte[] l_byt_ = { l_dta_ }; // Encoding.ASCII.GetBytes(l_req_);
+
+            l_stm_.Write(l_byt_, 0, 1); // l_byt_.Length);
 
             //s_cln_.GetAsync("http://192.168.4.1/" + l_cmd_[Array.IndexOf(l_sym_, l_txt_)]).Wait();
         }
