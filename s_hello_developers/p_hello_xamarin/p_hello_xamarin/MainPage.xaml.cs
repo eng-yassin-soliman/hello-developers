@@ -17,7 +17,7 @@ namespace p_hello_xamarin
         public MainPage()
         {
             InitializeComponent();
-        }
+        } 
 
         [STAThread]
         void v_click_(object p_snd_, EventArgs p_arg_)
