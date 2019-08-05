@@ -7,13 +7,10 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using System.Net.Http;
-using ModernHttpClient;
 using System.Net.Sockets;
 
 namespace p_hello_xamarin
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
@@ -22,7 +19,6 @@ namespace p_hello_xamarin
             InitializeComponent();
         }
 
-        HttpClient s_cln_ = new HttpClient(new NativeMessageHandler());
         [STAThread]
         void v_click_(object p_snd_, EventArgs p_arg_)
         {
@@ -39,7 +35,7 @@ namespace p_hello_xamarin
             //    "Host: 192.168.4.1\r\n" +
             //    "Connection: close\r\n\r\n";
 
-            byte l_dta_ = l_txt_ == "up" ? 0 : 1;
+            byte l_dta_ = l_txt_ == "up" ? (byte)0 : (byte)1;
 
             byte[] l_byt_ = { l_dta_ }; // Encoding.ASCII.GetBytes(l_req_);
 
