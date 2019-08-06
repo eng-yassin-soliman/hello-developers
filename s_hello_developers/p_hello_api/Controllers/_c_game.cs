@@ -13,9 +13,7 @@ namespace p_hello_api.Controllers
         public string s_nam_ { get; set; }  // Name
         public string s_pas_ { get; set; }  // Password
         public string s_ssn_ { get; set; }  // Session id
-
         public string s_sgn_ { get; set; }  // Symbol
-        public string s_clr_ { get; set; }  // Color
 
         public int s_win_ { get; set; }     // Score
         public int s_los_ { get; set; }     // How many loses
@@ -134,8 +132,8 @@ namespace p_hello_api.Controllers
         }
     }
 
-    [Route("tictac")]
     [ApiController]
+    [Route("tictac")]
     public class _c_tictac : Controller
     {
         public static _c_player[] s_ply_ = {
@@ -160,17 +158,16 @@ namespace p_hello_api.Controllers
             SHA256 l_hsh_ = SHA256.Create();
             byte[] l_inp_ = Encoding.UTF8.GetBytes(p_ply_.s_pas_);
             byte[] l_out_ = l_hsh_.ComputeHash(l_inp_);
+
             string l_pas_ = BitConverter.ToString(l_out_).Replace("-", "").Substring(0, 16).ToLower();
 
-            // Does password hash list contains 
-            _c_player q_ply_ = (from i_ply_ in s_ply_
-                                where i_ply_.s_pas_ == l_pas_
-                                select i_ply_).FirstOrDefault(); // Returns new _c_player() if no match
-
+            // Does the hash of icoming password exist in hash table
+            _c_player  q_ply_ = (from i_ply_ in s_ply_
+                                 where i_ply_.s_pas_ == l_pas_
+                                 select i_ply_).FirstOrDefault(); // Returns new _c_player() if no match
             // Set session
             q_ply_.s_nam_ = p_ply_.s_nam_;
             q_ply_.s_ssn_ = p_ply_.s_ssn_;
-            q_ply_.s_clr_ = p_ply_.s_clr_;
 
             if (string.IsNullOrEmpty(q_ply_.s_pas_))
             {
@@ -194,64 +191,46 @@ namespace p_hello_api.Controllers
             q_ply_.s_brd_[p_ply_.s_clk_] = 1;
 
             // Empty cells
-            byte[] l_emp_ = q_ply_.s_brd_
+            byte[] l_emp_;
+            l_emp_ = q_ply_.s_brd_
                 .Select((p_itm_, p_ndx_) => p_itm_ == 0 ? (byte)p_ndx_ : (byte)9)
                 .Where(p_itm_ => p_itm_ != 9).ToArray();
 
+            if (!l_emp_.Any()) { goto n_final_; }
+
             // Calculate best move
             // لو السيرفر فاضله واحدة ويقفل: قفل
-            //byte l_sts_ = 0;
-            //l_sts_ = _c_player.f_status_(0, 2, q_ply_.s_brd_);
-            //if (l_sts_ != 9)
-            //{
-            //    q_ply_.s_brd_[l_sts_] = 2;
-            //    goto n_final_;
-            //}
+            byte l_sts_ = 0;
+            l_sts_ = _c_player.f_status_(0, 2, q_ply_.s_brd_);
+            if (l_sts_ != 9)
+            {
+                q_ply_.s_brd_[l_sts_] = 2;
+                goto n_final_;
+            }
 
-            //// لو المستخدم فاضله واحدة ويقفل: امنعه
-            //l_sts_ = _c_player.f_status_(0, 1, q_ply_.s_brd_);
-            //if (l_sts_ != 9)
-            //{
-            //    q_ply_.s_brd_[l_sts_] = 2;
-            //    goto n_final_;
-            //}
+            // لو المستخدم فاضله واحدة ويقفل: امنعه
+            l_sts_ = _c_player.f_status_(0, 1, q_ply_.s_brd_);
+            if (l_sts_ != 9)
+            {
+                q_ply_.s_brd_[l_sts_] = 2;
+                goto n_final_;
+            }
 
             // Randomize server move
-            //int l_nxt_ = (new Random()).Next(0, l_emp_.Length - 1);
-            //q_ply_.s_brd_[l_emp_[l_nxt_]] = 2;
-
-            q_ply_.s_brd_[l_emp_[0]] = 2;
+            int l_nxt_ = (new Random()).Next(0, l_emp_.Length);
+            q_ply_.s_brd_[l_emp_[l_nxt_]] = 2;
 
         n_final_:
-            if (!l_emp_.Any())
-            {
-                q_ply_.s_brd_ = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-                return s_ply_;
-            }
+            if (_c_player.f_status_(1, 1, q_ply_.s_brd_) != 9)
+            { q_ply_.s_win_ += 1; } // User wins
+
+            else if (_c_player.f_status_(2, 2, q_ply_.s_brd_) != 9)
+            { q_ply_.s_los_ += 1; } // Server wins
+
+            else if (!l_emp_.Any()) // No winner, end of game
+            { q_ply_.s_brd_ = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 }; }
 
             return s_ply_;
-
-            try
-            {
-                if (_c_player.f_status_(1, 1, q_ply_.s_brd_) != 9)
-                { q_ply_.s_win_ += 1; } // User wins
-
-                else if (_c_player.f_status_(2, 2, q_ply_.s_brd_) != 9)
-                { q_ply_.s_los_ += 1; } // Server wins
-
-                else if (!l_emp_.Any())
-                { }                     // All cells are full
-
-                else
-                { return s_ply_; }
-
-                q_ply_.s_brd_ = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-                return s_ply_;
-            }
-            catch (Exception p_exp_)
-            {
-                return s_ply_;
-            }
         }
     }
 }

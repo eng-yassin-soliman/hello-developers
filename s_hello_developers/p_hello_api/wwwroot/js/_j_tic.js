@@ -6,7 +6,6 @@
             get s_pas_() { return document.getElementById("b_pas_").value; },   // Password
             s_ssn_: Math.random().toString(),                                   // Session ID
             s_sgn_: '',                                                         // Symbol (A&#$%)
-            s_clr_: '',                                                         // Color
             s_clk_: 0,                                                          // Clicked box
             s_win_: 0,                                                          // Won gams
             s_los_: 0,                                                          // Lost games
