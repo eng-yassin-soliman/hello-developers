@@ -92,19 +92,6 @@ namespace p_hello_api.Controllers
         /// <summary>
         /// تجرب الدالة اللي فاتت على كل الخلايا من نوع معين
         /// </summary>
-        /// <param name="p_tp1_">
-        /// نوع الخلايا اللي بابحث عن جيران لها
-        /// </param>
-        /// <param name="p_tp2_">
-        /// نوع الخلايا الجارة اللي بابحث عنها
-        /// </param>
-        /// <param name="p_brd_">
-        /// المصفوفة اللي فيها كل الخلايا
-        /// </param>
-        /// <returns>
-        /// بيرجع أول خليه ليها 2 جيران من النوع المحدد
-        /// لو ملقاش بيرجع 9
-        /// </returns>
         public static byte f_status_(byte p_tp1_, byte p_tp2_, int[] p_brd_)
         {
             List<byte> l_tp1_ = new List<byte>();
