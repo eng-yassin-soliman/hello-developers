@@ -214,9 +214,12 @@ namespace p_hello_api.Controllers
             else if (_c_player.f_status_(2, 2, q_ply_.s_brd_) != 9)
             { q_ply_.s_los_ += 1; } // Server wins
 
-            else if (!l_emp_.Any()) // No winner, end of game
-            { q_ply_.s_brd_ = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 }; }
+            else if (!l_emp_.Any())
+            { }                     // No winner (Draw)
 
+            else { return s_ply_; } // Game in progress
+
+            q_ply_.s_brd_ = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             return s_ply_;
         }
     }
