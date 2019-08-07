@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace p_hello_api.DAL
 {
+    // Database connection
     public class _c_dal
     {
         _c_ctx s_ctx_;
@@ -35,24 +36,26 @@ namespace p_hello_api.DAL
         }
     }
 
-    // Class represents a single member
-    public class _t_member
-    {
-        [Key, Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int c_uid_ { get; set; }
-        public string c_name_ { get; set; }
-        public DateTime c_birth_ { get; set; }
-    }
-
+    // The database
     public class _c_ctx : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=localhost;user=root;password=123456aA&");
+            optionsBuilder.UseMySQL("Server=localhost;Database=db_engasu;Uid=root;Pwd=123456aA&");
         }
 
         // A table of members
         public virtual DbSet<_t_member> _t_members { get; set; }
     }
-} 
+
+    // Class represents a single member
+    public class _t_member
+    {
+        [Key, Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int c_uid_ { get; set; }         // Primary key
+        public string c_email_ { get; set; }    // Email
+        public string c_name_ { get; set; }     // Name
+        public DateTime c_birth_ { get; set; }  // Date of birth
+    }
+}
