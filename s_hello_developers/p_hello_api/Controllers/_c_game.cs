@@ -123,6 +123,8 @@ namespace p_hello_api.Controllers
     [Route("tictac")]
     public class _c_tictac : Controller
     {
+        public static _c_player[] s_ply_ = { };
+
         [HttpPost]
         [Route("play")]
         public _c_player[] f_play_(_c_player p_ply_)
