@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using p_hello_api.DAL;
 
 namespace p_arbweb
 {

@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Storage;
-using System.Data.Entity.Migrations;
-using Microsoft.AspNetCore.Authentication;
 
 namespace p_arbweb
 {
