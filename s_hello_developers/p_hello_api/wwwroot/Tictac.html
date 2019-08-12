@@ -48,23 +48,20 @@
     <script type="text/javascript">
         var s_gam_;
 
-        function v_loaded_()
-        { }
+        function v_loaded_() { }
 
-        function v_setgame_()
-        {
+        function v_setgame_() {
             s_gam_ = new _c_tic_();
             s_gam_.v_intit_();      // Prepare the game for the first time
         }
 
         // Post the message to server
         function v_send_(p_req_) {
-            v_post_obj_('tictac/play', p_req_, v_success_, v_error_);
+            v_post_obj_('tictac/list', p_req_, v_success_, v_error_);
         }
 
         // Handle the response is succeeded
-        function v_success_(p_rsp_)
-        {
+        function v_success_(p_rsp_) {
             s_gam_.v_response_(p_rsp_);
         }
 
@@ -72,14 +69,13 @@
         function v_error_(p_rsp_) {
             alert('Error: ' + p_rsp_);
         }
-/**/</script>
+    </script>
 </head>
 
 <body onload="v_loaded_()" style="text-align:center">
     <div style="direction:rtl; text-align:right; display:inline-block; width:auto">
         <br /><br />
-        <div class="_button" onclick="v_setgame_()">Tic Tac Toe</div>
-        <div class="_button">Connecting Dots</div>
+        <div class="_button" onclick="v_setgame_()">Load!</div>
 
         <br /><br />
         <input id="b_nam_" type="text" class="_text" style="display:inline; width:200px" value="الاسم" />

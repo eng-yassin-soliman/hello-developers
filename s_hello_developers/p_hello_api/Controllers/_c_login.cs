@@ -5,12 +5,12 @@ using p_hello_api.DAL;
 namespace p_hello_api.Controllers
 {
     [ApiController]
-    [Route("sign-up")]
-    public class _c_signup : Controller
+    [Route("login")]
+    public class _c_login : Controller
     {
         [HttpPost]
         [Route("submit")]
-        public string f_signup_(_c_member p_mem_)
+        public string f_login_(_c_member p_mem_)
         {
             _c_member l_mem_ = new _c_member(p_mem_.s_nam_, p_mem_.s_pas_);
 

@@ -1,7 +1,7 @@
 ﻿<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>Sign up</title>
+    <title>Login</title>
 
     <!--External Style Sheet Files-->
     <link rel="stylesheet" type="text/css" href="css/_s_reset.css" />
@@ -48,13 +48,7 @@
                 get s_pas_() { return document.getElementById("b_pas_").value; },   // Password
             };
 
-            var l_cnf_ = document.getElementById("b_cnf_").value;
-            if (l_mem_.s_pas_ != l_cnf_) {
-                alert('كلمة المرور والتأكيد غير متطابقين');
-                return;
-            }
-
-            v_post_obj_('sign-up/submit', l_mem_, v_success_, v_error_);
+            v_post_obj_('login/submit', l_mem_, v_success_, v_error_);
         }
 
         // Handle the response is succeeded
@@ -66,7 +60,7 @@
             }
 
             // On success, redirect to the game
-            window.location.replace('Login.html');
+            window.location.replace('Game.html');
         }
 
         // Handle the response on error
@@ -89,12 +83,8 @@
         <div style="display:inline-block; width:100px; margin:10px">كلمة المرور</div>
         <input id="b_pas_" type="password" class="_text" style="display:inline; width:200px; background-color:white" />
 
-        <br />
-        <div style="display:inline-block; width:100px; margin:10px">تأكيد كلمة المرور</div>
-        <input id="b_cnf_" type="password" class="_text" style="display:inline; width:200px; background-color:white" />
-
         <br /><br />
-        <div class="_button" onclick="v_send_()" style="margin:10px; border:solid 1px silver">سجل</div>
+        <div class="_button" onclick="v_send_()" style="margin:10px; border:solid 1px silver">دخول</div>
         <br /><br />
     </div>
 </body>
