@@ -2,14 +2,10 @@
     constructor() {
         // User and game info to be exchanged between client and server
         this.s_usr_ = {
-            get s_nam_() { return document.getElementById("b_nam_").value; },   // Name
-            get s_pas_() { return document.getElementById("b_pas_").value; },   // Password
-            s_ssn_: Math.random().toString(),                                   // Session ID
-            s_sgn_: '',                                                         // Symbol (A&#$%)
-            s_clk_: 0,                                                          // Clicked box
-            s_win_: 0,                                                          // Won gams
-            s_los_: 0,                                                          // Lost games
-            s_brd_: null,                                                       // Game board cells
+            s_clk_: 0,      // Clicked box
+            s_win_: 0,      // Won gams
+            s_los_: 0,      // Lost games
+            s_brd_: null,   // Game board cells
         };
 
         // Initialized?
@@ -88,10 +84,14 @@
         document.getElementById('b_lst_').innerHTML = '';
 
         var l_drw_ = JSON.parse(p_rsp_);
-        var l_usr_; // Current user
+        var l_usr_ = null; // Current user
 
         l_drw_.forEach(function (p_itm_, p_ndx_) {
-            if (p_itm_.s_ssn_ == l_tic_.s_usr_.s_ssn_) { l_usr_ = p_itm_ }
+            //if (p_itm_.s_ssn_ == l_tic_.s_usr_.s_ssn_) { l_usr_ = p_itm_ }
+
+            //
+            l_usr_ = p_itm_;
+            //
 
             var l_itm_ = document.createElement('div');
             document.getElementById('b_lst_').appendChild(l_itm_);
@@ -114,7 +114,7 @@
             l_itm_.appendChild(l_dv3_);
         });
 
-        if (l_drw_.length == 1) { return; }
+        if (l_usr_ == null) { return; }
 
         for (var i_ndx_ = 0; i_ndx_ < 9; i_ndx_++)
         {

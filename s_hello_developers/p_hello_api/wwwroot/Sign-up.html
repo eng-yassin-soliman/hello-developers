@@ -54,19 +54,20 @@
                 return;
             }
 
-            v_post_obj_('sign-up/submit', l_mem_, v_success_, v_error_);
+            v_post_obj_('login/signup', l_mem_, v_success_, v_error_);
         }
 
         // Handle the response is succeeded
         function v_success_(p_rsp_) {
             // On fail, show the message
-            if (p_rsp_ != "0") {
+            if (p_rsp_ != "ok")
+            {
                 alert(p_rsp_);
                 return;
             }
 
             // On success, redirect to the game
-            window.location.replace('Login.html');
+            window.location.href = 'Login.html';
         }
 
         // Handle the response on error

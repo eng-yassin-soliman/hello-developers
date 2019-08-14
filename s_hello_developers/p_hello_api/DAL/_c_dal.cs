@@ -7,20 +7,22 @@ using Microsoft.EntityFrameworkCore.Storage;
 using System.Data.Entity.Migrations;
 using Microsoft.AspNetCore.Authentication;
 
+// Data Access Layer
 namespace p_hello_api.DAL
 {
     // The database
-    public class _c_ctx : DbContext
+    public class _c_dal : DbContext
     {
-        IDbContextTransaction s_tra_;
+        public IDbContextTransaction s_tra_;
         public string s_err_ = string.Empty;
 
-        public Boolean f_connect_()
+        // Connect to database, create if no exists
+        public Boolean f_open_()
         {
             try
             {
                 Database.EnsureCreated();   // Create database if no created
-                Database.BeginTransaction(IsolationLevel.Serializable);
+                s_tra_ = Database.BeginTransaction(IsolationLevel.Serializable);
                 return true;
             }
             catch (Exception p_exp_)
@@ -29,7 +31,23 @@ namespace p_hello_api.DAL
             }
         }
 
-        public Boolean f_close(Boolean p_cmt_)
+        // Try save changes
+        public Boolean f_save_()
+        {
+            try
+            {
+                SaveChanges();
+                return true;
+            }
+            catch (DbUpdateException p_exp_)
+            {
+                s_err_ = p_exp_.InnerException.Message;
+                return false;
+            }
+        }
+
+        // Close the connection, commit or rollback the transaction
+        public Boolean f_close_(Boolean p_cmt_)
         {
             try
             {
@@ -45,9 +63,8 @@ namespace p_hello_api.DAL
                 Database.CloseConnection();
                 return true;
             }
-            catch (DbUpdateException p_exp_)
+            catch (Exception p_exp_)
             {
-                s_err_ = p_exp_.Message;
                 return false;
             }
         }
@@ -78,14 +95,12 @@ namespace p_hello_api.DAL
         public long s_uid_ { get; set; }    // ID
 
         [Column("c_name")]
-        [MinLength(3, ErrorMessage = "اسم الدخول يجب ألا يقل عن 3 أحرف"),
-            MaxLength(30, ErrorMessage ="اسم الدخول يجب ألا يزيد عن 30 حرف")]
         public string s_nam_ { get; set; }  // Name
 
         [Column("c_password")]
-        [MinLength(6, ErrorMessage = "كلمة المرور يجب ألا تقل عن 6 أحرف"),
-            MaxLength(30, ErrorMessage = "كلمة المرور يجب ألا تزيد عن 30 حرف")]
         public string s_pas_ { get; set; }  // Password
+
+        public _c_member() { }
 
         public _c_member(string p_nam_, string p_pas_)
         {
@@ -106,8 +121,7 @@ namespace p_hello_api.DAL
         public long s_mem_ { get; set; }    // Member ID
 
         [Column("c_board")]
-        // Workaround: using int[] instead od byte[] so that it can be serialized to JSON properly
-        public int[] s_brd_ { get; set; }   // Board configuration e.x: { 0, 1, 2, 0, 1, 2, 0, 1, 1 }
+        public byte[] s_brd_ { get; set; }  // Board configuration e.x: { 0, 1, 2, 0, 1, 2, 0, 1, 1 }
                                             // 0: Empty cell, 1: User, 2: Server
 
         [Column("c_wins")]
@@ -122,7 +136,7 @@ namespace p_hello_api.DAL
 
         public _c_game()
         {
-            s_brd_ = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            s_brd_ = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         }
     }
 }

@@ -41,30 +41,34 @@
         function v_loaded_() { }
 
         // Post the message to server
-        function v_send_() {
+        function v_send_()
+        {
             var l_mem_ =
             {
-                get s_nam_() { return document.getElementById("b_nam_").value; },   // Name
-                get s_pas_() { return document.getElementById("b_pas_").value; },   // Password
+                get s_nam_() { return document.getElementById('b_nam_').value; },   // Name
+                get s_pas_() { return document.getElementById('b_pas_').value; },   // Password
             };
 
-            v_post_obj_('login/submit', l_mem_, v_success_, v_error_);
+            v_post_obj_('login/login', l_mem_, v_success_, v_error_);
         }
 
         // Handle the response is succeeded
-        function v_success_(p_rsp_) {
+        function v_success_(p_rsp_)
+        {
             // On fail, show the message
-            if (p_rsp_ != "0") {
+            if (p_rsp_ != '1')
+            {
                 alert(p_rsp_);
                 return;
             }
 
-            // On success, redirect to the game
-            window.location.replace('Tictac.html');
+            alert('تم تسجيل الدخول');
+            window.location.href = '/';
         }
 
         // Handle the response on error
-        function v_error_(p_rsp_) {
+        function v_error_(p_rsp_)
+        {
             alert('Error: ' + p_rsp_);
         }
     </script>
