@@ -74,16 +74,15 @@ namespace p_hello_api.DAL
             optionsBuilder.UseMySQL("Server=localhost;database=db_arbweb;Uid=root;Pwd=123456aA&");
         }
 
+        // Specify additional attributes for columns
         protected override void OnModelCreating(ModelBuilder p_bld_)
         {
+            // Ensure the column "c_name" in the table "t_members" is unique (no repetitions)
             p_bld_.Entity<_c_member>().HasIndex(p_ent_ => p_ent_.s_nam_).IsUnique();
         }
 
         // A table of members
         public virtual DbSet<_c_member> t_members { get; set; }
-
-        // A table of game plays
-        public virtual DbSet<_c_game> t_games { get; set; }
     }
 
     // Class represents a single member
@@ -106,37 +105,6 @@ namespace p_hello_api.DAL
         {
             s_nam_ = p_nam_;
             s_pas_ = p_pas_;
-        }
-    }
-
-    // Class game data for each member
-    [Table("t_gemes")]
-    public partial class _c_game
-    {
-        [Key, Column("c_uid")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long s_uid_ { get; set; }    // ID
-
-        [Column("c_member")]
-        public long s_mem_ { get; set; }    // Member ID
-
-        [Column("c_board")]
-        public byte[] s_brd_ { get; set; }  // Board configuration e.x: { 0, 1, 2, 0, 1, 2, 0, 1, 1 }
-                                            // 0: Empty cell, 1: User, 2: Server
-
-        [Column("c_wins")]
-        public int s_win_ { get; set; }     // Score
-
-        [Column("c_loses")]
-        public int s_los_ { get; set; }     // How many loses
-
-        // Not saved in database
-        [NotMapped]
-        public byte s_clk_ { get; set; }    // Index of cell clicked, 9 for just loading the game
-
-        public _c_game()
-        {
-            s_brd_ = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         }
     }
 }
