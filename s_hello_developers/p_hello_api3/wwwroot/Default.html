@@ -1,6 +1,54 @@
-﻿<body>
+﻿<head>
+<meta charset = "utf-8"/>
+<title>Hello API</title>
+<!--External Style Sheet Files-->
+<link rel = "stylesheet" type = "text/css" href = "css/_s_reset.css">
+<!--Internal Style Sheet-->
+<style type="text/css">
+  ._text
+  {
+      width : 400px; 
+      height: 300px; 
+      margin: 20px; 
+      padding: 10px; 
+      border: solid 1px silver
+  } 
+  ._button
+  { 
+      width : 100px; 
+      background-color: wheat; 
+      margin : 20px; 
+      padding: 10px; 
+      text-align: center;
+      display: inline
+  } 
+</style>
+<!--External Script File-->
+<script type="text/javascript" src="js/_j_post.js"></script>
+<!--Internal Script-->
+<script type = "text/javascript">
+    function v_send_(p_url_) 
+    {
+        
+        var l_req_ = document.getElementById('b_req_').value; 
+        v_post_txt_(p_url_, l_req_, v_success_, v_error_); 
+    } 
+// Handle the response is succeeded
+    function v_success_(p_rsp_) 
+    {
+        document.getElementById('b_rsp_').value = p_rsp_; 
+    } 
+// Handle the response on error
+    function v_error_(p_rsp_) 
+    { 
+            alert('Error'); 
+    } 
+</script>
+</head>
+<body>
+<textarea id = "b_req_" class="_text">Write Request Here!</textarea>
+<textarea id = "b_rsp_" class="_text">Response Will Show Here!</textarea>
 <br/>
-<a href="POST.html">Hello Back End!</a>
-<br/><br/>
-<a href="Game.html">Hello Game!</a >
-</body>
+<div class = "_button" onclick="v_send_('hello/api/text')">Show text!</div>
+<div class = "_button" onclick="v_send_('hello/api/byte')">Show bytes!</div>
+</body> 
