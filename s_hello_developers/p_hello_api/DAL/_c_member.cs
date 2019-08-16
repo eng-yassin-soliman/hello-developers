@@ -1,16 +1,20 @@
-﻿using MySqlX.XDevAPI.Relational;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
-namespace p_hello_api3.DAL
+namespace p_hello_api.DAL
 {
     [Table("t_members")] 
     public class _c_member
     {
+        // A Primary key represents the record identifier,
+        // We put that field in every table we create 
         [Key, Column("c_uid")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long s_uid_
@@ -18,7 +22,8 @@ namespace p_hello_api3.DAL
             get;
             set;
         }
-        [Column("c_name")] 
+        // ID
+        [Column("c_name")]
         public string s_nam_
         {
             get;
@@ -28,8 +33,11 @@ namespace p_hello_api3.DAL
         [Column("c_password")]
         public string s_pas_
         {
-            get;
-            set;
+            get
+            ;
+            set
+            ;
         }
+        // Password
     }
 }
