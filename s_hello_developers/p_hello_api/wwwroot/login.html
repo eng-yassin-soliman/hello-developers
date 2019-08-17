@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -36,26 +37,18 @@ var l_mem_ =
 {
 get s_nam_() { return document.getElementById('b_nam_').value; }, // Name
 get s_pas_() { return document.getElementById('b_pas_').value; }, // Password
-};
-var l_cnf_ = document.getElementById('b_cnf_').value;
-if (l_mem_.s_pas_ != l_cnf_)
-{
-    alert('كلمة المرور و التأكيد غير متطابقين');
-return;
-}
-v_post_obj_('login/signup', l_mem_, v_success_, v_error_);
+    };
+    v_post_obj_('login/login', l_mem_, v_success_, v_error_);
 }
 // Handle the response is succeeded
-function v_success_(p_rsp_)
-{
-// On fail, show the message
-if (p_rsp_ != '1')
-{
-alert(p_rsp_);
-return;
-}
-    alert('تم انشاء حساب جديد بنجاح!');
-}
+        function v_success_(p_rsp_) {
+            // On fail, show the message
+            if (p_rsp_ != '1') {
+                alert(p_rsp_);
+                return;
+            }
+            alert('تم تسجيل الدخول');
+        }
 // Handle the response on error
 function v_error_(p_rsp_)
 { alert('Error: ' + p_rsp_); }
@@ -75,10 +68,7 @@ background-color:white" />
         <div style="display:inline-block; width:100px; margin:10px"> المرور كلمة </div>
         <input id="b_pas_" type="password" class="_text" style="display:inline; width:200px;
 background-color:white" />
-        <br />
-        <div style="display:inline-block; width:100px; margin:10px"> المرور كلمة تأكيد </div>
-        <input id="b_cnf_" type="password" class="_text" style="display:inline; width:200px;
-background-color:white" />
+
         <br /><br />
         <div class="_button" onclick="v_send_()" style="margin:10px;
 border:solid 1px silver"> سجل </div>
