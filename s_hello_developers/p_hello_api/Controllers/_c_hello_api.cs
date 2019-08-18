@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace p_hello_api {
     [Route("hello/api")] 
     [ApiController] 
-    public class _c_hello_api : Controller     {
+    public class _c_hello_api : Controller
+    {
         // Previous method ... ... 
         [HttpPost]
         [Route("text")]
@@ -15,9 +16,11 @@ namespace p_hello_api {
             string l_txt_ = l_red_.ReadToEnd();
             return l_txt_;
         }
+
         [HttpPost]
         [Route("byte")]
-        public string f_byte_(){
+        public string f_byte_()
+        {
             StreamReader l_red_ = new StreamReader(HttpContext.Request.Body, Encoding.UTF8);
             string l_txt_ = l_red_.ReadToEnd();
             byte[] l_byt_ = Encoding.UTF8.GetBytes(l_txt_);
@@ -27,7 +30,21 @@ namespace p_hello_api {
                 l_str_.Append(i_byt_.ToString("000"));
                 l_str_.Append(Encoding.UTF8.GetString(new byte[] { 10 }));
                 // New line           
-            } return l_str_.ToString();
+            }
+            return l_str_.ToString();
+        }
+
+        public class _c_complex
+        {
+            public string s_str_ = "hello";
+            public int[] s_byt_ = { 0, 1, 2, 3, 4, 5, 6, 7 };
+        }
+
+        [HttpPost]
+        [Route("base64")]
+        public _c_complex f_base64_()
+        {
+            return new _c_complex();
         }
     }
 }
