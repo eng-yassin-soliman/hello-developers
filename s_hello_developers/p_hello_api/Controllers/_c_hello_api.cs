@@ -1,13 +1,15 @@
-﻿using System; 
+﻿using System;
 using System.IO;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
-namespace p_hello_api {
+using Newtonsoft.Json;
+
+namespace p_hello_api
+{
     [Route("hello/api")] 
     [ApiController] 
     public class _c_hello_api : Controller
     {
-        // Previous method ... ... 
         [HttpPost]
         [Route("text")]
         public string f_text_()
@@ -34,9 +36,35 @@ namespace p_hello_api {
             return l_str_.ToString();
         }
 
+        class ffff
+        {
+            [JsonConverter(typeof(ByteArrayConvertor))]
+            public byte[] l_byt_ = { 0, 1, 2, 3 };
+        }
+
+        public class ByteArrayConvertor : JsonConverter
+        {
+            public override bool CanConvert(Type objectType)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+            {
+                return new byte[] { 0, 1, 2 };
+            }
+
+            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+            {
+                writer.WriteValue("[0, 1, 2]");
+            }
+        }
+
         public class _c_complex
         {
             public string s_str_ = "hello";
+
+            [JsonConverter(typeof(ByteArrayConvertor))]
             public int[] s_byt_ = { 0, 1, 2, 3, 4, 5, 6, 7 };
         }
 
