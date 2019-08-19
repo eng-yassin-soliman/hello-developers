@@ -60,6 +60,7 @@ namespace p_hello_api.DAL
         }
         // Connection string: the host where engine resides, DB name, user credentials, etc...
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
         {
             optionsBuilder.UseMySQL("Server=localhost;database=db_arbweb;Uid=root;Pwd=123456aA&");
         }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using p_hello_api.DAL;
+using System.Globalization;
 
 namespace p_hello_api.Controllers
 {
@@ -60,13 +61,51 @@ namespace p_hello_api.Controllers
             goto n_final_;
             }
             _c_member l_mem_ = q_mem_.First();
+            byte[] l_inp_ = Encoding.UTF8.GetBytes(l_mem_.s_uid_.ToString());
+            byte[] l_out_ = _c_security.f_encrypt_(l_inp_);
             // Save the user id at the client’s browser
-            HttpContext.Response.Cookies.Append("c_uid_", l_mem_.s_uid_.ToString());
+            HttpContext.Response.Cookies.Append("c_uid_", BitConverter.ToString(l_out_));
             l_rtr_ = "1"; // Login successful!
         n_final_:
             l_dal_.f_close_(true);
             return l_rtr_;
         }
-
-    }
+        [HttpGet]
+        [Route("myname")]
+        public string f_saymyname_()
+        {
+            string l_rtr_ = string.Empty;
+            // Get the encrypted and hex encoded ID stored in cookies
+            string l_hex_ = Request.Cookies["c_uid_"];
+            if (string.IsNullOrEmpty(l_hex_)) // No cookies
+            {
+                return "من فضلك قم بتسجيل الدخول";
+            }
+            // hex decode it to byte array
+string[] l_hxs_ = l_hex_.Split("-");
+                byte[] l_cph_ = (from i_hex_ in l_hxs_
+                                 select byte.Parse(i_hex_, NumberStyles.HexNumber)).ToArray();
+                // Decrypt the byte array
+                byte[] l_out_ = _c_security.f_decrypt_(l_cph_);
+                string l_str_ = Encoding.UTF8.GetString(l_out_);
+            if (string.IsNullOrEmpty(l_str_)) // Corrupt cookies
+            {
+                return "خطأ فى بيانات تعريف الارتباط";
+            }
+                long l_uid_ = long.Parse(l_str_);
+                    _c_dal l_dal_ = new _c_dal();
+                    l_dal_.f_open_();
+                    l_rtr_ = (from _c_member i_mem_ in l_dal_.t_members
+                              where i_mem_.s_uid_ == l_uid_
+                              select i_mem_.s_nam_).FirstOrDefault();
+                    if (string.IsNullOrEmpty(l_rtr_))
+                    {
+                l_rtr_ ="المستخدم غير مسجل";
+                    goto n_final_;
+                    }
+                n_final_:
+                    l_dal_.f_close_(false);
+                    return l_rtr_;
+                }
+            }
 }
