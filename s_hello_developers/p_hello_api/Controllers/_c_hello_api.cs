@@ -1,8 +1,11 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 
 namespace p_hello_api
 {
@@ -36,43 +39,22 @@ namespace p_hello_api
             return l_str_.ToString();
         }
 
-        class ffff
-        {
-            [JsonConverter(typeof(ByteArrayConvertor))]
-            public byte[] l_byt_ = { 0, 1, 2, 3 };
-        }
 
-        public class ByteArrayConvertor : JsonConverter
-        {
-            public override bool CanConvert(Type objectType)
-            {
-                throw new NotImplementedException();
-            }
-
-            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-            {
-                return new byte[] { 0, 1, 2 };
-            }
-
-            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-            {
-                writer.WriteValue("[0, 1, 2]");
-            }
-        }
-
+        // Sending and recieving complex objects as JSON
         public class _c_complex
         {
-            public string s_str_ = "hello";
+            public string s_str_ = string.Empty;
 
-            [JsonConverter(typeof(ByteArrayConvertor))]
-            public int[] s_byt_ = { 0, 1, 2, 3, 4, 5, 6, 7 };
+            // Workaround for proper serializing of byte array
+            [JsonConverter(typeof(_c_js_ar_byte))]
+            public byte[] s_byt_ = { };
         }
 
         [HttpPost]
-        [Route("base64")]
-        public _c_complex f_base64_()
+        [Route("json")]
+        public _c_complex f_json_(_c_complex p_cpx_)
         {
-            return new _c_complex();
+            return p_cpx_; // Return the same object recieved!
         }
     }
 }

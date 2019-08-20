@@ -17,7 +17,13 @@ namespace p_hello_api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services
+                .AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddJsonOptions(p_opt_ =>
+                {
+                    p_opt_.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+                });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
