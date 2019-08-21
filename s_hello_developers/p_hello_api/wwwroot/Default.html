@@ -2,35 +2,34 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Hello API</title>
-    <!--External Style Sheet Files-->
-    <link rel="stylesheet" type="text/css" href="css/_s_reset.css">
+    <title>Hello API</title> <!--External Style Sheet Files-->
+    <link rel ="stylesheet" type="text/css" href="css/_s_reset.css">
     <!--Internal Style Sheet-->
-    <style type="text/css">
+    <style type ="text/css">
         ._text
         {
             width: 400px;
             height: 300px;
             margin: 20px;
             padding: 10px;
-            border: solid 1px silver
+            border: solid 1px silver    
 
-        }
-        ._button
-        {
+        } 
+        ._button       
+        { 
             width: 100px;
             background-color: wheat;
             margin: 20px;
             padding: 10px;
             text-align: center;
-            display: inline       
+            display: inline
 
         }
-    </style>
+        </style>
     <!--External Script File-->
-    <script type="text/javascript" src="js/_j_post.js"></script>
+    <script type ="text/javascript" src="js/_j_post.js"></script>
     <!--Internal Script-->
-    <script type="text/javascript">
+    <script type ="text/javascript">
         // Post the message to server
         function v_send_(p_url_)
         {
@@ -41,8 +40,7 @@
         function v_success_(p_rsp_)
         {
             document.getElementById('b_rsp_').value = p_rsp_;
-        }
-        // Handle the response on error
+        } // Handle the response on error
         function v_error_(p_rsp_)
         {
             alert('Error');
@@ -50,11 +48,10 @@
     </script>
 </head>
 <body>
-    <textarea id="b_req_" class="_text"> Write Request Here!</textarea>
-    <textarea id="b_rsp_" class="_text">Response Will Show Here!</textarea>
+    <textarea id ="b_req_" class="_text">Write Request Here!</textarea>
+    <textarea id ="b_rsp_" class="_text">Response Will Show Here!</textarea>
     <br />
-    <div class="_button" onclick="v_send_('hello/api/text')">Show text!</div>
-    <div class="_button" onclick="v_send_('hello/api/byte')">Show bytes!</div>
-    
+    <div class ="_button" onclick="v_send_('hello/api/text')">Show text!</div>
+    <div class ="_button" onclick="v_send_('hello/api/byte')">Show bytes!</div>
 </body>
 </html>
