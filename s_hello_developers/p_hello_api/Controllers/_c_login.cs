@@ -24,25 +24,28 @@ namespace p_hello_api.Controllers
 
 
             if (p_mem_.s_pas_ == null | p_mem_.s_pas_.Length < 6 | p_mem_.s_pas_.Length > 30)
-            {return"كلمة المرور يجب ألا تقل عن 6 أحرف و ألا تزيد عن 30 حرف"; }
-                 
+            { return "كلمة المرور يجب ألا تقل عن 6 أحرف و ألا تزيد عن 30 حرف"; }
+
             _c_dal l_dal_ = new _c_dal();
-                    l_dal_.f_open_();
-                    _c_member l_mem_ = new _c_member();
-                    l_mem_.s_nam_ = p_mem_.s_nam_;
-                    l_mem_.s_pas_ = p_mem_.s_pas_;
-                    l_dal_.Entry(l_mem_).State = EntityState.Added;
-                    if (!l_dal_.f_save_())
-                    {
-                        l_dal_.f_close_(false);
-                        return l_dal_.s_err_;
-                    }
-                    if (!l_dal_.f_close_(true))
-                    {
-                        return "Error";
-                    }
-                    return "1"; // OK
-                }
+            l_dal_.f_open_();
+            _c_member l_mem_ = new _c_member();
+            l_mem_.s_nam_ = p_mem_.s_nam_;
+          byte[] l_byt_ = Encoding.UTF8.GetBytes(p_mem_.s_pas_); // Get the password bytes
+byte[] l_hsh_ = _c_security.f_hash_(l_byt_); // Hash the password
+string l_pas_ = BitConverter.ToString(l_hsh_); // hex encoded hash
+l_mem_.s_pas_ = l_pas_;
+            l_dal_.Entry(l_mem_).State = EntityState.Added;
+            if (!l_dal_.f_save_())
+            {
+                l_dal_.f_close_(false);
+                return l_dal_.s_err_;
+            }
+            if (!l_dal_.f_close_(true))
+            {
+                return "Error";
+            }
+            return "1"; // OK
+        }
         [HttpPost]
         [Route("login")]
         public string f_login_(_c_member p_mem_)
@@ -50,15 +53,19 @@ namespace p_hello_api.Controllers
             string l_rtr_ = string.Empty; // Message to return
             _c_dal l_dal_ = new _c_dal();
             l_dal_.f_open_();
+            byte[] l_byt_ = Encoding.UTF8.GetBytes(p_mem_.s_pas_); // Get the password bytes
+            byte[] l_hsh_ = _c_security.f_hash_(l_byt_); // Hash the password
+            string l_pas_ = BitConverter.ToString(l_hsh_); // hex encoded hash
             _c_member[] q_mem_ = (from _c_member i_mem_ in l_dal_.t_members
                                   where
                                   i_mem_.s_nam_ == p_mem_.s_nam_ &&
-                                  i_mem_.s_pas_ == p_mem_.s_pas_
+                                  i_mem_.s_pas_ == l_pas_
                                   select i_mem_).ToArray();
+
             if (!q_mem_.Any())
             {
                 l_rtr_ = "خطأ فى الاسم أو كلمة المرور";
-            goto n_final_;
+                goto n_final_;
             }
             _c_member l_mem_ = q_mem_.First();
             byte[] l_inp_ = Encoding.UTF8.GetBytes(l_mem_.s_uid_.ToString());
@@ -82,30 +89,30 @@ namespace p_hello_api.Controllers
                 return "من فضلك قم بتسجيل الدخول";
             }
             // hex decode it to byte array
-string[] l_hxs_ = l_hex_.Split("-");
-                byte[] l_cph_ = (from i_hex_ in l_hxs_
-                                 select byte.Parse(i_hex_, NumberStyles.HexNumber)).ToArray();
-                // Decrypt the byte array
-                byte[] l_out_ = _c_security.f_decrypt_(l_cph_);
-                string l_str_ = Encoding.UTF8.GetString(l_out_);
+            string[] l_hxs_ = l_hex_.Split("-");
+            byte[] l_cph_ = (from i_hex_ in l_hxs_
+                             select byte.Parse(i_hex_, NumberStyles.HexNumber)).ToArray();
+            // Decrypt the byte array
+            byte[] l_out_ = _c_security.f_decrypt_(l_cph_);
+            string l_str_ = Encoding.UTF8.GetString(l_out_);
             if (string.IsNullOrEmpty(l_str_)) // Corrupt cookies
             {
                 return "خطأ فى بيانات تعريف الارتباط";
             }
-                long l_uid_ = long.Parse(l_str_);
-                    _c_dal l_dal_ = new _c_dal();
-                    l_dal_.f_open_();
-                    l_rtr_ = (from _c_member i_mem_ in l_dal_.t_members
-                              where i_mem_.s_uid_ == l_uid_
-                              select i_mem_.s_nam_).FirstOrDefault();
-                    if (string.IsNullOrEmpty(l_rtr_))
-                    {
-                l_rtr_ ="المستخدم غير مسجل";
-                    goto n_final_;
-                    }
-                n_final_:
-                    l_dal_.f_close_(false);
-                    return l_rtr_;
-                }
+            long l_uid_ = long.Parse(l_str_);
+            _c_dal l_dal_ = new _c_dal();
+            l_dal_.f_open_();
+            l_rtr_ = (from _c_member i_mem_ in l_dal_.t_members
+                      where i_mem_.s_uid_ == l_uid_
+                      select i_mem_.s_nam_).FirstOrDefault();
+            if (string.IsNullOrEmpty(l_rtr_))
+            {
+                l_rtr_ = "المستخدم غير مسجل";
+                goto n_final_;
             }
+        n_final_:
+            l_dal_.f_close_(false);
+            return l_rtr_;
+        }
+    }
 }
