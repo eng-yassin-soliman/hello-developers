@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using p_hello_api.DAL;
+using System.Globalization;
 
 namespace p_hello_api.controllers
 {
@@ -31,7 +32,10 @@ namespace p_hello_api.controllers
             l_dal_.f_open_();
             _c_member l_mem_ = new _c_member();
             l_mem_.s_nam_ = p_mem_.s_nam_;
-            l_mem_.s_pas_ = p_mem_.s_pas_;
+            byte[] l_byt_ = Encoding.UTF8.GetBytes(p_mem_.s_pas_);  // Get the password bytes
+            byte[] l_hsh_ = _c_security.f_hash_(l_byt_);            // Hash the password
+            string l_pas_ = BitConverter.ToString(l_hsh_);          // hex encoded hash   
+            l_mem_.s_pas_ = l_pas_;
             l_dal_.Entry(l_mem_).State = EntityState.Added;
             if (!l_dal_.f_save_())
             {
@@ -47,15 +51,19 @@ namespace p_hello_api.controllers
 
         [HttpPost]
         [Route("login")]
-        public string f_login_ (_c_member p_mem_)
+        public string f_login_(_c_member p_mem_)
         {
             string l_rtr_ = string.Empty; // Message to return  
+            byte[] l_byt_ = Encoding.UTF8.GetBytes(p_mem_.s_pas_);  // Get the password bytes
+            byte[] l_hsh_ = _c_security.f_hash_(l_byt_);            // Hash the password
+            string l_pas_ = BitConverter.ToString(l_hsh_);          // hex encoded hash
             _c_dal l_dal_ = new _c_dal();
             l_dal_.f_open_();
             _c_member[] q_mem_ = (from _c_member i_mem_ in l_dal_.t_members
                                   where
 i_mem_.s_nam_ == p_mem_.s_nam_ &&
-i_mem_.s_pas_ == p_mem_.s_pas_
+i_mem_.s_pas_ == l_pas_
+
                                   select i_mem_).ToArray();
             if (!q_mem_.Any())
             {
@@ -63,11 +71,46 @@ i_mem_.s_pas_ == p_mem_.s_pas_
                 goto n_final_;
             }
             _c_member l_mem_ = q_mem_.First();
-            // Save the user id at the client’s browser     
-            HttpContext.Response.Cookies.Append("c_uid_", l_mem_.s_uid_.ToString());
+            byte[] l_inp_ = Encoding.UTF8.GetBytes(l_mem_.s_uid_.ToString());
+            byte[] l_out_ = _c_security.f_encrypt_(l_inp_);
+            // Save the user id at the client’s browser 
+            HttpContext.Response.Cookies.Append("c_uid_", BitConverter.ToString(l_out_));
             l_rtr_ = "1";   // Login successful!   
         n_final_:
             l_dal_.f_close_(true);
+            return l_rtr_;
+        }
+        [HttpGet]
+        [Route("myname")]
+        public string f_saymyname_()
+        {
+            string l_rtr_ = string.Empty;
+            // Get the encrypted and hex encoded ID stored in cookies
+            string l_hex_ = Request.Cookies["c_uid_"];
+            if (string.IsNullOrEmpty(l_hex_))       // No cookies         
+            {
+                return "منفضلك قم بتسجيل الدخول";
+            } // hex decode it to byte array
+            string[] l_hxs_ = l_hex_.Split("-");
+            byte[] l_cph_ = (from i_hex_ in l_hxs_
+                             select byte.Parse(i_hex_, NumberStyles.HexNumber)).ToArray();
+            // Decrypt the byte array
+            byte[] l_out_ = _c_security.f_decrypt_(l_cph_);
+            string l_str_ = Encoding.UTF8.GetString(l_out_);
+            if (string.IsNullOrEmpty(l_str_))       // Corrupt cookies    
+            {
+                return "خطأ في بيانات تعريف الارتباط";
+            }
+            long l_uid_ = long.Parse(l_str_);
+            _c_dal l_dal_ = new _c_dal();
+            l_dal_.f_open_();
+            l_rtr_ = (from _c_member i_mem_ in l_dal_.t_members where i_mem_.s_uid_ == l_uid_ select i_mem_.s_nam_).FirstOrDefault();
+            if (string.IsNullOrEmpty(l_rtr_))
+            {
+                l_rtr_ = "المستخدم غير مسجل"; goto n_final_;
+            }
+        n_final_:
+            l_dal_.f_close_(false);
             return l_rtr_;
         }
     }

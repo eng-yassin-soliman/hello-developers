@@ -55,7 +55,9 @@
             // On fail, show the message
             if(p_rsp_ != '1')
             { alert(p_rsp_); return; }
-            alert('تمتسجيلالدخول!');
+            alert(' تم تسجيل الدخول!');
+            window.location.href = 'login/myname';  
+
         }
         // Handle the response on error
         function v_error_(p_rsp_)
