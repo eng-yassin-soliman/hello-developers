@@ -18,7 +18,7 @@ namespace p_arbweb
             try
             {
                 Database.EnsureCreated();   // Create database if no created
-                Database.BeginTransaction(IsolationLevel.Serializable);
+                s_tra_ = Database.BeginTransaction(IsolationLevel.Serializable);
                 return true;
             }
             catch (Exception p_exp_)
