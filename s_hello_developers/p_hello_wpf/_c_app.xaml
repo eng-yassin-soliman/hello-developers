@@ -5,4 +5,4 @@
              ShutdownMode="OnExplicitShutdown">
     
     <Application.Resources></Application.Resources>
-</Application>
+</Application> 
