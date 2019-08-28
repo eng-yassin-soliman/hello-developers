@@ -93,6 +93,7 @@ namespace p_hello_wpf
         protected override void OnContentRendered(EventArgs p_arg_)
         {
             base.OnContentRendered(p_arg_);
+
             // اضافة مربعات النص وكدة
             b_num_.Checked += v_mode_changed_;
             b_num_.Unchecked += v_mode_changed_;

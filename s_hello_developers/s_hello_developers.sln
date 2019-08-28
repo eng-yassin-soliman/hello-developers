@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "p_hello_api", "p_hello_api\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "p_arbweb", "p_arbweb\p_arbweb.csproj", "{C7939105-0510-484E-9677-F198ACBD2E0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p_hello_xamarin.Android", "p_hello_xamarin\p_hello_xamarin.Android\p_hello_xamarin.Android.csproj", "{17675F53-13DF-4295-9BF4-F06E23E9518A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p_hello_xamarin", "p_hello_xamarin\p_hello_xamarin\p_hello_xamarin.csproj", "{861F32B5-9A1B-4F8D-BC6A-B8B48FEC11C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,16 @@ Global
 		{C7939105-0510-484E-9677-F198ACBD2E0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7939105-0510-484E-9677-F198ACBD2E0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7939105-0510-484E-9677-F198ACBD2E0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17675F53-13DF-4295-9BF4-F06E23E9518A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17675F53-13DF-4295-9BF4-F06E23E9518A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17675F53-13DF-4295-9BF4-F06E23E9518A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{17675F53-13DF-4295-9BF4-F06E23E9518A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17675F53-13DF-4295-9BF4-F06E23E9518A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17675F53-13DF-4295-9BF4-F06E23E9518A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{861F32B5-9A1B-4F8D-BC6A-B8B48FEC11C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{861F32B5-9A1B-4F8D-BC6A-B8B48FEC11C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{861F32B5-9A1B-4F8D-BC6A-B8B48FEC11C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{861F32B5-9A1B-4F8D-BC6A-B8B48FEC11C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
