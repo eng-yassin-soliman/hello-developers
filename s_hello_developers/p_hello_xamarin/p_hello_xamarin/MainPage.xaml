@@ -6,13 +6,17 @@
              mc:Ignorable="d"
              x:Class="p_hello_xamarin.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="السلام عليكم" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <!--A raw that takes all available space-->
+            <RowDefinition Height="*" />
+            <!--A raw that takes the height of its content-->
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-        <Button x:Name="b_clk_" Text="التقط صورة"></Button>
-    </StackLayout>
-
+        <Image x:Name="b_img_" />
+        <Button x:Name="b_cap_" Grid.Row="1" Text="التقط صورة"></Button>
+        <Button x:Name="b_snd_" Grid.Row="2" Text="إرسل الصورة"></Button>
+    </Grid>
 </ContentPage>
