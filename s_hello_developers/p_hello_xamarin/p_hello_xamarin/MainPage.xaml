@@ -13,7 +13,7 @@
             <!--A raw that takes the height of its content-->
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />            
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Image x:Name="b_pic_" />

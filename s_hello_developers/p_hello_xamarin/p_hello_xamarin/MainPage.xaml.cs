@@ -11,7 +11,7 @@ using System.Threading;
 
 namespace p_hello_xamarin
 {
-    [DesignTimeVisible(true)]
+    [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
         MediaFile s_pic_;
