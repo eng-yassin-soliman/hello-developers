@@ -5,15 +5,11 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
-using System.Net.Http;
 using System.Collections.Generic;
-using Yandex.Translator;
 
 namespace p_hello_xamarin
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [DesignTimeVisible(false)]
+    [DesignTimeVisible(true)]
     public partial class MainPage : ContentPage
     {
         MediaFile s_pic_;
@@ -25,7 +21,8 @@ namespace p_hello_xamarin
             InitializeComponent();
 
             b_cap_.Clicked += v_capture_;
-            b_snd_.Clicked += v_send_;
+            b_img_.Clicked += v_image_;
+            b_txt_.Clicked += v_text_;
         }
 
         async void v_capture_(object p_snd_, EventArgs p_arg_)
@@ -39,13 +36,13 @@ namespace p_hello_xamarin
 
             if (s_pic_ == null) { return; }
 
-            b_img_.Source = ImageSource.FromStream(() =>
+            b_pic_.Source = ImageSource.FromStream(() =>
             {
                 return s_pic_.GetStream();
             });
         }
 
-        async void v_send_(object p_snd_, EventArgs p_arg_)
+        async void v_image_(object p_snd_, EventArgs p_arg_)
         {
             // Submit the image to Azure's Computer Vision API
             ComputerVisionClient l_vis_ = new ComputerVisionClient(new ApiKeyServiceClientCredentials(s_key_))
@@ -69,6 +66,11 @@ namespace p_hello_xamarin
 
             string l_tra_ = _c_translation.f_translate_(l_des_);
             await DisplayAlert("الكاميرا", l_tra_, "Ok");
+        }
+
+        async void v_text_(object p_snd_, EventArgs p_arg_)
+        {
+
         }
     }
 }
