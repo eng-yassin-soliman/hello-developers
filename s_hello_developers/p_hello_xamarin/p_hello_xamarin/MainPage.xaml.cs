@@ -6,6 +6,8 @@ using Xamarin.Forms;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Threading;
 
 namespace p_hello_xamarin
 {
@@ -27,7 +29,6 @@ namespace p_hello_xamarin
 
         async void v_capture_(object p_snd_, EventArgs p_arg_)
         {
-            //await CrossMedia.Current.Initialize();
             s_pic_ = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
             {
                 PhotoSize = PhotoSize.Custom,   // Resize to 10% of original
@@ -70,7 +71,25 @@ namespace p_hello_xamarin
 
         async void v_text_(object p_snd_, EventArgs p_arg_)
         {
+            ComputerVisionClient l_vis_ = new ComputerVisionClient(new ApiKeyServiceClientCredentials(s_key_))
+            { Endpoint = s_end_ };
 
+            BatchReadFileInStreamHeaders l_hed_ = 
+                await l_vis_.BatchReadFileInStreamAsync(s_pic_.GetStream());
+
+            string l_oid_ = l_hed_.OperationLocation.ToString().Substring(l_hed_.OperationLocation.Length - 36);
+
+            Thread.Sleep(4000);
+
+            ReadOperationResult l_res_ = await l_vis_.GetReadOperationResultAsync(l_oid_);
+
+            foreach (TextRecognitionResult i_res_ in l_res_.RecognitionResults)
+            {
+                foreach (Line i_lin_ in i_res_.Lines)
+                {
+                    await DisplayAlert("الكاميرا", i_lin_.Text, "Ok");
+                }
+            }
         }
     }
 }
