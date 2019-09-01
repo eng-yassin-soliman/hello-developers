@@ -13,7 +13,7 @@ namespace p_hello_xamarin
 {
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
-    {
+    { 
         MediaFile s_pic_;
         string s_key_ = "c3318aca676c4592adc99af635a0ced6";
         string s_end_ = "https://westcentralus.api.cognitive.microsoft.com";
