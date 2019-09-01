@@ -6,7 +6,6 @@ using Xamarin.Forms;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Threading;
 
 namespace p_hello_xamarin
