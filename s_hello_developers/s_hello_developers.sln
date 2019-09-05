@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p_hello_xamarin.Android", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "p_hello_xamarin", "p_hello_xamarin\p_hello_xamarin\p_hello_xamarin.csproj", "{861F32B5-9A1B-4F8D-BC6A-B8B48FEC11C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hello_hybrid.Android", "hello_hybrid\hello_hybrid.Android\hello_hybrid.Android.csproj", "{E302C63B-1016-4EB7-A981-2AD03EA2F942}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hello_hybrid", "hello_hybrid\hello_hybrid\hello_hybrid.csproj", "{6046B30F-8E9A-4AE7-9BE6-F3DFA00DA03D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,16 @@ Global
 		{861F32B5-9A1B-4F8D-BC6A-B8B48FEC11C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{861F32B5-9A1B-4F8D-BC6A-B8B48FEC11C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{861F32B5-9A1B-4F8D-BC6A-B8B48FEC11C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E302C63B-1016-4EB7-A981-2AD03EA2F942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E302C63B-1016-4EB7-A981-2AD03EA2F942}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E302C63B-1016-4EB7-A981-2AD03EA2F942}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E302C63B-1016-4EB7-A981-2AD03EA2F942}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E302C63B-1016-4EB7-A981-2AD03EA2F942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E302C63B-1016-4EB7-A981-2AD03EA2F942}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{6046B30F-8E9A-4AE7-9BE6-F3DFA00DA03D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6046B30F-8E9A-4AE7-9BE6-F3DFA00DA03D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6046B30F-8E9A-4AE7-9BE6-F3DFA00DA03D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6046B30F-8E9A-4AE7-9BE6-F3DFA00DA03D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
