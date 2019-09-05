@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "p_hello_api", "p_hello_api\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p_hello_xamarin.Android", "p_hello_xamarin\p_hello_xamarin.Android\p_hello_xamarin.Android.csproj", "{63F2C44C-BC34-4F8D-9D02-6E8A46053380}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p_hello_xamarin", "p_hello_xamarin\p_hello_xamarin\p_hello_xamarin.csproj", "{14D203B8-2A7C-4339-A6D1-5E5119A6C0B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "p_hello_xamarin", "p_hello_xamarin\p_hello_xamarin\p_hello_xamarin.csproj", "{14D203B8-2A7C-4339-A6D1-5E5119A6C0B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
