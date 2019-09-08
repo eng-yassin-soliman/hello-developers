@@ -10,9 +10,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="html\index.html" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EmbedIO" Version="2.9.2" />
     <PackageReference Include="Xamarin.Forms" Version="4.1.0.555618" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="XLabs.Forms" Version="2.0.5782" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="html\index.html" />
   </ItemGroup>
 </Project>
