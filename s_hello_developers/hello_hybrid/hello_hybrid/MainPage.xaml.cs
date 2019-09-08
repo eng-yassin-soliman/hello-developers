@@ -12,5 +12,11 @@ namespace hello_hybrid
         {
             InitializeComponent();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            b_web_.Source = "https://arbweb.org";
+        }
     }
 }
