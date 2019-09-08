@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p_ArabiCAD", "p_ArabiCAD\p_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p_hello_cad", "p_hello_cad\p_hello_cad.csproj", "{C15B1F87-5768-4ABA-AA7E-6EAB709A24A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p_hello_api", "p_hello_api\p_hello_api.csproj", "{ABE41105-3521-457D-8A19-BA911D428CA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "p_hello_api", "p_hello_api\p_hello_api.csproj", "{ABE41105-3521-457D-8A19-BA911D428CA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p_hello_Bootstrap", "p_hello_Bootstrap\p_hello_Bootstrap.csproj", "{FE839553-9976-4FCD-98B0-195A4B357801}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{ABE41105-3521-457D-8A19-BA911D428CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABE41105-3521-457D-8A19-BA911D428CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABE41105-3521-457D-8A19-BA911D428CA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE839553-9976-4FCD-98B0-195A4B357801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE839553-9976-4FCD-98B0-195A4B357801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE839553-9976-4FCD-98B0-195A4B357801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE839553-9976-4FCD-98B0-195A4B357801}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
