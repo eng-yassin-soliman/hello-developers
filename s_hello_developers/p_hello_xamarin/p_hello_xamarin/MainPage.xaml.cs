@@ -38,7 +38,7 @@ namespace p_hello_xamarin
 
             b_pic_.Source = ImageSource.FromStream(() =>
             {
-                return s_pic_.GetStream();
+                return ;
             });
         }
 

@@ -21,6 +21,7 @@ namespace p_hello_xamarin.Droid
             global::Xamarin.Forms.Forms.Init(this, p_bnd_);
             LoadApplication(new App());
         }
+
         public override void OnRequestPermissionsResult(
             int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
