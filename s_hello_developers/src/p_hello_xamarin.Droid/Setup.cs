@@ -1,5 +1,7 @@
 ﻿using Android.App;
+using Java.Lang;
 using MvvmCross.Forms.Platforms.Android.Core;
+using System.Runtime.InteropServices;
 
 #if DEBUG
 [assembly: Application(Debuggable = true)]

@@ -18,6 +18,8 @@ namespace p_hello_xamarin.UI.Pages
         public HomePage()
         {
             InitializeComponent();
+
+            b_btn_.Clicked += v_takepic_;
         }
 
         protected override void OnAppearing()
@@ -29,6 +31,11 @@ namespace p_hello_xamarin.UI.Pages
                 navigationPage.BarTextColor = Color.White;
                 navigationPage.BarBackgroundColor = (Color)Application.Current.Resources["PrimaryColor"];
             }
+        }
+
+        void v_takepic_(object p_snd_, EventArgs p_arg_)
+        {
+            DisplayAlert("arbweb.com", "ok000", "Cancel");
         }
     }
 }

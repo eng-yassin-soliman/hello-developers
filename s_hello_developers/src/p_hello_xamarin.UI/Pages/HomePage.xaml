@@ -7,12 +7,10 @@
     xmlns:local="clr-namespace:p_hello_xamarin.UI.Pages"
     x:Class="p_hello_xamarin.UI.Pages.HomePage"
     xmlns:viewModels="clr-namespace:p_hello_xamarin.Core.ViewModels.Home;assembly=p_hello_xamarin.Core"
-                      Title="Main page">
+                      Title="برنامج التعرف على النصوص">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome!!&#10;App scaffolded with MvxScaffolding"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout x:Name="b_stc_">
+            <Button x:Name="b_btn_" Text="التقاط صورة"></Button>
         </StackLayout>
     </ContentPage.Content>
 </views:MvxContentPage>
