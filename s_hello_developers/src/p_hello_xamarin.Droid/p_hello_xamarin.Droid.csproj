@@ -82,6 +82,9 @@
     <AndroidResource Include="Resources\layout\Toolbar.axml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="LiveXAML">
+      <Version>2.1.73</Version>
+    </PackageReference>
     <PackageReference Include="MvvmCross">
       <Version>6.4.0</Version>
     </PackageReference>

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,8 @@ using Xamarin.Forms.Xaml;
 
 namespace p_hello_xamarin.UI.Pages
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    [DesignTimeVisible(false)]
+    [XamlCompilation(XamlCompilationOptions.Skip)]
     [MvxContentPagePresentation(WrapInNavigationPage = true)]
     public partial class HomePage : MvxContentPage<HomeViewModel>
     {

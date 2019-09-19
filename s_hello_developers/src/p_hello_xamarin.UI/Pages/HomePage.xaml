@@ -7,10 +7,10 @@
     xmlns:local="clr-namespace:p_hello_xamarin.UI.Pages"
     x:Class="p_hello_xamarin.UI.Pages.HomePage"
     xmlns:viewModels="clr-namespace:p_hello_xamarin.Core.ViewModels.Home;assembly=p_hello_xamarin.Core"
-                      Title="برنامج التعرف على النصوص">
+                      Title="برنامج النصوص">
     <ContentPage.Content>
         <StackLayout x:Name="b_stc_">
-            <Button x:Name="b_btn_" Text="التقاط صورة"></Button>
+            <Button x:Name="b_btn_" Text="التقاط"></Button>
         </StackLayout>
     </ContentPage.Content>
 </views:MvxContentPage>
