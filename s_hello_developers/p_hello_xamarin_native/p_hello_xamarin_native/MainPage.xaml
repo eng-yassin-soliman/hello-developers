@@ -30,7 +30,7 @@
                     <Setter Property="BackgroundColor" Value="#444444"/>
                     <Setter Property="TextColor" Value="White"/>
                 </Style>
-                
+
                 <Style TargetType="Button">
                     <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                     <Setter Property="WidthRequest" Value="75" />
@@ -42,12 +42,6 @@
                 </Style>
             </Grid.Resources>
 
-            <skia:SKCanvasView Touch="SKGLView_Touch">
-            </skia:SKCanvasView>
-
-            <skia:SKGLView Touch="SKGLView_Touch">
-            </skia:SKGLView>
-            
             <Label x:Name="b_inp_"
                    Grid.Row="0" Grid.ColumnSpan="4"
                    HeightRequest="40"
@@ -59,49 +53,49 @@
                    HorizontalTextAlignment="End"
                    FontSize="20">0</Label>
 
-            <Button Grid.Row="2" Grid.Column="0" Clicked="v_tap_"
+            <Button Grid.Row="2" Grid.Column="0" Clicked="v_click_"
                     BackgroundColor="Silver" Text="AC"/>
-            <Button Grid.Row="2" Grid.Column="1" Clicked="v_tap_"
+            <Button Grid.Row="2" Grid.Column="1" Clicked="v_click_"
                     BackgroundColor="Silver" Text="("/>
-            <Button Grid.Row="2" Grid.Column="2" Clicked="v_tap_"
+            <Button Grid.Row="2" Grid.Column="2" Clicked="v_click_"
                     BackgroundColor="Silver" Text=")"/>
-            <Button Grid.Row="2" Grid.Column="3" Clicked="v_tap_"
+            <Button Grid.Row="2" Grid.Column="3" Clicked="v_click_"
                     BackgroundColor="LimeGreen" Text="√"/>
 
-            <Button Grid.Row="3" Grid.Column="0" Clicked="v_tap_"
+            <Button Grid.Row="3" Grid.Column="0" Clicked="v_click_"
                     Text="7"/>
-            <Button Grid.Row="3" Grid.Column="1" Clicked="v_tap_"
+            <Button Grid.Row="3" Grid.Column="1" Clicked="v_click_"
                     Text="8"/>
-            <Button Grid.Row="3" Grid.Column="2" Clicked="v_tap_"
+            <Button Grid.Row="3" Grid.Column="2" Clicked="v_click_"
                     Text="9"/>
-            <Button Grid.Row="3" Grid.Column="3" Clicked="v_tap_"
+            <Button Grid.Row="3" Grid.Column="3" Clicked="v_click_"
                     BackgroundColor="LimeGreen" Text="+"/>
 
-            <Button Grid.Row="4" Grid.Column="0" Clicked="v_tap_"
+            <Button Grid.Row="4" Grid.Column="0" Clicked="v_click_"
                     Text="4"/>
-            <Button Grid.Row="4" Grid.Column="1" Clicked="v_tap_"
+            <Button Grid.Row="4" Grid.Column="1" Clicked="v_click_"
                     Text="5"/>
-            <Button Grid.Row="4" Grid.Column="2" Clicked="v_tap_"
+            <Button Grid.Row="4" Grid.Column="2" Clicked="v_click_"
                     Text="6"/>
-            <Button Grid.Row="4" Grid.Column="3" Clicked="v_tap_"
+            <Button Grid.Row="4" Grid.Column="3" Clicked="v_click_"
                     BackgroundColor="LimeGreen" Text="-"/>
 
-            <Button Grid.Row="5" Grid.Column="0" Clicked="v_tap_"
+            <Button Grid.Row="5" Grid.Column="0" Clicked="v_click_"
                     Text="1"/>
-            <Button Grid.Row="5" Grid.Column="1" Clicked="v_tap_"
+            <Button Grid.Row="5" Grid.Column="1" Clicked="v_click_"
                     Text="2"/>
-            <Button Grid.Row="5" Grid.Column="2" Clicked="v_tap_"
+            <Button Grid.Row="5" Grid.Column="2" Clicked="v_click_"
                     Text="3"/>
-            <Button Grid.Row="5" Grid.Column="3" Clicked="v_tap_"
+            <Button Grid.Row="5" Grid.Column="3" Clicked="v_click_"
                     BackgroundColor="LimeGreen" Text="×"/>
 
-            <Button Grid.Row="6" Grid.Column="0" Clicked="v_tap_"
+            <Button Grid.Row="6" Grid.Column="0" Clicked="v_click_"
                     Text="0"/>
-            <Button Grid.Row="6" Grid.Column="1" Clicked="v_tap_"
+            <Button Grid.Row="6" Grid.Column="1" Clicked="v_click_"
                     Text="."/>
-            <Button Grid.Row="6" Grid.Column="2" Clicked="v_tap_"
+            <Button Grid.Row="6" Grid.Column="2" Clicked="v_click_"
                     Text="⇦"/>
-            <Button Grid.Row="6" Grid.Column="3" Clicked="v_tap_"
+            <Button Grid.Row="6" Grid.Column="3" Clicked="v_click_"
                     BackgroundColor="LimeGreen" Text="÷"/>
         </Grid>
     </Grid>

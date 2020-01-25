@@ -59,7 +59,7 @@ namespace p_hello_xamarin_native
             }
         }
 
-        private void v_tap_(object sender, EventArgs e)
+        void v_click_(object sender, EventArgs e)
         {
             Button l_btn_ = (Button)sender;
 
@@ -105,11 +105,6 @@ namespace p_hello_xamarin_native
 
             Expression l_exp_ = new Expression(b_inp_.Text);
             b_out_.Text = l_exp_.calculate().ToString();
-        }
-
-        private void SKGLView_Touch(object sender, SkiaSharp.Views.Forms.SKTouchEventArgs e)
-        {
-
         }
     }
 }
