@@ -42,13 +42,18 @@ namespace p_hello_xamarin
                 { l_wdt_ = Height * l_asp_; }
             }
 
+            if (l_wdt_ < 0) { return; }
+
             double l_scl_ = l_wdt_ / 300.0;
 
-            b_inp_.HeightRequest = 40.0 * l_scl_;
-            b_out_.HeightRequest = 60.0 * l_scl_;
+            b_grd_.RowDefinitions[0].Height = new GridLength(60.0 * l_scl_);
+            b_grd_.RowDefinitions[1].Height = new GridLength(50.0 * l_scl_);
 
-            b_inp_.FontSize = 16.0 * l_scl_;
-            b_out_.FontSize = 20.0 * l_scl_;
+            b_inp_.FontSize = 20.0 * l_scl_;
+            b_out_.FontSize = 32.0 * l_scl_;
+
+            b_inp_.Padding = 5.0 * l_scl_;
+            b_out_.Padding = 5.0 * l_scl_;
 
             for (byte i_lbl_ = 2; i_lbl_ < b_grd_.Children.Count; i_lbl_ += 1)
             {

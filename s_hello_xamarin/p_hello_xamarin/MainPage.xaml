@@ -11,8 +11,8 @@
               HorizontalOptions="Center">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
@@ -26,7 +26,7 @@
             <Grid.Resources>
                 <Style TargetType="Label">
                     <Setter Property="Padding" Value="5"/>
-                    <Setter Property="BackgroundColor" Value="#444444"/>
+                    <Setter Property="BackgroundColor" Value="#222222"/>
                     <Setter Property="TextColor" Value="White"/>
                 </Style>
 
@@ -35,7 +35,7 @@
                     <Setter Property="WidthRequest" Value="75" />
                     <Setter Property="HeightRequest" Value="75" />
                     <Setter Property="FontSize" Value="20" />
-                    <Setter Property="BorderColor" Value="#444444" />
+                    <Setter Property="BorderColor" Value="#666666" />
                     <Setter Property="BorderWidth" Value="0.5" />
                     <Setter Property="BackgroundColor" Value="LightGray" />
                 </Style>
@@ -43,14 +43,16 @@
 
             <Label x:Name="b_inp_"
                    Grid.Row="0" Grid.ColumnSpan="4"
-                   HeightRequest="40"
-                   FontSize="16"/>
+                   VerticalTextAlignment="End"
+                   MaxLines="1"
+                   FontSize="20"/>
 
             <Label x:Name="b_out_"
                    Grid.Row="1" Grid.ColumnSpan="4"
-                   HeightRequest="60"
+                   VerticalTextAlignment="Center"
                    HorizontalTextAlignment="End"
-                   FontSize="20">0</Label>
+                   MaxLines="1"
+                   FontSize="30">0</Label>
 
             <Button Grid.Row="2" Grid.Column="0" Clicked="v_click_"
                     BackgroundColor="Silver" Text="AC"/>
