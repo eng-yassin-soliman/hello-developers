@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             x:Class="p_hello_xamarin_native.MainPage">
+
+    <Grid BackgroundColor="Black">
+        <Grid x:Name="b_grd_" 
+              RowSpacing="0" ColumnSpacing="0"
+              VerticalOptions="Start"
+              HorizontalOptions="Center">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="Padding" Value="5"/>
+                    <Setter Property="BackgroundColor" Value="#444444"/>
+                    <Setter Property="TextColor" Value="White"/>
+                </Style>
+                
+                <Style TargetType="Button">
+                    <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                    <Setter Property="WidthRequest" Value="75" />
+                    <Setter Property="HeightRequest" Value="75" />
+                    <Setter Property="FontSize" Value="20" />
+                    <Setter Property="BorderColor" Value="#444444" />
+                    <Setter Property="BorderWidth" Value="0.5" />
+                    <Setter Property="BackgroundColor" Value="LightGray" />
+                </Style>
+            </Grid.Resources>
+
+            <skia:SKCanvasView Touch="SKGLView_Touch">
+            </skia:SKCanvasView>
+
+            <skia:SKGLView Touch="SKGLView_Touch">
+            </skia:SKGLView>
+            
+            <Label x:Name="b_inp_"
+                   Grid.Row="0" Grid.ColumnSpan="4"
+                   HeightRequest="40"
+                   FontSize="16"/>
+
+            <Label x:Name="b_out_"
+                   Grid.Row="1" Grid.ColumnSpan="4"
+                   HeightRequest="60"
+                   HorizontalTextAlignment="End"
+                   FontSize="20">0</Label>
+
+            <Button Grid.Row="2" Grid.Column="0" Clicked="v_tap_"
+                    BackgroundColor="Silver" Text="AC"/>
+            <Button Grid.Row="2" Grid.Column="1" Clicked="v_tap_"
+                    BackgroundColor="Silver" Text="("/>
+            <Button Grid.Row="2" Grid.Column="2" Clicked="v_tap_"
+                    BackgroundColor="Silver" Text=")"/>
+            <Button Grid.Row="2" Grid.Column="3" Clicked="v_tap_"
+                    BackgroundColor="LimeGreen" Text="√"/>
+
+            <Button Grid.Row="3" Grid.Column="0" Clicked="v_tap_"
+                    Text="7"/>
+            <Button Grid.Row="3" Grid.Column="1" Clicked="v_tap_"
+                    Text="8"/>
+            <Button Grid.Row="3" Grid.Column="2" Clicked="v_tap_"
+                    Text="9"/>
+            <Button Grid.Row="3" Grid.Column="3" Clicked="v_tap_"
+                    BackgroundColor="LimeGreen" Text="+"/>
+
+            <Button Grid.Row="4" Grid.Column="0" Clicked="v_tap_"
+                    Text="4"/>
+            <Button Grid.Row="4" Grid.Column="1" Clicked="v_tap_"
+                    Text="5"/>
+            <Button Grid.Row="4" Grid.Column="2" Clicked="v_tap_"
+                    Text="6"/>
+            <Button Grid.Row="4" Grid.Column="3" Clicked="v_tap_"
+                    BackgroundColor="LimeGreen" Text="-"/>
+
+            <Button Grid.Row="5" Grid.Column="0" Clicked="v_tap_"
+                    Text="1"/>
+            <Button Grid.Row="5" Grid.Column="1" Clicked="v_tap_"
+                    Text="2"/>
+            <Button Grid.Row="5" Grid.Column="2" Clicked="v_tap_"
+                    Text="3"/>
+            <Button Grid.Row="5" Grid.Column="3" Clicked="v_tap_"
+                    BackgroundColor="LimeGreen" Text="×"/>
+
+            <Button Grid.Row="6" Grid.Column="0" Clicked="v_tap_"
+                    Text="0"/>
+            <Button Grid.Row="6" Grid.Column="1" Clicked="v_tap_"
+                    Text="."/>
+            <Button Grid.Row="6" Grid.Column="2" Clicked="v_tap_"
+                    Text="⇦"/>
+            <Button Grid.Row="6" Grid.Column="3" Clicked="v_tap_"
+                    BackgroundColor="LimeGreen" Text="÷"/>
+        </Grid>
+    </Grid>
+</ContentPage>
