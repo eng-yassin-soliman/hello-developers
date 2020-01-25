@@ -26,7 +26,6 @@ namespace p_hello_xamarin
 
         void v_resize_(object p_snd_, EventArgs p_arg_)
         {
-            Size l_siz_ = new Size(300, 475);
             double l_asp_ = 300.0 / 475.0;
             double l_wdt_ = 0;
 
@@ -46,7 +45,7 @@ namespace p_hello_xamarin
 
             double l_scl_ = l_wdt_ / 300.0;
 
-            b_grd_.RowDefinitions[0].Height = new GridLength(60.0 * l_scl_);
+            b_grd_.RowDefinitions[0].Height = new GridLength(50.0 * l_scl_);
             b_grd_.RowDefinitions[1].Height = new GridLength(50.0 * l_scl_);
 
             b_inp_.FontSize = 20.0 * l_scl_;

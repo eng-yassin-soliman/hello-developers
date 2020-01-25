@@ -35,8 +35,6 @@
                     <Setter Property="WidthRequest" Value="75" />
                     <Setter Property="HeightRequest" Value="75" />
                     <Setter Property="FontSize" Value="20" />
-                    <Setter Property="BorderColor" Value="#666666" />
-                    <Setter Property="BorderWidth" Value="0.5" />
                     <Setter Property="BackgroundColor" Value="LightGray" />
                 </Style>
             </Grid.Resources>
