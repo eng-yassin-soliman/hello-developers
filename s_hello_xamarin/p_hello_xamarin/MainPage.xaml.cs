@@ -45,8 +45,8 @@ namespace p_hello_xamarin
 
             double l_scl_ = l_wdt_ / 300.0;
 
-            b_grd_.RowDefinitions[0].Height = new GridLength(50.0 * l_scl_);
-            b_grd_.RowDefinitions[1].Height = new GridLength(50.0 * l_scl_);
+            b_inp_.HeightRequest = 50.0 * l_scl_;
+            b_out_.HeightRequest = 50.0 * l_scl_;
 
             b_inp_.FontSize = 20.0 * l_scl_;
             b_out_.FontSize = 32.0 * l_scl_;

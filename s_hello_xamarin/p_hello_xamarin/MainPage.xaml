@@ -11,9 +11,9 @@
               HorizontalOptions="Center">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -42,6 +42,7 @@
             <Label x:Name="b_inp_"
                    Grid.Row="0" Grid.ColumnSpan="4"
                    VerticalTextAlignment="End"
+                   HeightRequest="50"
                    MaxLines="1"
                    FontSize="20"/>
 
@@ -49,6 +50,7 @@
                    Grid.Row="1" Grid.ColumnSpan="4"
                    VerticalTextAlignment="Center"
                    HorizontalTextAlignment="End"
+                   HeightRequest="50"
                    MaxLines="1"
                    FontSize="30">0</Label>
 
