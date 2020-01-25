@@ -7,7 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
-namespace p_hello_xamarin_native.Droid
+namespace p_hello_xamarin.Droid
 {
     [Activity(Label = "الحاسبة", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity

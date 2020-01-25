@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="ab870ae4-25c9-44f0-890b-05cfed80537d"
-    Publisher="CN=0e2f6e44-b2ec-4de0-a52e-56ae0e9f4385"
+    Name="f5504e4d-bec1-42d0-bd65-8b50cd50d0d6"
+    Publisher="CN=56edbbd3-2e6f-406a-86e4-9c104785d154"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>p_hello_xamarin_native.UWP</DisplayName>
-    <PublisherDisplayName>0e2f6e44-b2ec-4de0-a52e-56ae0e9f4385</PublisherDisplayName>
+    <DisplayName>p_hello_xamarin.UWP</DisplayName>
+    <PublisherDisplayName>56edbbd3-2e6f-406a-86e4-9c104785d154</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="p_hello_xamarin_native.UWP.App">
+      EntryPoint="p_hello_xamarin.UWP.App">
       <uap:VisualElements
-        DisplayName="p_hello_xamarin_native.UWP"
+        DisplayName="p_hello_xamarin.UWP"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="p_hello_xamarin_native.UWP"
+        Description="p_hello_xamarin.UWP"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
           <uap:ShowNameOnTiles>

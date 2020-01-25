@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace p_hello_xamarin_native.UWP
+namespace p_hello_xamarin.UWP
 {
     public sealed partial class MainPage
     {
@@ -21,7 +21,7 @@ namespace p_hello_xamarin_native.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new p_hello_xamarin_native.App());
+            LoadApplication(new p_hello_xamarin.App());
         }
     }
 }

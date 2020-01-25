@@ -9,7 +9,7 @@ using Xamarin.Forms;
 using org.mariuszgromada.math.mxparser;
 using Expression = org.mariuszgromada.math.mxparser.Expression;
 
-namespace p_hello_xamarin_native
+namespace p_hello_xamarin
 {
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
@@ -24,7 +24,7 @@ namespace p_hello_xamarin_native
             mXparser.enableCanonicalRounding();
         }
 
-        void v_resize_(object p_snd_, EventArgs p_arg_) 
+        void v_resize_(object p_snd_, EventArgs p_arg_)
         {
             Size l_siz_ = new Size(300, 475);
             double l_asp_ = 300.0 / 475.0;
@@ -50,7 +50,7 @@ namespace p_hello_xamarin_native
             b_inp_.FontSize = 16.0 * l_scl_;
             b_out_.FontSize = 20.0 * l_scl_;
 
-            for (byte i_lbl_ = 2; i_lbl_ < b_grd_.Children.Count; i_lbl_+=1)
+            for (byte i_lbl_ = 2; i_lbl_ < b_grd_.Children.Count; i_lbl_ += 1)
             {
                 Button l_lbl_ = (Button)b_grd_.Children[i_lbl_];
                 l_lbl_.WidthRequest = 75.0 * l_scl_;
@@ -95,7 +95,7 @@ namespace p_hello_xamarin_native
             v_calculate_();
         }
 
-        void v_calculate_() 
+        void v_calculate_()
         {
             if (string.IsNullOrEmpty(b_inp_.Text))
             {
