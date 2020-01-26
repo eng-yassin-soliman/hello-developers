@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MathParser.org-mXparser">
-      <Version>4.4.1</Version>
+      <Version>4.4.2</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp">
       <Version>1.68.1.1</Version>

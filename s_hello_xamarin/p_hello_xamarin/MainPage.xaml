@@ -36,6 +36,8 @@
                     <Setter Property="HeightRequest" Value="75" />
                     <Setter Property="FontSize" Value="20" />
                     <Setter Property="BackgroundColor" Value="LightGray" />
+                    <Setter Property="BorderWidth" Value="0"/>
+                    <Setter Property="CornerRadius" Value="0"/>
                 </Style>
             </Grid.Resources>
 
