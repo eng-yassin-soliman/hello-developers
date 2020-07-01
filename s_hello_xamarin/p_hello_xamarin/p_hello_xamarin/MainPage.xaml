@@ -3,14 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="p_hello_xamarin.MainPage">
+             x:Class="p_hello_xamarin.MainPage"
+             BackgroundColor="Cornsilk">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+    <StackLayout VerticalOptions="Fill"
+                 HorizontalOptions="Fill"
+                 BackgroundColor="MistyRose"
+                 Margin="30">
+        <Entry x:Name="b_1st_"
+               Text="0.00" BackgroundColor="White"
+               HorizontalOptions="Start" Margin="30"
+               WidthRequest="200"></Entry>
+
+        <Entry x:Name="b_2nd_"
+               Text="0.00" BackgroundColor="White"
+               HorizontalOptions="Start" Margin="30"
+               WidthRequest="200"></Entry>
+
+        <Entry x:Name="b_res_"
+               Text="0.00" BackgroundColor="White"
+               HorizontalOptions="Start" Margin="30"
+               IsReadOnly="True"
+               WidthRequest="200"></Entry>
+
+        <Button Text="Click me!" Margin="30"
+                Clicked="v_clicked_"
+                HorizontalOptions="Start"></Button>
     </StackLayout>
-
 </ContentPage>
