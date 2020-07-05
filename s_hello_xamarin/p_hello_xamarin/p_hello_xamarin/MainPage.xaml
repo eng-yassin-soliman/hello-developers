@@ -8,7 +8,7 @@
 
     <StackLayout VerticalOptions="Fill"
                  HorizontalOptions="Fill"
-                 BackgroundColor="MistyRose"
+                 BackgroundColor="Blue"
                  Margin="30">
         <Entry x:Name="b_1st_"
                Text="0.00" BackgroundColor="White"
