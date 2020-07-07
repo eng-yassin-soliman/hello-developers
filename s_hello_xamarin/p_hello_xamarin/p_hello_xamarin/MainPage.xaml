@@ -11,7 +11,7 @@
                  BackgroundColor="MistyRose"
                  Margin="30">
         <Entry x:Name="b_1st_"
-               Text="0.00" BackgroundColor="White"
+               Text="0.00" BackgroundColor="red"
                HorizontalOptions="Start" Margin="30"
                WidthRequest="200"></Entry>
 
@@ -22,7 +22,7 @@
 
         <Entry x:Name="b_res_"
                Text="0.00" BackgroundColor="White"
-               HorizontalOptions="Start" Margin="30"
+               HorizontalOptions="Start" Margin="50"
                IsReadOnly="True"
                WidthRequest="200"></Entry>
 
