@@ -15,6 +15,7 @@ namespace p_hello_xamarin
     {
         public MainPage()
         {
+
             InitializeComponent();
         }
 
