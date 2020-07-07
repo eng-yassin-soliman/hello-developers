@@ -12,7 +12,7 @@
                  Margin="30">
         <Entry x:Name="b_1st_"
                Text="0.00" BackgroundColor="red"
-               HorizontalOptions="Start" Margin="30"
+               HorizontalOptions="Start " Margin="30"
                WidthRequest="200"></Entry>
 
         <Entry x:Name="b_2nd_"
@@ -25,7 +25,11 @@
                HorizontalOptions="Start" Margin="50"
                IsReadOnly="True"
                WidthRequest="200"></Entry>
-
+        <Entry x:Name="b_res_"
+               Text="0.00" BackgroundColor="Red"
+               HorizontalOptions="Start" Margin="50"
+               IsReadOnly="True"
+               WidthRequest="200"></Entry>
         <Button Text="Click me!" Margin="30"
                 Clicked="v_clicked_"
                 HorizontalOptions="Start"></Button>
