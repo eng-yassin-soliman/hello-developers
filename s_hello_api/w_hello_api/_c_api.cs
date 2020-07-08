@@ -1,9 +1,5 @@
-﻿using System;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace w_hello_api
 {
@@ -19,7 +15,7 @@ namespace w_hello_api
         {
             return DateTime.Now.ToString();
         }
-
+       
         [Route("name")]
         [HttpGet]
         public string f_name_()
