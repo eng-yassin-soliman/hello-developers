@@ -23,8 +23,6 @@ namespace w_hello_api
         [Route("name")]
         [HttpGet]
         public string f_name_()
-        {
-            return "yassin";
-        }
+        { return "yassin"; }
     }
 }
