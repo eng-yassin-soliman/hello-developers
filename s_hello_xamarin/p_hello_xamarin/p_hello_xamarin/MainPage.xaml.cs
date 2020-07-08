@@ -20,8 +20,6 @@ namespace p_hello_xamarin
 
         void v_clicked_(object sender, EventArgs e)
         {
-
-
             try
             {
                 Double l_1st_ = Double.Parse(b_1st_.Text);
