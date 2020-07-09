@@ -1,23 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 
+// 2020-07-09 02:25 PM GMT+2
+
 namespace w_hello_api
 {
     [Route("hello/api")]
     [ApiController]
     public class _c_hello_api : Controller
     {
-        // API
-        // Which does not retur a GUI (HTML for example)
         [Route("date")]
-        [HttpGet]
-        public string f_date_()
+        [HttpPost]
+        public DateTime f_date_(int p_int_, string p_str_)
         {
-            return DateTime.Now.ToString();
+            return DateTime.Now;
         }
        
         [Route("name")]
-        [HttpGet]
+        [HttpPost]
         public string f_name_()
         { return "yassin"; }
     }
