@@ -11,6 +11,7 @@ namespace w_hello_api
     [ApiController]
     public class _c_hello_api : Controller
     {
+        // 07/09/2020
         // API
         // Which does not retur a GUI (HTML for example)
         [Route("date")]
