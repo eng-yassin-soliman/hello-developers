@@ -2,9 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:web="clr-namespace:org.arbweb.xam.ui;assembly=org.arbweb.xam.ui"
              x:Class="p_hello_xamarin.MainPage"
              BackgroundColor="Cornsilk">
-
-    <web:_c_hybridwebview Uri="home.html"/>
 </ContentPage>

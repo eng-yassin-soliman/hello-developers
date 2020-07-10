@@ -122,6 +122,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="org.arbweb.xam.ui">
+      <Version>0.7.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.7.0.1080" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
@@ -131,5 +134,8 @@
       <Project>{6FD3E71F-20E9-4378-8490-F8F64F1C1ECE}</Project>
       <Name>p_hello_xamarin</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\HTML\home.html" />
   </ItemGroup>
 </Project>
