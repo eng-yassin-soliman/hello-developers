@@ -14,14 +14,14 @@ namespace w_hello_api
         // Which does not retur a GUI (HTML for example)
         [Route("date/date/path")]
         [HttpGet]
-        public string f_date_()
+        public string F_date_()
         {
             return DateTime.Now.ToString();
         }
 
         [Route("name")]
         [HttpGet]
-        public string f_name_()
+        public string F_name_()
         { return "AleyEldeen"; }
     }
 }
