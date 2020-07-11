@@ -5,8 +5,27 @@
              x:Class="p_hello_xamarin.MainPage"
              BackgroundColor="Cornsilk">
 
-    <StackLayout Margin="40">
-        <Label Margin="10" Text="Accuracy:"/>
+    <StackLayout Margin="40"
+                 FlowDirection="RightToLeft">
+        
+        <!-- Lat -->
+        <Label Margin="10" Text="خط الطول:"/>
+        <Label Margin="10" x:Name="b_lat_"/>
+
+        <!-- Lng -->
+        <Label Margin="10" Text="خط الطول:"/>
+        <Label Margin="10" x:Name="b_lng_"/>
+
+        <!-- Acc -->
+        <Label Margin="10" Text="خط الطول:"/>
         <Label Margin="10" x:Name="b_acc_"/>
+
+        <!-- Alt -->
+        <Label Margin="10" Text="خط الطول:"/>
+        <Label Margin="10" x:Name="b_alt_"/>
+
+        <!-- Lat -->
+        <Label Margin="10" Text="خط الطول:"/>
+        <Label Margin="10" x:Name="b_aac_"/>
     </StackLayout>
 </ContentPage>
