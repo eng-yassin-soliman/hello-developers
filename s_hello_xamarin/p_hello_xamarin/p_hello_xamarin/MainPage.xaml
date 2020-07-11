@@ -13,19 +13,19 @@
         <Label Margin="10" x:Name="b_lat_"/>
 
         <!-- Lng -->
-        <Label Margin="10" Text="خط الطول:"/>
+        <Label Margin="10" Text="خط العرض:"/>
         <Label Margin="10" x:Name="b_lng_"/>
 
         <!-- Acc -->
-        <Label Margin="10" Text="خط الطول:"/>
+        <Label Margin="10" Text="الخطأ:"/>
         <Label Margin="10" x:Name="b_acc_"/>
 
         <!-- Alt -->
-        <Label Margin="10" Text="خط الطول:"/>
+        <Label Margin="10" Text="الارتفاع:"/>
         <Label Margin="10" x:Name="b_alt_"/>
 
-        <!-- Lat -->
-        <Label Margin="10" Text="خط الطول:"/>
+        <!-- Aac -->
+        <Label Margin="10" Text="الخطأ في الارتفاع:"/>
         <Label Margin="10" x:Name="b_aac_"/>
     </StackLayout>
 </ContentPage>
