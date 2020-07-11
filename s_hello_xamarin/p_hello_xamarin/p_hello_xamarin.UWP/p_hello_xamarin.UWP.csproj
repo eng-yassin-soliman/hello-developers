@@ -144,8 +144,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="org.arbweb.xam.ui">
-      <Version>0.7.1</Version>
+    <PackageReference Include="Plugin.HybridWebView">
+      <Version>1.0.0.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.7.0.1080" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />
