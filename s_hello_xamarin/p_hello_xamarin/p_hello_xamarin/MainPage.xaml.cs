@@ -18,10 +18,10 @@ namespace p_hello_xamarin
         
         protected override void OnAppearing()
         {
-            v_permit_async_();
+            v_getlocation_async_();
         }
 
-        async Task v_permit_async_()
+        async Task v_getlocation_async_()
         {
             var status = await Permissions.CheckStatusAsync<Permissions.LocationAlways>();
             if (status != PermissionStatus.Granted)
