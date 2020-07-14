@@ -130,7 +130,17 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="HTML\css\bootstrap-grid.min.css" />
+    <Content Include="HTML\css\bootstrap-reboot.min.css" />
+    <Content Include="HTML\css\bootstrap.min.css" />
     <Content Include="HTML\home.html" />
+    <Content Include="HTML\img\logo.png" />
+    <Content Include="HTML\img\pin_yellow.svg" />
+    <Content Include="HTML\js\_j_init.js" />
+    <Content Include="HTML\js\bootstrap.bundle.min.js" />
+    <Content Include="HTML\js\bootstrap.min.js" />
+    <Content Include="HTML\js\jquery-3.5.1.min.js" />
+    <Content Include="HTML\map.html" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +154,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="org.arbweb.xam.ui">
+      <Version>0.7.1</Version>
+    </PackageReference>
     <PackageReference Include="Plugin.HybridWebView">
       <Version>1.0.0.1</Version>
     </PackageReference>

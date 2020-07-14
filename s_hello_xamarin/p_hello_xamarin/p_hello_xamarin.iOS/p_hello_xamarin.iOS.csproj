@@ -122,6 +122,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="org.arbweb.xam.ui">
+      <Version>0.7.1</Version>
+    </PackageReference>
     <PackageReference Include="Plugin.HybridWebView">
       <Version>1.0.0.1</Version>
     </PackageReference>

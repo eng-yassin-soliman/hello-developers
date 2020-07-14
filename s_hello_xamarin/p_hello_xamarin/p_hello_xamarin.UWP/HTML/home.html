@@ -1,51 +1,33 @@
 ﻿<!DOCTYPE html>
 <html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css" />
+</head>
 <body>
-    <p>Click the button to get your coordinates.</p>
+    <div class="container w-100" style="margin-top: 60%">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <img src="img/logo.png" style="width: 100%" />
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
 
-    <button onclick="getLocation()">Try It</button>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
 
-    <p id="demo"></p>
-
-    <script>
-        var x = document.getElementById("demo");
-        x.innerHTML = "السلام عليكم";
-
-        function getLocation()
-        {
-            if (navigator.geolocation)
-            {
-                alert('ok1');
-                try
-                {
-                    alert('ok2');
-                    navigator.geolocation.getCurrentPosition(showPosition);
-                    alert('ok6');
-                }
-                catch (p_err_)
-                {
-                    alert(p_err_);
-                }
-            }
-            else
-            {
-                alert('no');
-                x.innerHTML = "Geolocation is not supported by this browser.";
-            }
-        }
-
-        function showPosition(position)
-        {
-            alert('show');
-            alert(position);
-            alert('ok3');
-
-            x.innerHTML =
-                "Latitude: " + position.coords.latitude +
-                "<br>Longitude: " + position.coords.longitude;
-
-            alert('ok5');
-        }
+    <script type="text/javascript">
+        // Navigate to the main screen after 3000 milliseconds
+        setTimeout(function () { window.location = 'map.html'; }, 3000);
     </script>
 </body>
 </html>

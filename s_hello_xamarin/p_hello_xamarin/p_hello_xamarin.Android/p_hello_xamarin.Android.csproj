@@ -70,6 +70,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="org.arbweb.xam.ui">
+      <Version>0.7.1</Version>
+    </PackageReference>
     <PackageReference Include="Plugin.HybridWebView">
       <Version>1.0.0.1</Version>
     </PackageReference>
@@ -115,6 +118,32 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\HTML\home.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\css\bootstrap-grid.min.css" />
+    <AndroidAsset Include="Assets\HTML\css\bootstrap-reboot.min.css" />
+    <AndroidAsset Include="Assets\HTML\css\bootstrap.min.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\js\bootstrap.bundle.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\js\bootstrap.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\js\_j_init.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\js\jquery-3.5.1.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\map.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\pin_yellow.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\HTML\img\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

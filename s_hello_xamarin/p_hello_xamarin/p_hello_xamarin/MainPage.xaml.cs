@@ -12,8 +12,11 @@ namespace p_hello_xamarin
         public MainPage()
         {
             InitializeComponent();
+
+            b_hed_.Source = ImageSource.FromResource("p_hello_xamarin.heading.png");
+            b_loc_.Source = ImageSource.FromResource("p_hello_xamarin.my-location.png");
         }
-        
+
         protected override void OnAppearing()
         {
             v_getlocation_async_();
@@ -21,31 +24,20 @@ namespace p_hello_xamarin
 
         async Task v_getlocation_async_()
         {
-            await DisplayAlert("", "started", "cancel");
-
+            return;
             var status = await Permissions.CheckStatusAsync<Permissions.LocationAlways>();
             if (status != PermissionStatus.Granted)
             {
                 status = await Permissions.RequestAsync<Permissions.LocationAlways>();
             }
 
-            await DisplayAlert("", "acquiring location", "cancel");
-
             var l_req_ = new GeolocationRequest
             {
                 DesiredAccuracy = GeolocationAccuracy.Best,
                 Timeout = new TimeSpan(0, 0, 3)
             };
+
             var l_loc_ = await Geolocation.GetLocationAsync(l_req_);
-
-            await DisplayAlert("", "location acquired", "cancel");
-
-            b_lat_.Text = l_loc_.Latitude.ToString();
-            b_lng_.Text = l_loc_.Longitude.ToString();
-            b_acc_.Text = l_loc_.Accuracy.ToString();
-
-            b_alt_.Text = l_loc_.Altitude.ToString();
-            b_aac_.Text = l_loc_.VerticalAccuracy.ToString();
         }
     }
 }
