@@ -2,27 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:arbweb="clr-namespace:org.arbweb.xam.ui;assembly=org.arbweb.xam.ui"
-             xmlns:plugin="clr-namespace:Plugin.HybridWebView.Shared;assembly=Plugin.HybridWebView"
+             xmlns:hweb="clr-namespace:Plugin.HybridWebView.Shared;assembly=Plugin.HybridWebView"
              x:Class="p_hello_xamarin.MainPage"
              BackgroundColor="Cornsilk">
 
-    <Grid>
-        <plugin:HybridWebViewControl ContentType="LocalFile"
-                                     Source="HTML/home.html"></plugin:HybridWebViewControl>
-
-        <StackLayout HorizontalOptions="Start"
-                     VerticalOptions="End"
-                     Margin="25" IsVisible="true">
-            <Image x:Name="b_hed_" WidthRequest="30" HeightRequest="30"
-               Margin="5" IsVisible="false"
-               HorizontalOptions="Start"
-               VerticalOptions="End" />
-            
-            <Image x:Name="b_loc_" WidthRequest="30" HeightRequest="30"
-               Margin="5"
-               HorizontalOptions="Start"
-               VerticalOptions="End" />
-        </StackLayout>
-    </Grid>
+    <hweb:HybridWebViewControl ContentType="LocalFile"
+                               Source="HTML/home.html"/>
 </ContentPage>

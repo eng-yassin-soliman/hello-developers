@@ -12,9 +12,6 @@ namespace p_hello_xamarin
         public MainPage()
         {
             InitializeComponent();
-
-            b_hed_.Source = ImageSource.FromResource("p_hello_xamarin.heading.png");
-            b_loc_.Source = ImageSource.FromResource("p_hello_xamarin.my-location.png");
         }
 
         protected override void OnAppearing()

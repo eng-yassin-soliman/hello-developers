@@ -1,7 +1,8 @@
 var s_map_;
 
 //Map script callback
-function GetMap() {
+function GetMap()
+{
     s_map_ = new Microsoft.Maps.Map('#myMap',
         {
             credentials: 'AuZIBmC5pvcoKCjQUsa7WG__SmbOcU9eCJUa1qfjEMfXjBVkmspXebJahDhrp6sm',
@@ -18,10 +19,11 @@ function GetMap() {
     var center = s_map_.getCenter();
 
     //Create custom Pushpin
-    var pin = new Microsoft.Maps.Pushpin(center,
+    var pin = new Microsoft.Maps.Pushpin(
+        center,
         {
             color: 'silver',
-            icon: 'img/pin_green.svg'
+            icon: 'img/pin_yellow.svg'
         });
 
     //Add the pushpin to the map
@@ -30,9 +32,6 @@ function GetMap() {
     //Load the directions module.
     Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function ()
     {
-
-
-
         //Create an instance of the directions manager.
         directionsManager = new Microsoft.Maps.Directions.DirectionsManager(s_map_);
 
@@ -64,9 +63,6 @@ function GetMap() {
 
         //Calculate directions.
         directionsManager.calculateDirections();
-
-
-
     })
 }
 
