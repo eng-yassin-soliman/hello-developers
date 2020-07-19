@@ -11,7 +11,7 @@ namespace w_hello_api
     {
         [Route("date")]
         [HttpPost]
-        public DateTime f_date_(int p_int_, string p_str_)
+        public DateTime f_date_()
         {
             return DateTime.Now;
         }
@@ -19,6 +19,8 @@ namespace w_hello_api
         [Route("name")]
         [HttpPost]
         public string f_name_()
-        { return "yassin"; }
+        {
+            return "yassin";
+        }
     }
 }
