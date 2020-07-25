@@ -1,0 +1,18 @@
+﻿._text 
+{
+    width: 400px;
+    height: 300px;
+    margin: 20px;
+    padding: 10px;
+    border: solid 1px silver
+}
+
+._button
+{
+    width: 100px;
+    background-color: wheat;
+    margin: 20px;
+    padding: 10px;
+    text-align: center;
+    display: inline
+}
