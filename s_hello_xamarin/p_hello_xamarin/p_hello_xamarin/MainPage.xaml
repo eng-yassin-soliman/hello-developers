@@ -6,6 +6,5 @@
              x:Class="p_hello_xamarin.MainPage"
              BackgroundColor="Cornsilk">
 
-    <hweb:HybridWebViewControl ContentType="LocalFile"
-                               Source="HTML/home.html"/>
+    <hweb:HybridWebViewControl x:Name="b_web_"/>
 </ContentPage>

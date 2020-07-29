@@ -13,7 +13,7 @@ namespace w_hello_api
         public int s_1st_ { get; set; }
         public int s_2nd_ { get; set; }
     }
-
+     
     [Route("hello/api")]
     [ApiController]
     public class _c_hello_api : Controller
