@@ -1,0 +1,13 @@
+﻿<Window x:Class="p_database.MainWindow" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Database" SizeToContent="WidthAndHeight">
+    <StackPanel Margin="20">
+        <ListBox x:Name="b_lst_" Width="400" Height="400" Margin="5"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Margin="5" Padding="5">Add</Button>
+            <Button Margin="5" Padding="5">Modify</Button>
+            <Button Margin="5" Padding="5">Delete</Button>
+        </StackPanel>
+    </StackPanel>
+</Window>

@@ -138,10 +138,10 @@
     <Content Include="HTML\img\bt-location.svg" />
     <Content Include="HTML\img\logo.png" />
     <AndroidAsset Include="HTML\img\pin_yellow.svg" />
-    <Content Include="HTML\js\_j_init.js" />
     <Content Include="HTML\js\bootstrap.bundle.min.js" />
     <Content Include="HTML\js\bootstrap.min.js" />
     <Content Include="HTML\js\jquery-3.5.1.min.js" />
+    <Content Include="HTML\js\_j_map.js" />
     <Content Include="HTML\map.html" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>

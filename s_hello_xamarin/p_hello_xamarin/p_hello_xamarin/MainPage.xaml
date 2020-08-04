@@ -6,5 +6,7 @@
              x:Class="p_hello_xamarin.MainPage"
              BackgroundColor="Cornsilk">
 
-    <hweb:HybridWebViewControl x:Name="b_web_"/>
+    <Grid>
+        <hweb:HybridWebViewControl x:Name="b_web_" />
+    </Grid>
 </ContentPage>

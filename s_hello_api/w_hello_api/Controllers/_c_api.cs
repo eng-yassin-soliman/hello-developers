@@ -18,14 +18,14 @@ namespace w_hello_api
     [ApiController]
     public class _c_hello_api : Controller
     {
-        [HttpPost]
+        [HttpGet]
         [Route("add")]
         public int f_add_(_c_add_parameters p_par_)
         {
             return p_par_.s_1st_ + p_par_.s_2nd_;
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("text")]
         public string f_text_()
         {
@@ -35,7 +35,7 @@ namespace w_hello_api
             return l_txt_;
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("byte")]
         public string f_byte_()
         {

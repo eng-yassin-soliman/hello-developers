@@ -131,7 +131,7 @@
     <AndroidAsset Include="Assets\HTML\js\bootstrap.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\HTML\js\_j_init.js" />
+    <AndroidAsset Include="Assets\HTML\js\_j_map.js" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\HTML\js\jquery-3.5.1.min.js" />

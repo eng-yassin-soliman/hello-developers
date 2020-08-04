@@ -14,9 +14,6 @@
 <body>
     <div id="b_div_" class="container h-100 w-100">
         <img id="b_img_" src="img/logo.png" style="display:block; width: 40%; margin:auto; visibility: hidden" />
-        
-        <br/><br/>
-        <button onclick="f_call_csharp_()" style="display:block; margin:auto">Click me!</button>
     </div>
 
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -31,17 +28,10 @@
             $("#b_img_").css("visibility", "visible");
 
             // Navigate to the main screen after 3000 milliseconds
-            // setTimeout(function () { window.location = 'map.html'; }, 3000);
+            setTimeout(f_redirect_, 3000);
         });
 
-        // Call C# function named v_my_csharp_function_ and send a string message
-        function f_call_csharp_()
-        {
-            var l_str_ = 'السلام عليكم';
-            var l_dta_ = encodeURIComponent(l_str_);
-
-            v_my_csharp_function_(l_dta_);
-        }
+        function f_redirect_() { window.location = 'map.html'; }
     </script>
 </body>
 </html>

@@ -5,6 +5,7 @@ using Xamarin.Essentials;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Plugin.HybridWebView.Shared.Enumerations;
+using System.Threading;
 
 namespace p_hello_xamarin
 {
@@ -14,8 +15,9 @@ namespace p_hello_xamarin
         public MainPage()
         {
             InitializeComponent();
-
+            
             b_web_.AddLocalCallback("v_my_csharp_function_", v_callback_);
+
             b_web_.ContentType = WebViewContentType.LocalFile;
             b_web_.Source = "HTML/home.html";
         }
@@ -23,19 +25,16 @@ namespace p_hello_xamarin
         void v_callback_(string p_str_)
         {
             var l_str_ = HttpUtility.UrlDecode(p_str_);
-            DisplayAlert("Message From JS", l_str_, "OK");
+            DisplayAlert("وصلني", l_str_, "OK");
         }
 
         protected override void OnAppearing()
         {
-            System.Diagnostics.Debug.WriteLine($"Got local callback: {"p_str_ 123456789"}");
             v_page_loaded_();
         }
 
         async Task v_page_loaded_()
         {
-            return;
-
             var status = await Permissions.CheckStatusAsync<Permissions.LocationAlways>();
             if (status != PermissionStatus.Granted)
             {
@@ -49,6 +48,17 @@ namespace p_hello_xamarin
             };
 
             var l_loc_ = await Geolocation.GetLocationAsync(l_req_);
+
+            Thread.Sleep(1000);
+
+            string l_lat_ = l_loc_.Latitude.ToString();
+            string l_lng_ = l_loc_.Longitude.ToString();
+
+            string l_msg_ = "Location is:" + l_lat_ + "," + l_lng_;
+
+            string l_scr_ = "alert('" + l_msg_ + "');";
+
+            b_web_.InjectJavascriptAsync(l_scr_);
         }
     }
 }
