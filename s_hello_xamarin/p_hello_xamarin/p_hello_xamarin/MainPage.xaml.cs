@@ -5,60 +5,72 @@ using Xamarin.Essentials;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Plugin.HybridWebView.Shared.Enumerations;
-using System.Threading;
 
 namespace p_hello_xamarin
 {
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        double[] s_loc_ = new double[] { 0, 0, 0, 0 };
+
         public MainPage()
         {
             InitializeComponent();
-            
-            b_web_.AddLocalCallback("v_my_csharp_function_", v_callback_);
+
+            b_web_.AddLocalCallback("v_send_text_", v_send_text_);
+            b_web_.AddLocalCallback("v_get_location_", v_get_location_);
 
             b_web_.ContentType = WebViewContentType.LocalFile;
             b_web_.Source = "HTML/home.html";
         }
 
-        void v_callback_(string p_str_)
-        {
-            var l_str_ = HttpUtility.UrlDecode(p_str_);
-            DisplayAlert("وصلني", l_str_, "OK");
-        }
-
         protected override void OnAppearing()
         {
-            v_page_loaded_();
+            base.OnAppearing();
+
+            v_set_location_async_();
         }
 
-        async Task v_page_loaded_()
+        void v_send_text_(string p_str_) 
         {
-            var status = await Permissions.CheckStatusAsync<Permissions.LocationAlways>();
-            if (status != PermissionStatus.Granted)
+            string l_str_ = HttpUtility.UrlDecode(p_str_);
+            DisplayAlert("وصلني", p_str_, "OK");
+        }
+
+        void v_get_location_(string p_str_)
+        { v_get_location_async_(); }
+
+        async Task v_set_location_async_()
+        {
+            while (true)
             {
-                status = await Permissions.RequestAsync<Permissions.LocationAlways>();
+                var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+                if (status != PermissionStatus.Granted)
+                { status = await Permissions.RequestAsync<Permissions.LocationAlways>(); }
+
+                var l_req_ = new GeolocationRequest
+                {
+                    DesiredAccuracy = GeolocationAccuracy.Best,
+                    Timeout = new TimeSpan(0, 0, 3)
+                };
+
+                var l_loc_ = await Geolocation.GetLocationAsync(l_req_);
+
+                s_loc_[0] = l_loc_.Latitude;
+                s_loc_[1] = l_loc_.Longitude;
+                s_loc_[2] = (double)l_loc_.Accuracy;
+                s_loc_[3] = DateTime.Now.Second;
+
+                await Task.Delay(1000);
             }
+        }
 
-            var l_req_ = new GeolocationRequest
-            {
-                DesiredAccuracy = GeolocationAccuracy.Best,
-                Timeout = new TimeSpan(0, 0, 3)
-            };
+        async Task v_get_location_async_()
+        {
+            string l_msg_ = "Location is:" + string.Join(", ", s_loc_);
 
-            var l_loc_ = await Geolocation.GetLocationAsync(l_req_);
-
-            Thread.Sleep(1000);
-
-            string l_lat_ = l_loc_.Latitude.ToString();
-            string l_lng_ = l_loc_.Longitude.ToString();
-
-            string l_msg_ = "Location is:" + l_lat_ + "," + l_lng_;
-
-            string l_scr_ = "alert('" + l_msg_ + "');";
-
-            b_web_.InjectJavascriptAsync(l_scr_);
+            string l_scr_ = "f_show_loc_('" + l_msg_ + "');";
+            await b_web_.InjectJavascriptAsync(l_scr_);
         }
     }
 }

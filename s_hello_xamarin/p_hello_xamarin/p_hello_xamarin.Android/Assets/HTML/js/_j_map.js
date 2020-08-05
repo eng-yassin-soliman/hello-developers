@@ -1,7 +1,8 @@
 var s_map_;
+var s_loc_;
 
 //Map script callback
-function GetMap()
+function f_init_map_()
 {
     s_map_ = new Microsoft.Maps.Map('#myMap',
         {
@@ -17,6 +18,9 @@ function GetMap()
 
     //Add your post map load code here.
     var center = s_map_.getCenter();
+
+    f_show_loc_('loaded');
+    setInterval(f_get_location_, 5000);
 
     ////Create custom Pushpin
     //var pin = new Microsoft.Maps.Pushpin(
@@ -74,11 +78,20 @@ function get_center_()
     alert(l_loc_.longitude);
 }
 
-// Call C# function named v_my_csharp_function_ and send a string message
-function f_call_csharp_(p_str_)
+function f_center_() { }
+
+function f_send_text_(p_str_)
 {
     var l_dta_ = encodeURIComponent(p_str_);
+    v_send_text_(l_dta_);
+}
 
-    // Callin CSaharp function
-    v_my_csharp_function_(l_dta_);
+function f_get_location_()
+{
+    v_get_location_('');
+}
+
+function f_show_loc_(p_loc_)
+{
+    $("#b_div_").text(p_loc_);
 }

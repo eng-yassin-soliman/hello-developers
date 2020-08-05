@@ -5,9 +5,9 @@
     <StackPanel Margin="20">
         <ListBox x:Name="b_lst_" Width="400" Height="400" Margin="5"/>
         <StackPanel Orientation="Horizontal">
-            <Button Margin="5" Padding="5">Add</Button>
-            <Button Margin="5" Padding="5">Modify</Button>
-            <Button Margin="5" Padding="5">Delete</Button>
+            <Button Margin="5" Padding="5" Click="v_add_">Add</Button>
+            <Button Margin="5" Padding="5" Click="v_update_">Modify</Button>
+            <Button Margin="5" Padding="5" Click="v_delete_">Delete</Button>
         </StackPanel>
     </StackPanel>
 </Window>
