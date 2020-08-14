@@ -1,16 +1,8 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
-// 2020-07-09 02:25 PM GMT+2
-
 namespace w_aladdin
 {
-    public class _c_product
-    {
-        public string s_nam_ { set; get; }  // Name
-        public double s_prc_ { set; get; }  // Price
-    }
-
     [Route("products")]
     [ApiController]
     public class _c_products : Controller

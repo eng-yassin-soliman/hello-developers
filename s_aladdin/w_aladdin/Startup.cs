@@ -20,8 +20,8 @@ namespace w_aladdin
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseFileServer();
-            app.UseMvc();
+            app.UseFileServer();        // Serve static file
+            app.UseMvc();               // Serve API functions
         }
     }
 }
