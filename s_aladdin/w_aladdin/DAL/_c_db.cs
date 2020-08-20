@@ -1,34 +1,68 @@
 ﻿using System;
-using System.Data.Common;
-using System.Data.SqlClient;
-using System.Collections.Generic;
+using System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using System.Windows;
 
 namespace w_aladdin
 {
     public class _c_db : DbContext
     {
         #region "Boilerplate"
+        public IDbContextTransaction s_tra_ { get; set; }   // Transaction
+        public string s_msg_ { get; set; }                  // Error message
+
+        public _c_db() { s_msg_ = "ok"; }
+
         public Boolean f_open_()
         {
-            Database.EnsureCreated();   // 1- open connection
-                                        // 2- create db (if not allready created)
-
-            return true;
+            try
+            {
+                Database.EnsureCreated(); // Create database if not created
+                s_tra_ = Database.BeginTransaction(IsolationLevel.Serializable);
+                return true;
+            }
+            catch (Exception p_exp_)
+            {
+                s_msg_ = p_exp_.Message;
+                return false;
+            }
         }
 
-        public Boolean f_close_()
+        public Boolean f_save_()
         {
-            Database.CloseConnection();
-            return true;
+            try
+            {
+                SaveChanges();
+                return true;
+            }
+            catch (DbUpdateException p_exp_)
+            {
+                s_msg_ = p_exp_.Message;
+                return false;
+            }
+        }
+
+        public Boolean f_close_(bool p_cmt_)
+        {
+            try
+            {
+                if (p_cmt_)
+                { s_tra_.Commit(); }
+                else
+                { s_tra_.Rollback(); }
+
+                Database.CloseConnection();
+                return true;
+            }
+            catch (Exception p_exp_)
+            {
+                s_msg_ = p_exp_.Message;
+                return false;
+            }
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=localhost; Database=db_aladdin; User Id=sa; Password=123456aA&");
-        }
+        { optionsBuilder.UseSqlServer("Server=localhost; Database=db_aladdin; User Id=sa; Password=123456aA&"); }
         #endregion
 
         #region "Tables"

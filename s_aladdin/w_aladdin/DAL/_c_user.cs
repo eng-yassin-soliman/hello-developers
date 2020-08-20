@@ -14,10 +14,11 @@ namespace w_aladdin
         [Column("c_date")]          // Registration date and time
         public DateTime s_dat_ { get; set; }
 
-        [Column("c_name")]
+        [Column("c_name")]     // User login name
+        [Index(IsUnique = true)]
         public string s_nam_ { get; set; }
 
-        [Column("c_password")]
+        [Column("c_password")]      // User password
         public string s_pas_ { get; set; }
     }
 }
