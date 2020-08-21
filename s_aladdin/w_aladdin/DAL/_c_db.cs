@@ -8,16 +8,18 @@ namespace w_aladdin
     public class _c_db : DbContext
     {
         #region "Boilerplate"
+
         public IDbContextTransaction s_tra_ { get; set; }   // Transaction
         public string s_msg_ { get; set; }                  // Error message
 
-        public _c_db() { s_msg_ = "ok"; }
+        public _c_db() 
+        { s_msg_ = "ok"; }
 
         public Boolean f_open_()
         {
             try
             {
-                Database.EnsureCreated(); // Create database if not created
+                Database.OpenConnection();
                 s_tra_ = Database.BeginTransaction(IsolationLevel.Serializable);
                 return true;
             }
@@ -67,6 +69,13 @@ namespace w_aladdin
 
         #region "Tables"
         public virtual DbSet<_c_user> t_users { get; set; }
+        protected override void OnModelCreating(ModelBuilder p_bld_)
+        {   // Make c_name column unique
+            p_bld_.Entity<_c_user>().HasIndex(p_ent_ => p_ent_.s_nam_).IsUnique();
+
+            // Default value for c_date column = now
+            p_bld_.Entity<_c_user>().Property(p_ent_ => p_ent_.s_dat_).HasDefaultValueSql("getdate()");
+        }
         #endregion
     }
 }

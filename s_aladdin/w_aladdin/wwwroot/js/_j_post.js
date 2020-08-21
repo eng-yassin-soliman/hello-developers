@@ -1,20 +1,14 @@
 ﻿function v_post_(p_url_, p_msg_, p_typ_, p_scc_, p_err_)
 {
-    const f_req_ = async () =>
-    {
-        await fetch(
-            p_url_,
-            {
-                headers: { "Content-Type": p_typ_ },
-                method: 'POST',
-                body: p_msg_,
-            })
-            .then(function (p_rsp_) { return p_rsp_.text(); })
-            .then(function (p_txt_) { p_scc_(p_txt_); })
-            .catch(function (p_rsp_) { p_err_(p_rsp_); });
-    };
-
-    f_req_();
+    $.ajax(
+        {
+            method: "POST",
+            contentType: p_typ_,
+            url: p_url_,
+            data: p_msg_,
+            success: p_scc_,
+            error: p_err_
+        });
 }
 
 function v_post_txt_(p_url_, p_msg_, p_scc_, p_err_)

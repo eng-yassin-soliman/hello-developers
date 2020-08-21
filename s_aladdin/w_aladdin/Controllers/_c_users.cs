@@ -11,7 +11,7 @@ namespace w_aladdin
     {
         _c_db s_dal_ = new _c_db();
 
-        [HttpGet]
+        [HttpPost]
         [Route("list")]
         public List<_c_user> f_text_(int p_skp_, int p_tak_)
         {
@@ -19,22 +19,21 @@ namespace w_aladdin
 
             s_dal_.f_open_();
             l_lst_ = (from i_usr_ in s_dal_.t_users
-                      orderby i_usr_.s_dat_ descending
+                      //orderby i_usr_.s_dat_ descending
                       select i_usr_).Skip(p_skp_).Take(p_tak_).ToArray().ToList();
             s_dal_.f_close_(true);
 
             return l_lst_;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("add")]
-        public string f_add_(string p_nam_, string p_pas_)
+        public string f_add_(_c_user p_usr_)
         {
-            var l_usr_ = new _c_user
+            _c_user l_usr_ = new _c_user 
             {
-                s_nam_ = p_nam_,
-                s_pas_ = p_pas_,
-                s_dat_ = DateTime.Now
+                s_nam_ = p_usr_.s_nam_,
+                s_pas_ = p_usr_.s_pas_
             };
 
             s_dal_.f_open_();

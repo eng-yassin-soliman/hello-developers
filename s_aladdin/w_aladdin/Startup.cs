@@ -21,6 +21,9 @@ namespace w_aladdin
 
             app.UseFileServer();        // Serve static file            
             app.UseMvc();               // Serve API functions
+
+            _c_db l_dal_ = new _c_db();
+            l_dal_.Database.EnsureCreated();
         }
     }
 }

@@ -1,38 +1,34 @@
-﻿f_loaded_();
+﻿v_loaded_();
 
-function f_loaded_()
+function v_loaded_()
 {
     $(document).foundation();
-    f_resize_();
+    v_resize_();
 }
 
-function f_resize_()
-{
-
-}
-
-// Post the message to server
-function v_send_(p_url_)
-{
-    // var l_req_ = document.getElementById('b_req_').value;
-
-    var l_req_ =
-    {
-        "s_1st_": 17,
-        "s_2nd_": 19
-    };
-
-    v_post_obj_(p_url_, l_req_, v_success_, v_error_);
-}
+function v_resize_() { }
 
 // Handle the response is succeeded
-function v_success_(p_rsp_)
+function v_success_(p_dat_, p_sts_, p_xhr_)
 {
-    document.getElementById('b_rsp_').value = p_rsp_;
+    alert(p_dat_);
 }
 
 // Handle the response on error
-function v_error_(p_rsp_)
+function v_error_(p_xhr_, p_sts_, p_msg_)
 {
-    alert("Error: " + p_rsp_);
+    alert(p_sts_);
+    alert("Error: " + p_msg_);
+}
+
+function v_add_user_()
+{
+    // We are declaring a NEW JSON object
+    var l_usr_ =
+    {
+        get s_nam_() { return document.getElementById('b_nam_').value; },   // Name
+        get s_pas_() { return document.getElementById('b_pas_').value; }    // Password
+    };
+
+    v_post_obj_('users/add', l_usr_, v_success_, v_error_);
 }
