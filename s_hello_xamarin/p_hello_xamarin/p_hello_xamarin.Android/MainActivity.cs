@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Plugin.HybridWebView.Droid;
 
 namespace p_hello_xamarin.Droid
 {
@@ -19,6 +20,7 @@ namespace p_hello_xamarin.Droid
 
             base.OnCreate(savedInstanceState);
 
+            HybridWebViewRenderer.Initialize();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
