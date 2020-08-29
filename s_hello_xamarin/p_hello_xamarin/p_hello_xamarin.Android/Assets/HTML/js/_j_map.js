@@ -90,8 +90,3 @@ function f_get_location_()
 {
     v_get_location_('');
 }
-
-function f_show_loc_(p_loc_)
-{
-    $("#b_div_").text(p_loc_);
-}
