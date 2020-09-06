@@ -1,0 +1,27 @@
+﻿<Window x:Class="p_hello_encryption.MainWindow" WindowStartupLocation="CenterScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontSize="16"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" FontFamily="Consolas"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:p_hello_encryption"
+        Title="Hello Encryption" SizeToContent="WidthAndHeight">
+    <StackPanel Margin="20">
+        <TextBox x:Name="b_inp_" Margin="10" Width="400" Height="200" MaxLines="5" TextWrapping="Wrap">Input</TextBox>
+        <TextBox x:Name="b_out_" Margin="10" Width="400" Height="200" MaxLines="5" TextWrapping="Wrap">Output</TextBox>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Click="v_symmetric_enc_" Width="150" Margin="10" Padding="10" Background="MintCream">Symmetric Enc</Button>
+            <Button Click="v_symmetric_dec_" Width="150" Margin="10" Padding="10" Background="MistyRose">Symmetric Dec</Button>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Click="v_symmetric_enc_" Width="150" Margin="10" Padding="10" Background="MintCream">Asymmetric Enc</Button>
+            <Button Click="v_symmetric_dec_" Width="150" Margin="10" Padding="10" Background="MistyRose">Asymmetric Dec</Button>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Click="v_hash_" Width="150" Margin="10" Padding="10" Background="MintCream">Hash</Button>
+            <Button Click="v_check_" Width="150" Margin="10" Padding="10" Background="MistyRose">Check</Button>
+        </StackPanel>
+    </StackPanel>
+</Window>
