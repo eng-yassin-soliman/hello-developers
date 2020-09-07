@@ -15,13 +15,13 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal">
-            <Button Click="v_symmetric_enc_" Width="150" Margin="10" Padding="10" Background="MintCream">Asymmetric Enc</Button>
-            <Button Click="v_symmetric_dec_" Width="150" Margin="10" Padding="10" Background="MistyRose">Asymmetric Dec</Button>
+            <Button Click="v_asymmetric_enc_" Width="150" Margin="10" Padding="10" Background="MintCream">Asymmetric Enc</Button>
+            <Button Click="v_asymmetric_dec_" Width="150" Margin="10" Padding="10" Background="MistyRose">Asymmetric Dec</Button>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal">
             <Button Click="v_hash_" Width="150" Margin="10" Padding="10" Background="MintCream">Hash</Button>
-            <Button Click="v_check_" Width="150" Margin="10" Padding="10" Background="MistyRose">Check</Button>
+            <Button Click="v_verify_" Width="150" Margin="10" Padding="10" Background="MistyRose">Check</Button>
         </StackPanel>
     </StackPanel>
 </Window>
