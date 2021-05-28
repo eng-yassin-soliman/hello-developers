@@ -28,14 +28,13 @@ namespace p_scratchy
         {
             var l_stm = await p_res.OpenReadAsync();
 
-            //var l_mem = new MemoryStream();
-            //l_stm.CopyTo(l_mem);
-            //l_mem.Flush();
-            //l_mem.Position = 0;
+            var l_mem = new MemoryStream();
+            l_stm.CopyTo(l_mem);
+            l_mem.Flush();
+            l_mem.Position = 0;
 
             g_bmp = SKBitmap.Decode(l_stm);
-            l_stm.Position = 0;
-            //l_mem.Position = 0;
+            l_mem.Position = 0;
 
             //var l_img = SKImage.FromBitmap(g_bmp);
             //var l_dta = l_img.Encode(SKEncodedImageFormat.Jpeg, 90);
@@ -44,7 +43,7 @@ namespace p_scratchy
 
             Device.BeginInvokeOnMainThread(() =>
             {
-                u_img.Source = ImageSource.FromStream(() => l_stm);
+                u_img.Source = ImageSource.FromStream(() => l_mem);
             });
         }
 
