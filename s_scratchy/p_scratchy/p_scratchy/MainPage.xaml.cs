@@ -22,8 +22,6 @@ namespace p_scratchy
             g_tss.Init("eng", OcrEngineMode.TesseractOnly);
         }
 
-        bool g_switch = true;
-
         async Task v_process(FileResult p_res)
         {
             var l_stm = await p_res.OpenReadAsync();
