@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:Local="clr-namespace:p_scratchy"
+       Title="TodoShell"
+       x:Class="p_scratchy.AppShell">
+
+    <TabBar>
+        <Tab Icon="check.png"
+             Title="Todo">
+            <ShellContent ContentTemplate="{DataTemplate Local:MainPage}"/>
+        </Tab>
+        
+        <Tab Icon="info.png"
+             Title="About">
+            <ShellContent ContentTemplate="{DataTemplate Local:Settings}"/>
+        </Tab>
+    </TabBar>
+</Shell>
