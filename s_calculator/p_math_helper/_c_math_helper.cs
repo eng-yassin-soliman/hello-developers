@@ -10,7 +10,7 @@ namespace p_math_helper
             return result;
         }
 
-        public static double sub(double num1, double num2)
+        public static double subtract(double num1, double num2)
         {
             double result = num1 - num2;
             return result;
@@ -22,17 +22,22 @@ namespace p_math_helper
             return result;
         }
 
-        public static double div(double num1, double num2)
+        public static double divide(double num1, double num2)
         {
             double result = num1 / num2;
             return result;
         }
 
-        public static double fact(double num1)
+        public static double factorial(double num1)
         {
             if (num1 == 1)
                 return 1;
-            return num1 * fact(num1 - 1);
+            return num1 * factorial(num1 - 1);
+        }
+
+        public static double squareroot(double num)
+        {
+            return 0;
         }
     }
 }
